@@ -10,6 +10,7 @@ namespace StockMarketCharting.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public char UserType { get; set; }
+        //Change to enum with User and Admin
         public string Email { get; set; }
         public int Mobile { get; set; }
         public bool Confirmed { get; set; }
