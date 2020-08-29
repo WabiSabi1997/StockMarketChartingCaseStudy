@@ -29,15 +29,26 @@ namespace StockExchangeMicroservice.Controllers
 
         // GET api/<StockExchangeController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Object Get(int id)
         {
-            return "value";
+            var res = repository.Get(id);
+            var complist = repository.GetCompanies(res);
+            return complist;
         }
 
         // POST api/<StockExchangeController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] StockExchange se)
         {
+            if (ModelState.IsValid)
+            {
+                var isAdded = repository.Add(se);
+                if (isAdded)
+                {
+                    return Created("student", se);
+                }
+            }
+            return BadRequest(ModelState);
         }
 
         // PUT api/<StockExchangeController>/5
