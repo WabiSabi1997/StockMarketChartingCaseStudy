@@ -60,7 +60,6 @@ namespace StockExchangeMicroservice.Repositories
             var temp = context.StockExchangeCompanies.Where(s => s.StockExchangeId == res.StockExchangeID).Select(s => s.CompanyId).ToList();
             var temp2 = context.Companies.Where(s => temp.Contains(s.CompanyId)).Select(s => s.CompanyName);
             return temp2;
-
         }
     }
 }

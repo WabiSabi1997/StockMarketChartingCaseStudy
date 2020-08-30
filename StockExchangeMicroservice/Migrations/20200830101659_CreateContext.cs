@@ -7,7 +7,7 @@ namespace StockExchangeMicroservice.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Sector",
+                name: "Sectors",
                 columns: table => new
                 {
                     SectorID = table.Column<long>(nullable: false)
@@ -17,7 +17,7 @@ namespace StockExchangeMicroservice.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sector", x => x.SectorID);
+                    table.PrimaryKey("PK_Sectors", x => x.SectorID);
                 });
 
             migrationBuilder.CreateTable(
@@ -52,15 +52,15 @@ namespace StockExchangeMicroservice.Migrations
                 {
                     table.PrimaryKey("PK_Companies", x => x.CompanyId);
                     table.ForeignKey(
-                        name: "FK_Companies_Sector_SectorID",
+                        name: "FK_Companies_Sectors_SectorID",
                         column: x => x.SectorID,
-                        principalTable: "Sector",
+                        principalTable: "Sectors",
                         principalColumn: "SectorID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "IPODetail",
+                name: "IPODetails",
                 columns: table => new
                 {
                     IPODetailID = table.Column<long>(nullable: false)
@@ -75,15 +75,15 @@ namespace StockExchangeMicroservice.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IPODetail", x => x.IPODetailID);
+                    table.PrimaryKey("PK_IPODetails", x => x.IPODetailID);
                     table.ForeignKey(
-                        name: "FK_IPODetail_Companies_CompanyId",
+                        name: "FK_IPODetails_Companies_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "CompanyId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_IPODetail_StockExchanges_StockExchangeId",
+                        name: "FK_IPODetails_StockExchanges_StockExchangeId",
                         column: x => x.StockExchangeId,
                         principalTable: "StockExchanges",
                         principalColumn: "StockExchangeID",
@@ -115,7 +115,7 @@ namespace StockExchangeMicroservice.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StockPrice",
+                name: "StockPrices",
                 columns: table => new
                 {
                     StockPriceId = table.Column<int>(nullable: false)
@@ -128,15 +128,15 @@ namespace StockExchangeMicroservice.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StockPrice", x => x.StockPriceId);
+                    table.PrimaryKey("PK_StockPrices", x => x.StockPriceId);
                     table.ForeignKey(
-                        name: "FK_StockPrice_Companies_CompanyId",
+                        name: "FK_StockPrices_Companies_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "CompanyId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StockPrice_StockExchanges_StockExchangeId",
+                        name: "FK_StockPrices_StockExchanges_StockExchangeId",
                         column: x => x.StockExchangeId,
                         principalTable: "StockExchanges",
                         principalColumn: "StockExchangeID",
@@ -149,14 +149,14 @@ namespace StockExchangeMicroservice.Migrations
                 column: "SectorID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IPODetail_CompanyId",
-                table: "IPODetail",
+                name: "IX_IPODetails_CompanyId",
+                table: "IPODetails",
                 column: "CompanyId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_IPODetail_StockExchangeId",
-                table: "IPODetail",
+                name: "IX_IPODetails_StockExchangeId",
+                table: "IPODetails",
                 column: "StockExchangeId");
 
             migrationBuilder.CreateIndex(
@@ -165,26 +165,26 @@ namespace StockExchangeMicroservice.Migrations
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StockPrice_CompanyId",
-                table: "StockPrice",
+                name: "IX_StockPrices_CompanyId",
+                table: "StockPrices",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StockPrice_StockExchangeId",
-                table: "StockPrice",
+                name: "IX_StockPrices_StockExchangeId",
+                table: "StockPrices",
                 column: "StockExchangeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "IPODetail");
+                name: "IPODetails");
 
             migrationBuilder.DropTable(
                 name: "StockExchangeCompanies");
 
             migrationBuilder.DropTable(
-                name: "StockPrice");
+                name: "StockPrices");
 
             migrationBuilder.DropTable(
                 name: "Companies");
@@ -193,7 +193,7 @@ namespace StockExchangeMicroservice.Migrations
                 name: "StockExchanges");
 
             migrationBuilder.DropTable(
-                name: "Sector");
+                name: "Sectors");
         }
     }
 }

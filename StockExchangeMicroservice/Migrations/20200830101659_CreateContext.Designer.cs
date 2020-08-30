@@ -10,7 +10,7 @@ using StockExchangeMicroservice.Contexts;
 namespace StockExchangeMicroservice.Migrations
 {
     [DbContext(typeof(StockExchangeContext))]
-    [Migration("20200829113705_CreateContext")]
+    [Migration("20200830101659_CreateContext")]
     partial class CreateContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,7 +87,7 @@ namespace StockExchangeMicroservice.Migrations
 
                     b.HasIndex("StockExchangeId");
 
-                    b.ToTable("IPODetail");
+                    b.ToTable("IPODetails");
                 });
 
             modelBuilder.Entity("StockMarketCharting.Models.Sector", b =>
@@ -106,7 +106,7 @@ namespace StockExchangeMicroservice.Migrations
 
                     b.HasKey("SectorID");
 
-                    b.ToTable("Sector");
+                    b.ToTable("Sectors");
                 });
 
             modelBuilder.Entity("StockMarketCharting.Models.StockExchange", b =>
@@ -179,7 +179,7 @@ namespace StockExchangeMicroservice.Migrations
 
                     b.HasIndex("StockExchangeId");
 
-                    b.ToTable("StockPrice");
+                    b.ToTable("StockPrices");
                 });
 
             modelBuilder.Entity("StockMarketCharting.Models.Company", b =>

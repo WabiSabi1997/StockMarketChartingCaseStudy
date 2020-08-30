@@ -85,7 +85,7 @@ namespace StockExchangeMicroservice.Migrations
 
                     b.HasIndex("StockExchangeId");
 
-                    b.ToTable("IPODetail");
+                    b.ToTable("IPODetails");
                 });
 
             modelBuilder.Entity("StockMarketCharting.Models.Sector", b =>
@@ -104,7 +104,7 @@ namespace StockExchangeMicroservice.Migrations
 
                     b.HasKey("SectorID");
 
-                    b.ToTable("Sector");
+                    b.ToTable("Sectors");
                 });
 
             modelBuilder.Entity("StockMarketCharting.Models.StockExchange", b =>
@@ -177,7 +177,7 @@ namespace StockExchangeMicroservice.Migrations
 
                     b.HasIndex("StockExchangeId");
 
-                    b.ToTable("StockPrice");
+                    b.ToTable("StockPrices");
                 });
 
             modelBuilder.Entity("StockMarketCharting.Models.Company", b =>

@@ -6,24 +6,22 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockExchangeMicroservice.Contexts
+namespace SectorMicroservice.Contexts
 {
-    public class StockExchangeContext : DbContext
+    public class SectorContext : DbContext
     {
-        public StockExchangeContext([NotNullAttribute] DbContextOptions options) : base(options)
+        public SectorContext([NotNullAttribute] DbContextOptions options) : base(options)
         {
         }
 
-        protected StockExchangeContext()
+        protected SectorContext()
         {
         }
 
-        public virtual DbSet<StockExchange> StockExchanges { get; set; }
-        public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<StockExchangeCompanies> StockExchangeCompanies { get; set; }
         public virtual DbSet<Sector> Sectors { get; set; }
-        public virtual DbSet<IPODetail> IPODetails { get; set; }
-        public virtual DbSet<StockPrice> StockPrices { get; set; }
+        //public virtual DbSet<Company> Companies { get; set; }
+        //public virtual DbSet<StockExchange> StockExchanges { get; set; }
+        //public virtual DbSet<StockExchangeCompanies> StockExchangeCompanies { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,15 +29,13 @@ namespace StockExchangeMicroservice.Contexts
             modelBuilder.Entity<StockExchangeCompanies>()
                 .HasKey(t => new { t.StockExchangeId, t.CompanyId });
             modelBuilder.Entity<StockExchangeCompanies>()
-    .HasOne(bc => bc.StockExchange)
-    .WithMany(b => b.StockExchangeCompanies)
-    .HasForeignKey(bc => bc.StockExchangeId);
+            .HasOne(bc => bc.StockExchange)
+            .WithMany(b => b.StockExchangeCompanies)
+            .HasForeignKey(bc => bc.StockExchangeId);
             modelBuilder.Entity<StockExchangeCompanies>()
                 .HasOne(bc => bc.Company)
                 .WithMany(c => c.StockExchangeCompanies)
                 .HasForeignKey(bc => bc.CompanyId);
         }
-        //Once implemented companies, add ipdetails and other virtual classes. 
-
     }
 }
