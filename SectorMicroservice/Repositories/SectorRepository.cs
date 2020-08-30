@@ -1,4 +1,5 @@
 ﻿//using SectorMicroservice.Contexts;
+using Newtonsoft.Json.Linq;
 using StockExchangeMicroservice.Contexts;
 using StockMarketCharting.Models;
 using System;
@@ -18,7 +19,16 @@ namespace SectorMicroservice.Repositories
         }
         public bool Add(Sector entity)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            Sector sector = entity;
+            //sector.Companies = null;
+            Company company = (Company)entity.Companies;
+            //context.AddRange(sector, company);
+            context.Add(sector);
+            context.SaveChanges();
+            context.Add(company);
+            context.SaveChanges();
+            return true;
         }
 
         public bool Delete(Sector entity)
@@ -48,6 +58,35 @@ namespace SectorMicroservice.Repositories
            // var temp = context.StockExchangeCompanies.Where(s => s.StockExchangeId == res.StockExchangeID).Select(s => s.CompanyId).ToList();
             var temp2 = context.Companies.Where(s => s.Sector.SectorID == res.SectorID).Select(s => s.CompanyName).ToList();
             return temp2;
+        }
+
+        Object IRepository<Sector>.GetSectorPrice(int id, DateTime from, DateTime to)
+        {   //to figure out periodicity later
+            var CompanyIdList = context.Companies.Where(s => s.Sector.SectorID == id).Select(s => s.CompanyId); //res returns a list of CompanyId(s)
+
+            List<double> CompanyAvgList = new List<double>();
+            double sum = 0;
+            int count = 0;
+            foreach (var Id in CompanyIdList) //for each company Id
+            {
+                var CompanyStockPrices = context.StockPrices.Where(s => s.CompanyId == Id); //instances of StockPrices where the company ID matches
+                sum = 0;
+                count = 0;
+                foreach (var res in CompanyStockPrices)
+                {
+                    DateTime resDate = Convert.ToDateTime(string.Concat(res.Date, " ", res.Time));
+                    if (resDate >= from && resDate <= to)
+                    {
+                        sum += (double)res.CurrentPrice;
+                        count++;
+                    }
+                }
+                CompanyAvgList.Add(sum / count);
+            }
+            double SectorPrice = CompanyAvgList.Sum()/CompanyAvgList.Count();
+
+            return SectorPrice;
+
         }
     }
 }

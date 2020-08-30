@@ -21,9 +21,10 @@ namespace StockExchangeMicroservice.Repositories
         public bool Add(StockExchange entity)
         {
             StockExchange temp = entity;
-            temp.StockExchangeCompanies = null;
-
+            //temp.StockExchangeCompanies = null;
+            context.Add<StockExchange>(entity);
             //StockExchangeCompanies temp2 = entity.StockExchangeCompanies;
+            context.SaveChanges();
             return true;
         }
 

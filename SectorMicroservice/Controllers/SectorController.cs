@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using SectorMicroservice.Repositories;
 using StockMarketCharting.Models;
 
@@ -36,10 +37,18 @@ namespace SectorMicroservice.Controllers
             return complist;
         }
 
+        [HttpGet("getprice/{id}/{from}/{to}")]
+        public Object GetSectorPrice(int id, DateTime from, DateTime to)
+        {
+            var res = repository.GetSectorPrice(id, from, to);
+            return res;
+        }
+
         // POST api/<SectorController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Sector sector)
         {
+            repository.Add(sector);
         }
 
         // PUT api/<SectorController>/5

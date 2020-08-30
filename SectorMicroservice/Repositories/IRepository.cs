@@ -1,4 +1,5 @@
-﻿using StockMarketCharting.Models;
+﻿using Newtonsoft.Json.Linq;
+using StockMarketCharting.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace SectorMicroservice.Repositories
         IEnumerable<T> Get();
         T Get(object key);
         object GetCompanies(Sector res);
+        object GetSectorPrice(int id, DateTime from, DateTime to);
     }
 }

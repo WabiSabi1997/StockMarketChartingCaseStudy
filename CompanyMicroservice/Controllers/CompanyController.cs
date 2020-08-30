@@ -48,7 +48,6 @@ namespace CompanyMicroservice.Controllers
         {
             var res = repository.GetStockPrice(id, from, to);
             return res;
-            
         }
         
         // POST api/<CompanyController>

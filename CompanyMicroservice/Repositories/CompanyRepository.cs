@@ -48,11 +48,6 @@ namespace CompanyMicroservice.Repositories
 
         Object IRepository<Company>.GetStockPrice(int id, DateTime from, DateTime to)
         {
-            //var res = context.StockPrices.Where(s => s.CompanyId == id);
-            //var res1 = res.FromSql(;
-            //var res2 = res1.Select(s => s.CurrentPrice).ToList();
-            //var res2 = context.StockPrices.FromSqlRaw($"Select CurrentPrice from StockPrices Where StockPrices.CompanyId={id} and StockPrices.Date>={from} and StockPrices.Date<={to}");
-
             var res = context.StockPrices.Where(s => s.CompanyId == id);
             List<Object> res2 = new List<Object>();
             foreach (var res1 in res)
