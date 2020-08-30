@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectorMicroservice", "Secto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyMicroservice", "CompanyMicroservice\CompanyMicroservice.csproj", "{56311A80-6E9D-4BC5-BEE6-6386E1AC1332}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UploadMicroservice", "UploadMicroservice\UploadMicroservice.csproj", "{EEF80BEE-A2E5-44A0-8AC1-6E0449964A1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{56311A80-6E9D-4BC5-BEE6-6386E1AC1332}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56311A80-6E9D-4BC5-BEE6-6386E1AC1332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56311A80-6E9D-4BC5-BEE6-6386E1AC1332}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF80BEE-A2E5-44A0-8AC1-6E0449964A1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF80BEE-A2E5-44A0-8AC1-6E0449964A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF80BEE-A2E5-44A0-8AC1-6E0449964A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF80BEE-A2E5-44A0-8AC1-6E0449964A1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

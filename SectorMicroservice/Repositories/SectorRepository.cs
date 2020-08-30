@@ -23,10 +23,14 @@ namespace SectorMicroservice.Repositories
             Sector sector = entity;
             //sector.Companies = null;
             Company company = (Company)entity.Companies;
-            //context.AddRange(sector, company);
-            context.Add(sector);
-            context.SaveChanges();
-            context.Add(company);
+            IPODetail ipo = company.IPODetail;
+            ICollection<StockPrice> stockPrices = company.StockPrices;
+            ICollection<StockExchangeCompanies> sec = company.StockExchangeCompanies;
+
+            context.AddRange(sector, company,ipo,stockPrices,sec);
+            //context.Add(sector);
+            //context.SaveChanges();
+            //context.Add(company);
             context.SaveChanges();
             return true;
         }
@@ -39,6 +43,8 @@ namespace SectorMicroservice.Repositories
         public IEnumerable<Sector> Get()
         {
             var sectors = context.Sectors;
+
+            
             return sectors;
         }
 
@@ -86,7 +92,7 @@ namespace SectorMicroservice.Repositories
             double SectorPrice = CompanyAvgList.Sum()/CompanyAvgList.Count();
 
             return SectorPrice;
-
         }
+        
     }
 }
