@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockMarketCharting.Models"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchangeMicroservice", "StockExchangeMicroservice\StockExchangeMicroservice.csproj", "{5B930F4E-6302-4596-9298-6F09B8608EFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectorMicroservice", "SectorMicroservice\SectorMicroservice.csproj", "{8A011E1F-F207-4528-8072-4AB8EB1BCE21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SectorMicroservice", "SectorMicroservice\SectorMicroservice.csproj", "{8A011E1F-F207-4528-8072-4AB8EB1BCE21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyMicroservice", "CompanyMicroservice\CompanyMicroservice.csproj", "{56311A80-6E9D-4BC5-BEE6-6386E1AC1332}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyMicroservice", "CompanyMicroservice\CompanyMicroservice.csproj", "{56311A80-6E9D-4BC5-BEE6-6386E1AC1332}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
