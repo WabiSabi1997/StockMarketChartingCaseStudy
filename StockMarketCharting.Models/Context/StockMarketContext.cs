@@ -1,26 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StockMarketCharting.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace StockExchangeMicroservice.Contexts
+namespace StockMarketCharting.Models.Context
 {
-    public class StockExchangeContext : DbContext
+    public class StockMarketContext: DbContext
     {
-        public StockExchangeContext([NotNullAttribute] DbContextOptions options) : base(options)
+        
+         public StockMarketContext([NotNullAttribute] DbContextOptions options) : base(options)
         {
         }
 
-        protected StockExchangeContext()
+        protected StockMarketContext()
         {
         }
 
         public virtual DbSet<StockExchange> StockExchanges { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<StockExchangeCompanies> StockExchangeCompanies { get; set; }
+        public virtual DbSet<StockExchangeCompany> StockExchangeCompanies { get; set; }
         public virtual DbSet<Sector> Sectors { get; set; }
         public virtual DbSet<IPODetail> IPODetails { get; set; }
         public virtual DbSet<StockPrice> StockPrices { get; set; }
@@ -28,13 +27,13 @@ namespace StockExchangeMicroservice.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<StockExchangeCompanies>()
+            modelBuilder.Entity<StockExchangeCompany>()
                 .HasKey(t => new { t.StockExchangeId, t.CompanyId });
-            modelBuilder.Entity<StockExchangeCompanies>()
+            modelBuilder.Entity<StockExchangeCompany>()
     .HasOne(bc => bc.StockExchange)
     .WithMany(b => b.StockExchangeCompanies)
     .HasForeignKey(bc => bc.StockExchangeId);
-            modelBuilder.Entity<StockExchangeCompanies>()
+            modelBuilder.Entity<StockExchangeCompany>()
                 .HasOne(bc => bc.Company)
                 .WithMany(c => c.StockExchangeCompanies)
                 .HasForeignKey(bc => bc.CompanyId);
@@ -43,3 +42,4 @@ namespace StockExchangeMicroservice.Contexts
 
     }
 }
+

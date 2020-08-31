@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StockMarketCharting.Models
 {
-   public class StockExchangeCompanies
+   public class StockExchangeCompany
     {
         public int StockExchangeId { get; set; }
         public StockExchange StockExchange { get; set; }

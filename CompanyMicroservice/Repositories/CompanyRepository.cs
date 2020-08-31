@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StockExchangeMicroservice.Contexts;
+
 using StockMarketCharting.Models;
+using StockMarketCharting.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace CompanyMicroservice.Repositories
 {
     public class CompanyRepository : IRepository<Company>
     {
-        private StockExchangeContext context;
+        private StockMarketContext context;
 
-        public CompanyRepository(StockExchangeContext context)
+        public CompanyRepository(StockMarketContext context)
         {
             this.context = context;
         }

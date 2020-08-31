@@ -26,13 +26,13 @@ namespace SectorMicroservice.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<StockExchangeCompanies>()
+            modelBuilder.Entity<StockExchangeCompany>()
                 .HasKey(t => new { t.StockExchangeId, t.CompanyId });
-            modelBuilder.Entity<StockExchangeCompanies>()
+            modelBuilder.Entity<StockExchangeCompany>()
             .HasOne(bc => bc.StockExchange)
             .WithMany(b => b.StockExchangeCompanies)
             .HasForeignKey(bc => bc.StockExchangeId);
-            modelBuilder.Entity<StockExchangeCompanies>()
+            modelBuilder.Entity<StockExchangeCompany>()
                 .HasOne(bc => bc.Company)
                 .WithMany(c => c.StockExchangeCompanies)
                 .HasForeignKey(bc => bc.CompanyId);

@@ -1,7 +1,8 @@
 ﻿//using SectorMicroservice.Contexts;
 using Newtonsoft.Json.Linq;
-using StockExchangeMicroservice.Contexts;
+//using StockExchangeMicroservice.Contexts;
 using StockMarketCharting.Models;
+using StockMarketCharting.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace SectorMicroservice.Repositories
 {
     public class SectorRepository : IRepository<Sector>
     {
-        private StockExchangeContext context;
+        private StockMarketContext context;
 
-        public SectorRepository(StockExchangeContext context)
+        public SectorRepository(StockMarketContext context)
         {
             this.context = context;
         }
@@ -25,7 +26,7 @@ namespace SectorMicroservice.Repositories
             Company company = (Company)entity.Companies;
             IPODetail ipo = company.IPODetail;
             ICollection<StockPrice> stockPrices = company.StockPrices;
-            ICollection<StockExchangeCompanies> sec = company.StockExchangeCompanies;
+            ICollection<StockExchangeCompany> sec = company.StockExchangeCompanies;
 
             context.AddRange(sector, company,ipo,stockPrices,sec);
             //context.Add(sector);
