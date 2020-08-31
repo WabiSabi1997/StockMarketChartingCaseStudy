@@ -20,12 +20,24 @@ namespace CompanyMicroservice.Repositories
         }
         public bool Add(Company entity)
         {
-            throw new NotImplementedException();
+            context.Companies.Add(entity);
+            var x = context.SaveChanges();
+            if (x > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public bool Delete(Company entity)
+        public bool Delete(Object entity)
         {
-            throw new NotImplementedException();
+            context.Remove(entity);
+            var x = context.SaveChanges();
+            if (x > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public IEnumerable<Company> Get()
@@ -34,9 +46,21 @@ namespace CompanyMicroservice.Repositories
             return companies;
         }
 
+        public Company Get(object id)
+        {
+            var res = context.Companies.Find(id);
+            return res;
+        }
+
         public bool Update(Company entity)
         {
-            throw new NotImplementedException();
+            context.Entry(entity).State = EntityState.Modified;
+            var x = context.SaveChanges();
+            if (x > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         Object IRepository<Company>.GetbyName(string query)

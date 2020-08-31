@@ -64,20 +64,29 @@ namespace CompanyMicroservice.Controllers
         
         // POST api/<CompanyController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromForm] Company company)
         {
+            //company.Sector.SectorID = id;
+            var x = repository.Add(company);
         }
 
         // PUT api/<CompanyController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromForm] Company company)
         {
+            //Find if the company exists in the database
+            //var res = repository.Get(id);
+            //If the company exists in the database, edit its details.
+            //Disconnect the variable res from the context, otherwise clash will occur and can't update the value.
+            repository.Update(company);
         }
 
         // DELETE api/<CompanyController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var res = repository.Get(id);
+            var count = repository.Delete(res);
         }
     }
 }
