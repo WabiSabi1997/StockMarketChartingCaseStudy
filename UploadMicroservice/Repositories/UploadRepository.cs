@@ -71,7 +71,7 @@ namespace UploadMicroservice.Repositories
                                 {
                                     CompanyId = int.Parse(r[0].ToString().Trim()),
                                     StockExchangeId = int.Parse(r[1].ToString().Trim()),
-                                    CurrentPrice = Convert.ToDecimal(r[2].ToString().Trim()),
+                                    CurrentPrice = Convert.ToDouble(r[2].ToString().Trim()),
                                     Date = r[3].ToString().Trim(),
                                     Time = r[4].ToString().Trim()
                                 });

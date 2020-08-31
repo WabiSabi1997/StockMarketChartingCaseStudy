@@ -43,7 +43,7 @@ namespace AuthMicroservice.Controllers
                 catch (Exception e)
                 {
 
-                    return StatusCode(500, "Internal Server Error");
+                    return StatusCode(500, e.Message);
                 }
             }
             else

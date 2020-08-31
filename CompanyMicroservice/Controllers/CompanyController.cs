@@ -30,6 +30,7 @@ namespace CompanyMicroservice.Controllers
 
         // GET api/<CompanyController>/5
         [HttpGet("getbyname")]
+        
         public IActionResult Get(string query)
         {
             var res = repository.GetbyName(query);
