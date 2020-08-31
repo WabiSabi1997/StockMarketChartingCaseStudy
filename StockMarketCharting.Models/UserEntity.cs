@@ -7,16 +7,23 @@ namespace StockMarketCharting.Models
 {
     public class UserEntity
     {
-        public long ID { get; set; }
+        public int Id { get; set; }
         [Required]
+        [StringLength(30)]
         public string Username { get; set; }
         [Required]
+        [StringLength(50,MinimumLength =6)]
         public string Password { get; set; }
-        public char UserType { get; set; }
+
+        [Required]
+        public UserType UserType { get; set; } //enum gets easy to use as a drop down list
         //Change to enum with User and Admin
         [EmailAddress]
+        [Required]
         public string Email { get; set; }
-        public long Mobile { get; set; }
+        [Required]
+        public long Mobile { get; set; } //long makes the validation easier
+        
         public bool Confirmed { get; set; }
     }
 }

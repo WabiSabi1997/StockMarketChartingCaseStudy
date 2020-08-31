@@ -7,9 +7,9 @@ namespace StockMarketCharting.Models
 {
     public class IPODetail
     {   [Key]
-        public long IPODetailID { get; set; }
+        public int IPODetailID { get; set; }
         [Required]
-        public decimal PricePerShare { get; set; }
+        public double PricePerShare { get; set; }
         [Required]
         public int TotalNumOfShares { get; set; }
         [Required]

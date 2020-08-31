@@ -8,7 +8,7 @@ namespace StockMarketCharting.Models
     public class Sector
     {
         [Key]
-        public long SectorID { get; set; }
+        public int SectorID { get; set; }
         [Required]
         public string SectorName { get; set; }
         public string Brief { get; set; }

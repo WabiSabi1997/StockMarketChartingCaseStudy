@@ -12,7 +12,7 @@ namespace StockMarketCharting.Models
         [Key]
         public int StockPriceId { get; set; }
         [Required]
-        public decimal CurrentPrice { get; set; }
+        public double CurrentPrice { get; set; }
         [Required]
         public string Date { get; set; }
         [Required]
