@@ -29,6 +29,17 @@ namespace CompanyMicroservice.Controllers
         }
 
         // GET api/<CompanyController>/5
+        [HttpGet("getbyname")]
+        public IActionResult Get(string query)
+        {
+            var res = repository.GetbyName(query);
+            if (res == null)
+            {
+                return NotFound("No such company in the database");
+            }
+            return Ok(res);
+        }
+
         [HttpGet("{id}/companydetails")]
         public Object Get(int id)
         {

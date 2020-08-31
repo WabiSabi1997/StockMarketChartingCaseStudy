@@ -6,16 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using StockExchangeMicroservice.Contexts;
-using StockExchangeMicroservice.Repositories;
-using UploadMicroservice.Repositories;
 
-namespace UploadMicroservice
+namespace APIGateway
 {
     public class Startup
     {
@@ -29,10 +25,7 @@ namespace UploadMicroservice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<StockExchangeContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
-            services.AddScoped<IRepository, UploadRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

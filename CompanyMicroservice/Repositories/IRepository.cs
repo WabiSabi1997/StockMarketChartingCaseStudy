@@ -14,6 +14,8 @@ namespace CompanyMicroservice.Repositories
         IEnumerable<T> Get();
         Object GetIPO(int key);
         object GetStockPrice(int id, DateTime from, DateTime to);
+        object GetbyName(string query);
+
         //object GetCompanies(Sector res);
     }
 }

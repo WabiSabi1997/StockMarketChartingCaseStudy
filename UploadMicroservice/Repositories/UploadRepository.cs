@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace UploadMicroservice.Repositories
 {
-    public class UploadRepository : IUploadRepository
+    public class UploadRepository : IRepository
     {
         private StockExchangeContext context;
 

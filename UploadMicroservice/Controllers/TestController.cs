@@ -15,15 +15,15 @@ using System.Text;
 using System.Threading.Tasks;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace StockMarket.AdminService.Controllers
+namespace UploadMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class TestController : ControllerBase
     {
-        private IUploadRepository repository;
+        private IRepository repository;
 
-        public TestController(IUploadRepository repository)
+        public TestController(IRepository repository)
         {
             this.repository = repository;
         }

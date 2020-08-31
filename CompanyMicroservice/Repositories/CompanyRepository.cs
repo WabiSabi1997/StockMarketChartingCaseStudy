@@ -33,11 +33,19 @@ namespace CompanyMicroservice.Repositories
             return companies;
         }
 
-
-
         public bool Update(Company entity)
         {
             throw new NotImplementedException();
+        }
+
+        Object IRepository<Company>.GetbyName(string query)
+        {
+            var res = context.Companies.Where(c => c.CompanyName.Contains(query)).Select(c=>c.CompanyName).ToList();
+            if(res.Count == 0)
+            {
+                return null;
+            }
+            return res;
         }
 
         Object IRepository<Company>.GetIPO(int key)

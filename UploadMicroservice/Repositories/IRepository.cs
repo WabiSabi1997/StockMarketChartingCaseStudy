@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace UploadMicroservice.Repositories
 {
-    public interface IUploadRepository
+    public interface IRepository
     {
         void UploadExcel(string filePath);
     }
