@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StockMarketCharting.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace StockMarketCharting.Models.Context
+namespace DataCreationMicroservice.Context
 {
     public class StockMarketContext: DbContext
     {
@@ -29,12 +30,14 @@ namespace StockMarketCharting.Models.Context
         {
             modelBuilder.Entity<StockExchangeCompany>()
                 .HasKey(t => new { t.StockExchangeId, t.CompanyId });
+
             modelBuilder.Entity<StockExchangeCompany>()
-    .HasOne(bc => bc.StockExchange)
-    .WithMany(b => b.StockExchangeCompanies)
-    .HasForeignKey(bc => bc.StockExchangeId);
+                .HasOne<StockExchange>(bc => bc.StockExchange)
+                .WithMany(b => b.StockExchangeCompanies)
+                .HasForeignKey(bc => bc.StockExchangeId);
+            
             modelBuilder.Entity<StockExchangeCompany>()
-                .HasOne(bc => bc.Company)
+                .HasOne<Company>(bc => bc.Company)
                 .WithMany(c => c.StockExchangeCompanies)
                 .HasForeignKey(bc => bc.CompanyId);
         }

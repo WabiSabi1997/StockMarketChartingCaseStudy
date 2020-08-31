@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using StockExchangeMicroservice.Repositories;
 using StockMarketCharting.Models;
-using StockMarketCharting.Models.Context;
+using DataCreationMicroservice.Context;
 
 namespace StockExchangeMicroservice
 {

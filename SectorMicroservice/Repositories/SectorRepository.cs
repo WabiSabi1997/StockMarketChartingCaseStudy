@@ -1,8 +1,9 @@
 ﻿//using SectorMicroservice.Contexts;
+using DataCreationMicroservice.Context;
 using Newtonsoft.Json.Linq;
 //using StockExchangeMicroservice.Contexts;
 using StockMarketCharting.Models;
-using StockMarketCharting.Models.Context;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;

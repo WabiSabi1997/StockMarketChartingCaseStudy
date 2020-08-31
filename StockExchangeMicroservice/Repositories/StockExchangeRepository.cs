@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataCreationMicroservice.Context;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-
 using StockMarketCharting.Models;
-using StockMarketCharting.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;

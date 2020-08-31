@@ -15,7 +15,7 @@ namespace APIGateway
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+           // CreateHostBuilder(args).Build().Run();
         }
 
         //public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -24,17 +24,17 @@ namespace APIGateway
         //        {
         //            webBuilder.UseStartup<Startup>();
         //        });
-        public static IWebHost BuildWebHost(string[] args)
-        {
-            var builder = WebHost.CreateDefaultBuilder(args);
+        //public static IWebHost BuildWebHost(string[] args)
+        //{
+        //    var builder = WebHost.CreateDefaultBuilder(args);
 
-            builder.ConfigureServices(s => s.AddSingleton(builder))
-                    .ConfigureAppConfiguration(
-                          ic => ic.AddJsonFile(Path.Combine("configuration",
-                                                            "configuration.json")))
-                    .UseStartup<Startup>();
-            var host = builder.Build();
-            return host;
-        }
+        //    builder.ConfigureServices(s => s.AddSingleton(builder))
+        //            .ConfigureAppConfiguration(
+        //                  ic => ic.AddJsonFile(Path.Combine("configuration",
+        //                                                    "configuration.json")))
+        //            .UseStartup<Startup>();
+        //    var host = builder.Build();
+        //    return host;
+        //}
     }
 }

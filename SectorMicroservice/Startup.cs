@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataCreationMicroservice.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,7 +15,7 @@ using Microsoft.Extensions.Logging;
 using SectorMicroservice.Contexts;
 using SectorMicroservice.Repositories;
 using StockMarketCharting.Models;
-using StockMarketCharting.Models.Context;
+
 
 namespace SectorMicroservice
 {

@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataCreationMicroservice\DataCreationMicroservice.csproj" />
     <ProjectReference Include="..\StockMarketCharting.Models\StockMarketCharting.Models.csproj" />
   </ItemGroup>
 

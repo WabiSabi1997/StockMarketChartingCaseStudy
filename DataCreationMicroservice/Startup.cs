@@ -13,11 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-using StockExchangeMicroservice.Repositories;
-
-using UploadMicroservice.Repositories;
-
-namespace UploadMicroservice
+namespace DataCreationMicroservice
 {
     public class Startup
     {
@@ -32,9 +28,9 @@ namespace UploadMicroservice
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<StockMarketContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
+            options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
+
             services.AddControllers();
-            services.AddScoped<IRepository, UploadRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
