@@ -11,9 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using StockExchangeMicroservice.Contexts;
 using StockExchangeMicroservice.Repositories;
 using StockMarketCharting.Models;
+using StockMarketCharting.Models.Context;
 
 namespace StockExchangeMicroservice
 {
@@ -29,7 +29,7 @@ namespace StockExchangeMicroservice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<StockExchangeContext>(options =>
+            services.AddDbContext<StockMarketContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
 
             services.AddControllers();

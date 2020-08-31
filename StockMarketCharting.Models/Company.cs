@@ -24,7 +24,7 @@ namespace StockMarketCharting.Models
         //np
             public virtual Sector Sector { get; set; }
             public virtual IPODetail IPODetail { get; set; }
-            public virtual ICollection<StockExchangeCompanies> StockExchangeCompanies { get; set; }
+            public virtual ICollection<StockExchangeCompany> StockExchangeCompanies { get; set; }
             public virtual ICollection<StockPrice> StockPrices { get; set; }
 
     }
