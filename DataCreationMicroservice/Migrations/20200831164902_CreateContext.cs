@@ -24,8 +24,7 @@ namespace DataCreationMicroservice.Migrations
                 name: "StockExchanges",
                 columns: table => new
                 {
-                    StockExchangeID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StockExchangeID = table.Column<string>(nullable: false),
                     StockExchangeName = table.Column<string>(nullable: false),
                     Brief = table.Column<string>(nullable: true),
                     ContactAddress = table.Column<string>(nullable: true),
@@ -72,7 +71,7 @@ namespace DataCreationMicroservice.Migrations
                     OpenTime = table.Column<string>(nullable: false),
                     Remarks = table.Column<string>(nullable: true),
                     CompanyId = table.Column<int>(nullable: false),
-                    StockExchangeId = table.Column<int>(nullable: false)
+                    StockExchangeId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -88,14 +87,14 @@ namespace DataCreationMicroservice.Migrations
                         column: x => x.StockExchangeId,
                         principalTable: "StockExchanges",
                         principalColumn: "StockExchangeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "StockExchangeCompanies",
                 columns: table => new
                 {
-                    StockExchangeId = table.Column<int>(nullable: false),
+                    StockExchangeId = table.Column<string>(nullable: false),
                     CompanyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -125,7 +124,7 @@ namespace DataCreationMicroservice.Migrations
                     Date = table.Column<string>(nullable: false),
                     Time = table.Column<string>(nullable: false),
                     CompanyId = table.Column<int>(nullable: false),
-                    StockExchangeId = table.Column<int>(nullable: false)
+                    StockExchangeId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -141,7 +140,7 @@ namespace DataCreationMicroservice.Migrations
                         column: x => x.StockExchangeId,
                         principalTable: "StockExchanges",
                         principalColumn: "StockExchangeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

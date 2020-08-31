@@ -85,8 +85,9 @@ namespace UploadMicroservice.Controllers
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
-                        repository.UploadExcel(fullPath);
+                        
                     }
+                    repository.UploadExcel(fullPath);
                     return Ok("Upload successful");
                 }
                 else

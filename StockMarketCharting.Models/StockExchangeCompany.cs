@@ -6,7 +6,7 @@ namespace StockMarketCharting.Models
 {
    public class StockExchangeCompany
     {
-        public int StockExchangeId { get; set; }
+        public string StockExchangeId { get; set; }
         public StockExchange StockExchange { get; set; }
 
         public int CompanyId { get; set; }

@@ -8,7 +8,7 @@ namespace StockMarketCharting.Models
     public class StockExchange
     {
         [Key]
-        public int StockExchangeID { get; set; }
+        public string StockExchangeID { get; set; } //takes NSE and BSE etc
         [Required]
         public string StockExchangeName { get; set; }
         public string Brief { get; set; }

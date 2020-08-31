@@ -20,7 +20,7 @@ namespace StockMarketCharting.Models
 
         //Navigation Property
         public int CompanyId { get; set; }
-        public int StockExchangeId { get; set; }
+        public string StockExchangeId { get; set; }
         public virtual Company Company { get; set; }
         public virtual StockExchange StockExchange { get; set; }
     }

@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="3.1.7" />
@@ -13,6 +17,10 @@
   <ItemGroup>
     <ProjectReference Include="..\StockExchangeMicroservice\StockExchangeMicroservice.csproj" />
     <ProjectReference Include="..\StockMarketCharting.Models\StockMarketCharting.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UploadFiles\" />
   </ItemGroup>
 
 
