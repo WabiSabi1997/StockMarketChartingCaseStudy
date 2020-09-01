@@ -18,7 +18,7 @@ namespace StockMarketCharting.Models
         [Required]
         public string StockExchangeName { get; set; }
         public string Brief { get; set; }                       
-
+        [Required]
         public string ContactAddress { get; set; }
         public string Remarks { get; set; }
 

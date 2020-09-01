@@ -11,6 +11,10 @@ namespace StockMarketCharting.Models
         public class Company
         {
 
+        public Company()
+        {
+            StockExchangeCompanies = new HashSet<StockExchangeCompany>();
+        }
             [Key]
             public int CompanyId { get; set; }
             public string CompanyName { get; set; }

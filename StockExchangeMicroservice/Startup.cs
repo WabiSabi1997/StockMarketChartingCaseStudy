@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using StockExchangeMicroservice.Repositories;
 using StockMarketCharting.Models;
 using DataCreationMicroservice.Context;
+using DataCreationMicroservice.StockMarket.DTOs;
 
 namespace StockExchangeMicroservice
 {
@@ -33,7 +34,7 @@ namespace StockExchangeMicroservice
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
 
             services.AddControllers();
-            services.AddScoped<IRepository<StockExchange>, StockExchangeRepository>();
+            services.AddScoped<IRepository<StockExchangeDto>, StockExchangeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
