@@ -42,7 +42,7 @@ namespace StockExchangeMicroservice.Repositories
             var se = context.StockExchanges.Find(id);
             //Check if the company exists or not too. Assuming that it does, the code shall be as follows
             var entity = context.Companies.Find(id2);
-            var ipo = context.IPODetails.Single(s => s.StockExchangeId == id && s.CompanyId == id2);
+            var ipo = context.IPODetails.Single(s => s.StockExchangeCompany.StockExchangeId == id && s.StockExchangeCompany.CompanyId == id2);
 
             var sec = new StockExchangeCompany
             {

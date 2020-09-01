@@ -1,5 +1,6 @@
 ﻿using CompanyMicroservice.Controllers;
 using DataCreationMicroservice.Context;
+using DataCreationMicroservice.StockMarket.DTOs;
 using Microsoft.EntityFrameworkCore;
 using StockMarketCharting.Models;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CompanyMicroservice.Repositories
 {
-    public class IPORepository : IRepository<IPODetail>
+    public class IPORepository : IRepository<IPODetailsDto>
 
     {
         private StockMarketContext context;
@@ -18,34 +19,53 @@ namespace CompanyMicroservice.Repositories
         {
             this.context = context;
         }
-        public bool Add(IPODetail entity) //adding an IPO
+        public bool Add(IPODetailsDto entity) //adding an IPO
         {
-            context.IPODetails.Add(entity);
-            var x = context.SaveChanges();
-            if (x > 0)
+            try
             {
+                var IPODetail = new IPODetail
+                {
+                    PricePerShare = entity.PricePerShare,
+                    TotalNumOfShares = entity.TotalNumOfShares,
+                    OpenDate = entity.OpenDate,
+                    OpenTime = entity.OpenTime,
+                    Remarks = entity.Remarks,
+                    StockExchangeCompany = context.StockExchangeCompanies.Find(entity.CompanyId, entity.StockExchangeId)
+
+                };
+                context.IPODetails.Add(IPODetail);
+                context.SaveChanges();
                 return true;
             }
-            return false;
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+         
+
+          
         }
+
+     
 
         public bool Delete(object entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<IPODetail> Get()
+        public IEnumerable<IPODetailsDto> Get()
         {
             throw new NotImplementedException();
         }
 
         public Object Get(object key) //to get IPO based on company ID
         {
-            var res = context.IPODetails.Where(s => s.CompanyId ==(int) key).ToList();
+            var res = context.IPODetails.Where(s => s.StockExchangeCompany.CompanyId ==(int) key).ToList();
             return res;
         }
 
-        public bool Update(IPODetail entity)
+        public bool Update(IPODetailsDto entity)
         {
             context.Entry(entity).State = EntityState.Modified;
             var x = context.SaveChanges();

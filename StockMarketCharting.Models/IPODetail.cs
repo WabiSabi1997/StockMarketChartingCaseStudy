@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -19,12 +20,16 @@ namespace StockMarketCharting.Models
         public string Remarks { get; set; }
 
         //Navigation Property
+        [Required]
+        public StockExchangeCompany StockExchangeCompany { get; set; }
 
- 
-        public int CompanyId { get; set; }
-        public int StockExchangeId { get; set; }
-        public virtual Company Company { get; set; }
-        public virtual StockExchange StockExchange { get; set; }
+       // public int CompanyId { get; set; }
+       // public int StockExchangeId { get; set; }
+
+
+        // public virtual Company Company { get; set; }
+        //public virtual StockExchange StockExchange { get; set; }
         
+
     }
 }
