@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace DataCreationMicroservice.StockMarket.DTOs
@@ -17,8 +18,9 @@ namespace DataCreationMicroservice.StockMarket.DTOs
         public string Brief { get; set; }
         [Required]
         public int SectorId { get; set; }
+       
         [Required]
-        public int StockExchangeId { get; set; }
+        public List<int> StockExchangeIds { get; set; } // because a company can be in 1 or more SE
 
     }
 }

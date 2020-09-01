@@ -31,14 +31,17 @@ namespace CompanyMicroservice.Repositories
                     CEO = entity.CEO,
                     BoardOfDirectors = entity.BoardOfDirectors,
                     Brief = entity.Brief,
-
                     Sector = context.Sectors.Find(entity.SectorId),
-                   
+                   //we are also getting stock exchange ID here
                 };
                 context.Companies.Add(company);
+
                 //company.CompanyId get this
                 // do the below via adding object of StockExchangeCompanies
                 // StockExchangeCompanies = context.StockExchangeCompanies.Add(company.CompanyId, company.StockExchangeId)
+               
+                //for (int i = 0; i < entity.StockExchangeIds.Count(); i++)
+                //{ context.StockExchangeCompanies.Add(company.CompanyId, entity.StockExchangeIds[i]); }
 
 
 
