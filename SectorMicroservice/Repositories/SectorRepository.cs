@@ -45,8 +45,6 @@ namespace SectorMicroservice.Repositories
         public IEnumerable<Sector> Get()
         {
             var sectors = context.Sectors;
-
-            
             return sectors;
         }
 
