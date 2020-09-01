@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CompanyMicroservice.Repositories;
+using DataCreationMicroservice.StockMarket.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using StockMarketCharting.Models;
 
@@ -24,7 +25,7 @@ namespace CompanyMicroservice.Controllers
         }
         // GET: api/<CompanyController>
         [HttpGet]
-        public IEnumerable<Company> Get()
+        public IEnumerable<CompanyDto> Get()
         {
             var res = repository.Get();
             return res;
@@ -51,14 +52,7 @@ namespace CompanyMicroservice.Controllers
             return res;
         }
 
-        [HttpGet("{id}/ipodetails")]
-       /*
-        public Object GetIPO(int id)
-        {
-            var res = repository.GetIPO(id); //have to change this to fetch via IPO Controller
-            return res;
-        }
-       */
+        
 
         [HttpGet("getprice/{id}/{from}/{to}")]
         public Object GetStockPrice(int id, DateTime from, DateTime to)
@@ -69,21 +63,21 @@ namespace CompanyMicroservice.Controllers
         
         // POST api/<CompanyController>
         [HttpPost]
-        public void Post([FromForm] Company company)
+        public void Post([FromForm] CompanyDto companyDto)
         {
             //company.Sector.SectorID = id;
-            var x = repository.Add(company);
+            var x = repository.Add(companyDto);
         }
 
         // PUT api/<CompanyController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromForm] Company company)
+        public void Put(int id, [FromForm] CompanyDto companyDto)
         {
             //Find if the company exists in the database
             //var res = repository.Get(id);
             //If the company exists in the database, edit its details.
             //Disconnect the variable res from the context, otherwise clash will occur and can't update the value.
-            repository.Update(company);
+            repository.Update(companyDto);
         }
 
         // DELETE api/<CompanyController>/5

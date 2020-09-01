@@ -25,12 +25,12 @@ namespace SectorMicroservice.Repositories
             Sector sector = entity;
             //sector.Companies = null;
             Company company = (Company)entity.Companies;
-            IPODetail ipo = company.IPODetail;
-            ICollection<StockPrice> stockPrices = company.StockPrices;
+            //IPODetail ipo = company.IPODetail;
+            //ICollection<StockPrice> stockPrices = company.StockPrices;
             ICollection<StockExchangeCompany> sec = company.StockExchangeCompanies;
 
-            context.AddRange(sector, company,ipo,stockPrices,sec);
-            //context.Add(sector);
+           // context.AddRange(sector, company,ipo,stockPrices,sec);
+            context.Add(sector);
             //context.SaveChanges();
             //context.Add(company);
             context.SaveChanges();

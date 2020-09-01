@@ -10,7 +10,7 @@ namespace CompanyMicroservice.Repositories
     {
         bool Add(T entity);
         bool Update(T entity);// { }
-        bool Delete(Object entity);// { }
+        bool Delete(object entity);// { }
         IEnumerable<T> Get();
         Object Get(object key);
        
