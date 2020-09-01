@@ -12,10 +12,8 @@ namespace CompanyMicroservice.Repositories
         bool Update(T entity);// { }
         bool Delete(Object entity);// { }
         IEnumerable<T> Get();
-        T Get(object key);
-        Object GetIPO(int key);
-        object GetStockPrice(int id, DateTime from, DateTime to);
-        object GetbyName(string query);
+        Object Get(object key);
+       
 
         //object GetCompanies(Sector res);
     }

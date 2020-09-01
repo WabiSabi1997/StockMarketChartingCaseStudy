@@ -14,11 +14,13 @@ namespace CompanyMicroservice.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-        private IRepository<Company> repository;
+       
+        private CompanyRepository repository;
 
-        public CompanyController(IRepository<Company> repository)
+        public CompanyController(CompanyRepository repository)
         {
             this.repository = repository;
+            
         }
         // GET: api/<CompanyController>
         [HttpGet]
@@ -42,18 +44,21 @@ namespace CompanyMicroservice.Controllers
         }
 
         [HttpGet("{id}/companydetails")]
-        public Object Get(int id)
+        public Object Get(object id)
         {
-            var res = repository.GetIPO(id);
+
+            var res = repository.Get(id); 
             return res;
         }
 
         [HttpGet("{id}/ipodetails")]
+       /*
         public Object GetIPO(int id)
         {
-            var res = repository.GetIPO(id);
+            var res = repository.GetIPO(id); //have to change this to fetch via IPO Controller
             return res;
         }
+       */
 
         [HttpGet("getprice/{id}/{from}/{to}")]
         public Object GetStockPrice(int id, DateTime from, DateTime to)

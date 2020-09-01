@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CompanyMicroservice.Repositories
 {
-    public class CompanyRepository : IRepository<Company>
+    public class CompanyRepository : ICompanyRepository
     {
         private StockMarketContext context;
 
@@ -18,20 +18,9 @@ namespace CompanyMicroservice.Repositories
         {
             this.context = context;
         }
-        public bool Add(Company entity)
+        public bool Add(Company entity) //adding a company
         {
             context.Companies.Add(entity);
-            var x = context.SaveChanges();
-            if (x > 0)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public bool Delete(Object entity)
-        {
-            context.Remove(entity);
             var x = context.SaveChanges();
             if (x > 0)
             {
@@ -46,10 +35,39 @@ namespace CompanyMicroservice.Repositories
             return companies;
         }
 
-        public Company Get(object id)
+      
+        public bool Delete(Object entity)
         {
-            var res = context.Companies.Find(id);
+            context.Remove(entity);
+            var x = context.SaveChanges();
+            if (x > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public object GetbyName(string query)
+        {
+            var res = context.Companies.Where(c => c.CompanyName.Contains(query)).Select(c => c.CompanyName).ToList();
+            if (res.Count == 0)
+            {
+                return null;
+            }
             return res;
+        }
+
+            public object GetStockPrice(int id, DateTime from, DateTime to)
+        {
+            var res = context.StockPrices.Where(s => s.CompanyId == id);
+            List<Object> res2 = new List<Object>();
+            foreach (var res1 in res)
+            {
+                DateTime res1Date = Convert.ToDateTime(string.Concat(res1.Date, " ", res1.Time));
+                if (res1Date >= from && res1Date <= to)
+                    res2.Add(res1.CurrentPrice);
+            }
+            return res2;
         }
 
         public bool Update(Company entity)
@@ -63,33 +81,10 @@ namespace CompanyMicroservice.Repositories
             return false;
         }
 
-        Object IRepository<Company>.GetbyName(string query)
+        public object Get(object key)
         {
-            var res = context.Companies.Where(c => c.CompanyName.Contains(query)).Select(c=>c.CompanyName).ToList();
-            if(res.Count == 0)
-            {
-                return null;
-            }
+            var res = context.Companies.Find(key);
             return res;
-        }
-
-        Object IRepository<Company>.GetIPO(int key)
-        {
-            var res = context.IPODetails.Where(s => s.CompanyId == key).ToList();
-            return res;
-        }
-
-        Object IRepository<Company>.GetStockPrice(int id, DateTime from, DateTime to)
-        {
-            var res = context.StockPrices.Where(s => s.CompanyId == id);
-            List<Object> res2 = new List<Object>();
-            foreach (var res1 in res)
-            {
-                DateTime res1Date = Convert.ToDateTime(string.Concat(res1.Date, " ", res1.Time));
-                if(res1Date >= from && res1Date <= to)
-            res2.Add(res1.CurrentPrice);
-            }
-            return res2;
         }
     }
 }
