@@ -14,5 +14,7 @@ namespace StockExchangeMicroservice.Repositories
         IEnumerable<T> Get();
         T Get(object key);
         Object GetCompanies(StockExchange res);
+        bool Add(int id, int id2);
+        object GetExchange(int id);
     }
 }

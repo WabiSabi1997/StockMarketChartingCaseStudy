@@ -23,7 +23,7 @@ namespace StockMarketCharting.Models
         public virtual Company Company { get; set; }
 
         [ForeignKey("StockExchange")]
-        public string StockExchangeId { get; set; }
+        public int StockExchangeId { get; set; }
         public virtual StockExchange StockExchange { get; set; } // one particular stock price on one particular stock exchange
 
     }

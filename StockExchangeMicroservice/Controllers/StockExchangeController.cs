@@ -36,9 +36,19 @@ namespace StockExchangeMicroservice.Controllers
             return complist;
         }
 
+        //[HttpGet("getexchange/{id}")]
+        //public Object Get1(int id)
+        //{
+        //    var res = repository.Get(id);
+        //    var list = repository.GetExchange(id);
+        //    //res.StockExchangeCompanies = (ICollection<StockExchangeCompany>)list;
+        //    //var complist = repository.GetCompanies(res);
+        //    return list;
+        //}
+
         // POST api/<StockExchangeController>
         [HttpPost]
-        public IActionResult Post([FromBody] StockExchange se)
+        public IActionResult Post([FromForm] StockExchange se)
         {
             if (ModelState.IsValid)
             {
@@ -49,6 +59,21 @@ namespace StockExchangeMicroservice.Controllers
                 }
             }
             return BadRequest(ModelState);
+        }
+
+        [HttpPost("AddComp")]
+        public IActionResult Post([FromQuery] int id, int id2)
+        {
+            //int id = i[0];
+            //int id2 = i[1];
+            //int id2 = 3;
+            var isAdded = repository.Add(id, id2);
+            if (isAdded)
+            {
+                return Created("Company Added to Stock Exchange with Id", id2);
+            }
+            else return StatusCode(500, "Internal Server Error");
+
         }
 
         // PUT api/<StockExchangeController>/5
