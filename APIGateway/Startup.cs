@@ -45,12 +45,12 @@ namespace APIGateway
 
             app.UseAuthorization();
 
-            app.UseOcelot().Wait();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            app.UseOcelot().Wait();
         }
     }
 }

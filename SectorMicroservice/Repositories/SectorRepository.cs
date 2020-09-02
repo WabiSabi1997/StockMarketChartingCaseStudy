@@ -21,20 +21,22 @@ namespace SectorMicroservice.Repositories
         }
         public bool Add(Sector entity)
         {
-            //throw new NotImplementedException();
-            Sector sector = entity;
             //sector.Companies = null;
-            Company company = (Company)entity.Companies;
-            IPODetail ipo = company.IPODetail;
-            ICollection<StockPrice> stockPrices = company.StockPrices;
-            ICollection<StockExchangeCompany> sec = company.StockExchangeCompanies;
+            //Company company = (Company)entity.Companies;
+            //IPODetail ipo = company.IPODetail;
+            //ICollection<StockPrice> stockPrices = company.StockPrices;
+            //ICollection<StockExchangeCompany> sec = company.StockExchangeCompanies;
 
-            context.AddRange(sector, company,ipo,stockPrices,sec);
-            //context.Add(sector);
+            //context.AddRange(sector, company,ipo,stockPrices,sec);
+            context.Sectors.Add(entity);
             //context.SaveChanges();
             //context.Add(company);
-            context.SaveChanges();
-            return true;
+            var isChanged = context.SaveChanges();
+            if (isChanged > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool Delete(Sector entity)
@@ -62,8 +64,8 @@ namespace SectorMicroservice.Repositories
         Object IRepository<Sector>.GetCompanies(Sector res)
         {
            // var temp = context.StockExchangeCompanies.Where(s => s.StockExchangeId == res.StockExchangeID).Select(s => s.CompanyId).ToList();
-            var temp2 = context.Companies.Where(s => s.Sector.SectorID == res.SectorID).Select(s => s.CompanyName).ToList();
-            return temp2;
+            var CompanyList = context.Companies.Where(s => s.Sector.SectorID == res.SectorID).Select(s => s.CompanyName).ToList();
+            return CompanyList;
         }
 
         Object IRepository<Sector>.GetSectorPrice(int id, DateTime from, DateTime to)
