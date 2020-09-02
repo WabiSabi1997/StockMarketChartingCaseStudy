@@ -39,16 +39,21 @@ namespace CompanyMicroservice.Repositories
                 //company.CompanyId get this
                 // do the below via adding object of StockExchangeCompanies
                 // StockExchangeCompanies = context.StockExchangeCompanies.Add(company.CompanyId, company.StockExchangeId)
-               
-                //for (int i = 0; i < entity.StockExchangeIds.Count(); i++)
-                //{ context.StockExchangeCompanies.Add(company.CompanyId, entity.StockExchangeIds[i]); }
 
+                for (int i = 0; i < entity.StockExchangeIds.Count(); i++)
+                {
+                    var sid = entity.StockExchangeIds[i];
+                    var sec = new StockExchangeCompany
+                    {
+                        Company = company,
+                        StockExchange = context.StockExchanges.Find(sid)
+                    };
 
-
+                    context.StockExchangeCompanies.Add(sec); 
+                }
 
                 context.SaveChanges();
                 return true;
-
 
             }
             catch (Exception ex)
