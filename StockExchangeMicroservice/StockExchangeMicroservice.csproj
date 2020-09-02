@@ -15,6 +15,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Ocelot" Version="16.0.1" />
     <PackageReference Include="System.Collections" Version="4.3.0" />
     <PackageReference Include="System.Data.OleDb" Version="4.7.1" />
   </ItemGroup>

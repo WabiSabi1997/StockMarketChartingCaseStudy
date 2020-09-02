@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="3.1.7" />
+    <PackageReference Include="Ocelot" Version="16.0.1" />
     <PackageReference Include="System.Data.OleDb" Version="4.7.1" />
   </ItemGroup>
 

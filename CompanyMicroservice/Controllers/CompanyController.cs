@@ -15,13 +15,11 @@ namespace CompanyMicroservice.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-       
         private ICompanyRepository repository;
 
         public CompanyController(ICompanyRepository repository)
         {
-            this.repository = repository;
-            
+            this.repository = repository;       
         }
         // GET: api/<CompanyController>
         [HttpGet]
@@ -33,7 +31,6 @@ namespace CompanyMicroservice.Controllers
 
         // GET api/<CompanyController>/5
         [HttpGet("getbyname")]
-        
         public IActionResult Get(string query)
         {
             var res = repository.GetbyName(query);
@@ -44,15 +41,16 @@ namespace CompanyMicroservice.Controllers
             return Ok(res);
         }
 
-        [HttpGet("{id}/companydetails")]
-        public Object Get(object id)
+        [HttpGet("companydetails/{id}")]
+        public IActionResult Get(object id)
         {
-
-            var res = repository.Get(id); 
-            return res;
+            var res = repository.Get(id);
+            if(res == null)
+            {
+                return NotFound("No company found with a name matching this query");
+            }
+            return Ok(res);
         }
-
-        
 
         [HttpGet("getprice/{id}/{from}/{to}")]
         public Object GetStockPrice(int id, DateTime from, DateTime to)
@@ -65,7 +63,6 @@ namespace CompanyMicroservice.Controllers
         [HttpPost]
         public void Post([FromForm] CompanyDto companyDto)
         {
-            //company.Sector.SectorID = id;
             var x = repository.Add(companyDto);
         }
 

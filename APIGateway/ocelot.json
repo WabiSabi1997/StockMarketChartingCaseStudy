@@ -9,8 +9,7 @@
                     "Port": 44337
                 }
             ],
-            "UpstreamPathTemplate": "/authservice",
-            "UpstreamHttpMethod": [ "Get", "Put" ]
+            "UpstreamPathTemplate": "/authservice"
         },
         {
             "DownstreamPathTemplate": "/api/auth/{url}",
@@ -18,15 +17,35 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44337
+                    "Port": 44319
                 }
             ],
             "UpstreamPathTemplate": "/authservice/{url}"
         },
         {
-            "GlobalConfiguration": {
-                "BaseUrl": "https://localhost:44326"
-            }
+            "DownstreamPathTemplate": "/api/test/{url}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44361
+                }
+            ],
+            "UpstreamPathTemplate": "/adminservice/{url}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/sector",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44382
+                }
+            ],
+            "UpstreamPathTemplate": "/sectorservice"
         }
-    ]
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "https://localhost:44326"
+    }
 }

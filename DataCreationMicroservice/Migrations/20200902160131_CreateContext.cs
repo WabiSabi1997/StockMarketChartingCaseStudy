@@ -2,7 +2,7 @@
 
 namespace DataCreationMicroservice.Migrations
 {
-    public partial class WithChangedDTOS : Migration
+    public partial class CreateContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

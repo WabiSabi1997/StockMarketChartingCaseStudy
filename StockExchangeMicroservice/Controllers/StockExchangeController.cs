@@ -21,31 +21,26 @@ namespace StockExchangeMicroservice.Controllers
         {
             this.repository = repository;
         }
+
         // GET: api/<StockExchangeController>
         [HttpGet]
-        public IEnumerable<StockExchangeDto> Get() //to get a list of stockexchanges
+        public IEnumerable<StockExchangeDto> Get() // to get a list of StockExchanges
         {
             return repository.Get();
         }
 
         // GET api/<StockExchangeController>/5
-        [HttpGet("{id}")]
-        public Object Get(int id) // get companies list
+        [HttpGet("getcompanies/{id}")]
+        public IActionResult Get(int id) // get companies list, given a StockExchange ID.
         {
             var res = repository.Get(id);
-            var complist = repository.GetCompanies(res);
-            return complist;
+            if (res != null)
+            {
+                var complist = repository.GetCompanies(res);
+                return Ok(complist);
+            }
+            return NotFound($"No Stock Exchange found with ID:{id}");
         }
-
-        //[HttpGet("getexchange/{id}")]
-        //public Object Get1(int id)
-        //{
-        //    var res = repository.Get(id);
-        //    var list = repository.GetExchange(id);
-        //    //res.StockExchangeCompanies = (ICollection<StockExchangeCompany>)list;
-        //    //var complist = repository.GetCompanies(res);
-        //    return list;
-        //}
 
         // POST api/<StockExchangeController>
         [HttpPost]
@@ -56,37 +51,24 @@ namespace StockExchangeMicroservice.Controllers
                 var isAdded = repository.Add(se);
                 if (isAdded)
                 {
-                    return Created("student", se);
+                    return Created("Following Stock Exchange was added",se);
                 }
+                return StatusCode(500,"Internal Server Error, Stock Exchange couldn't be added");
             }
             return BadRequest(ModelState);
         }
 
+        //Additional method to list companies to stock exchange.
         [HttpPost("AddComp")]
         public IActionResult Post([FromQuery] int id, int id2)
         {
-            //int id = i[0];
-            //int id2 = i[1];
-            //int id2 = 3;
             var isAdded = repository.Add(id, id2);
             if (isAdded)
             {
                 return Created("Company Added to Stock Exchange with Id", id2);
             }
             else return StatusCode(500, "Internal Server Error");
-
         }
 
-        // PUT api/<StockExchangeController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<StockExchangeController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

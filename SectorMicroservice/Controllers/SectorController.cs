@@ -21,22 +21,26 @@ namespace SectorMicroservice.Controllers
         {
             this.repository = repository;
         }
-        // GET: api/<SectorController>
+
         [HttpGet]
-        public IEnumerable<Sector> Get()
+        public IEnumerable<Sector> Get() // Get all the sectors, just an accesory function. 
         {
             return repository.Get();
         }
 
-        // GET api/<SectorController>/5
-        [HttpGet("{id}")]
-        public Object Get(long id)
+        [HttpGet("getcompanies/{id}")] 
+        public IActionResult Get(int id) // Get all the companies in a particular Sector
         {
             var res = repository.Get(id);
-            var complist = repository.GetCompanies(res);
-            return complist;
+            if (res != null)
+            {
+                var complist = repository.GetCompanies(res);
+                return Ok(complist);
+            }
+            return NotFound("No sector exists with this id");
         }
 
+        //Get price list for a particular sector for a date-range
         [HttpGet("getprice/{id}/{from}/{to}")]
         public Object GetSectorPrice(int id, DateTime from, DateTime to)
         {
@@ -44,23 +48,16 @@ namespace SectorMicroservice.Controllers
             return res;
         }
 
-        // POST api/<SectorController>
+        // Adding Sectors
         [HttpPost]
-        public void Post([FromBody] Sector sector)
+        public IActionResult Post([FromForm] Sector sector)
         {
-            repository.Add(sector);
-        }
-
-        // PUT api/<SectorController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<SectorController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var x = repository.Add(sector);
+            if (x)
+            {
+                return Created("Sector added to database",sector);
+            }
+            return StatusCode(500, "Internal Server Error, Sector couldn't be added");
         }
     }
 }

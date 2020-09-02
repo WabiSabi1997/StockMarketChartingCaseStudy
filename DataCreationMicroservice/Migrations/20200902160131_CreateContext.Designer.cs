@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataCreationMicroservice.Migrations
 {
     [DbContext(typeof(StockMarketContext))]
-    [Migration("20200902125241_WithChangedDTOS")]
-    partial class WithChangedDTOS
+    [Migration("20200902160131_CreateContext")]
+    partial class CreateContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
