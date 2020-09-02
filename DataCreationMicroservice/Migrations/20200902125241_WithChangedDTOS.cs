@@ -2,7 +2,7 @@
 
 namespace DataCreationMicroservice.Migrations
 {
-    public partial class CreateContext : Migration
+    public partial class WithChangedDTOS : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,10 +24,11 @@ namespace DataCreationMicroservice.Migrations
                 name: "StockExchanges",
                 columns: table => new
                 {
-                    StockExchangeID = table.Column<string>(nullable: false),
+                    StockExchangeID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StockExchangeName = table.Column<string>(nullable: false),
                     Brief = table.Column<string>(nullable: true),
-                    ContactAddress = table.Column<string>(nullable: true),
+                    ContactAddress = table.Column<string>(nullable: false),
                     Remarks = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -60,41 +61,10 @@ namespace DataCreationMicroservice.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "IPODetails",
-                columns: table => new
-                {
-                    IPODetailID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PricePerShare = table.Column<double>(nullable: false),
-                    TotalNumOfShares = table.Column<int>(nullable: false),
-                    OpenDate = table.Column<string>(nullable: false),
-                    OpenTime = table.Column<string>(nullable: false),
-                    Remarks = table.Column<string>(nullable: true),
-                    CompanyId = table.Column<int>(nullable: false),
-                    StockExchangeId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IPODetails", x => x.IPODetailID);
-                    table.ForeignKey(
-                        name: "FK_IPODetails_Companies_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "Companies",
-                        principalColumn: "CompanyId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_IPODetails_StockExchanges_StockExchangeId",
-                        column: x => x.StockExchangeId,
-                        principalTable: "StockExchanges",
-                        principalColumn: "StockExchangeID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "StockExchangeCompanies",
                 columns: table => new
                 {
-                    StockExchangeId = table.Column<string>(nullable: false),
+                    StockExchangeId = table.Column<int>(nullable: false),
                     CompanyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -124,7 +94,7 @@ namespace DataCreationMicroservice.Migrations
                     Date = table.Column<string>(nullable: false),
                     Time = table.Column<string>(nullable: false),
                     CompanyId = table.Column<int>(nullable: false),
-                    StockExchangeId = table.Column<string>(nullable: true)
+                    StockExchangeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -140,7 +110,32 @@ namespace DataCreationMicroservice.Migrations
                         column: x => x.StockExchangeId,
                         principalTable: "StockExchanges",
                         principalColumn: "StockExchangeID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IPODetails",
+                columns: table => new
+                {
+                    IPODetailID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PricePerShare = table.Column<double>(nullable: false),
+                    TotalNumOfShares = table.Column<int>(nullable: false),
+                    OpenDate = table.Column<string>(nullable: false),
+                    OpenTime = table.Column<string>(nullable: false),
+                    Remarks = table.Column<string>(nullable: true),
+                    StockExchangeCompanyStockExchangeId = table.Column<int>(nullable: false),
+                    StockExchangeCompanyCompanyId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IPODetails", x => x.IPODetailID);
+                    table.ForeignKey(
+                        name: "FK_IPODetails_StockExchangeCompanies_StockExchangeCompanyStockExchangeId_StockExchangeCompanyCompanyId",
+                        columns: x => new { x.StockExchangeCompanyStockExchangeId, x.StockExchangeCompanyCompanyId },
+                        principalTable: "StockExchangeCompanies",
+                        principalColumns: new[] { "StockExchangeId", "CompanyId" },
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -149,15 +144,9 @@ namespace DataCreationMicroservice.Migrations
                 column: "SectorID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IPODetails_CompanyId",
+                name: "IX_IPODetails_StockExchangeCompanyStockExchangeId_StockExchangeCompanyCompanyId",
                 table: "IPODetails",
-                column: "CompanyId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_IPODetails_StockExchangeId",
-                table: "IPODetails",
-                column: "StockExchangeId");
+                columns: new[] { "StockExchangeCompanyStockExchangeId", "StockExchangeCompanyCompanyId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_StockExchangeCompanies_CompanyId",
@@ -181,10 +170,10 @@ namespace DataCreationMicroservice.Migrations
                 name: "IPODetails");
 
             migrationBuilder.DropTable(
-                name: "StockExchangeCompanies");
+                name: "StockPrices");
 
             migrationBuilder.DropTable(
-                name: "StockPrices");
+                name: "StockExchangeCompanies");
 
             migrationBuilder.DropTable(
                 name: "Companies");

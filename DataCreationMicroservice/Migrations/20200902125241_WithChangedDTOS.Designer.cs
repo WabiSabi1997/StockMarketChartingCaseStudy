@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataCreationMicroservice.Migrations
 {
     [DbContext(typeof(StockMarketContext))]
-    [Migration("20200831164902_CreateContext")]
-    partial class CreateContext
+    [Migration("20200902125241_WithChangedDTOS")]
+    partial class WithChangedDTOS
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,9 +60,6 @@ namespace DataCreationMicroservice.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("OpenDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -77,18 +74,18 @@ namespace DataCreationMicroservice.Migrations
                     b.Property<string>("Remarks")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StockExchangeId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("StockExchangeCompanyCompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StockExchangeCompanyStockExchangeId")
+                        .HasColumnType("int");
 
                     b.Property<int>("TotalNumOfShares")
                         .HasColumnType("int");
 
                     b.HasKey("IPODetailID");
 
-                    b.HasIndex("CompanyId")
-                        .IsUnique();
-
-                    b.HasIndex("StockExchangeId");
+                    b.HasIndex("StockExchangeCompanyStockExchangeId", "StockExchangeCompanyCompanyId");
 
                     b.ToTable("IPODetails");
                 });
@@ -114,13 +111,16 @@ namespace DataCreationMicroservice.Migrations
 
             modelBuilder.Entity("StockMarketCharting.Models.StockExchange", b =>
                 {
-                    b.Property<string>("StockExchangeID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("StockExchangeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Brief")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ContactAddress")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Remarks")
@@ -137,8 +137,8 @@ namespace DataCreationMicroservice.Migrations
 
             modelBuilder.Entity("StockMarketCharting.Models.StockExchangeCompany", b =>
                 {
-                    b.Property<string>("StockExchangeId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("StockExchangeId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
@@ -167,8 +167,8 @@ namespace DataCreationMicroservice.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StockExchangeId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("StockExchangeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Time")
                         .IsRequired()
@@ -192,15 +192,11 @@ namespace DataCreationMicroservice.Migrations
 
             modelBuilder.Entity("StockMarketCharting.Models.IPODetail", b =>
                 {
-                    b.HasOne("StockMarketCharting.Models.Company", "Company")
-                        .WithOne("IPODetail")
-                        .HasForeignKey("StockMarketCharting.Models.IPODetail", "CompanyId")
+                    b.HasOne("StockMarketCharting.Models.StockExchangeCompany", "StockExchangeCompany")
+                        .WithMany()
+                        .HasForeignKey("StockExchangeCompanyStockExchangeId", "StockExchangeCompanyCompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("StockMarketCharting.Models.StockExchange", "StockExchange")
-                        .WithMany("IPODetails")
-                        .HasForeignKey("StockExchangeId");
                 });
 
             modelBuilder.Entity("StockMarketCharting.Models.StockExchangeCompany", b =>
@@ -221,14 +217,16 @@ namespace DataCreationMicroservice.Migrations
             modelBuilder.Entity("StockMarketCharting.Models.StockPrice", b =>
                 {
                     b.HasOne("StockMarketCharting.Models.Company", "Company")
-                        .WithMany("StockPrices")
+                        .WithMany()
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("StockMarketCharting.Models.StockExchange", "StockExchange")
-                        .WithMany("StockPrices")
-                        .HasForeignKey("StockExchangeId");
+                        .WithMany()
+                        .HasForeignKey("StockExchangeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
