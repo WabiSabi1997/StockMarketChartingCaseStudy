@@ -10,16 +10,16 @@ namespace DataCreationMicroservice.StockMarket.DTOs
     public class CompanyDto
     {
         public int CompanyId { get; set; } //not a required field, will only need when editing
-        [Required]
+       // [Required]
         public string CompanyName { get; set; }
         public double Turnover { get; set; }
         public string CEO { get; set; }
         public virtual string BoardOfDirectors { get; set; }
         public string Brief { get; set; }
-        [Required]
+        //[Required]
         public int SectorId { get; set; }
        
-        [Required]
+       // [Required]
         public List<int> StockExchangeIds { get; set; } // because a company can be in 1 or more SE
 
     }

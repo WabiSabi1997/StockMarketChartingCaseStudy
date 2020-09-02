@@ -16,9 +16,9 @@ namespace CompanyMicroservice.Controllers
     public class CompanyController : ControllerBase
     {
        
-        private CompanyRepository repository;
+        private ICompanyRepository repository;
 
-        public CompanyController(CompanyRepository repository)
+        public CompanyController(ICompanyRepository repository)
         {
             this.repository = repository;
             
