@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AuthMicroservice.Contexts;
+
 using AuthMicroservice.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using DataCreationMicroservice.Context;
 
 namespace AdminMicroservice
 {
@@ -33,11 +34,11 @@ namespace AdminMicroservice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AuthContext>(options =>
+            services.AddDbContext<StockMarketContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
 
             services.AddControllers();
-            services.AddScoped<IRepository<UserEntity>, UserRepository>();
+            services.AddScoped<IRepository<User>, UserRepository>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

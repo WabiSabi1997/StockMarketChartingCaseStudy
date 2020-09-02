@@ -5,7 +5,7 @@ using System.Text;
 
 namespace StockMarketCharting.Models
 {
-    public class UserEntity
+    public class User
     {
         public int Id { get; set; }
         [Required]

@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
-namespace APIGateway
+namespace StockMarket.ApiGateway
 {
     public class Startup
     {
@@ -49,7 +49,6 @@ namespace APIGateway
             {
                 endpoints.MapControllers();
             });
-
             app.UseOcelot().Wait();
         }
     }

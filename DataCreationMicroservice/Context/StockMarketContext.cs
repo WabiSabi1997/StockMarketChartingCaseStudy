@@ -25,6 +25,8 @@ namespace DataCreationMicroservice.Context
         public virtual DbSet<IPODetail> IPODetails { get; set; }
         public virtual DbSet<StockPrice> StockPrices { get; set; }
 
+        public virtual DbSet<User> Users { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

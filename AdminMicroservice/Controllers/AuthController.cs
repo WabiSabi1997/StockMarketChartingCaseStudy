@@ -14,9 +14,9 @@ namespace AuthMicroservice.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private IRepository<UserEntity> repository;
+        private IRepository<User> repository;
 
-        public AuthController(IRepository<UserEntity> repository)
+        public AuthController(IRepository<User> repository)
         {
             this.repository = repository;
         }
@@ -56,16 +56,16 @@ namespace AuthMicroservice.Controllers
         }
 
         // GET api/<AuthController>/5
-        [HttpGet("{id}")]
+       /* [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
-        }
+        } */
 
         // POST api/<AuthController>
         //register new user/signup
         [HttpPost]
-        public IActionResult Post([FromForm] UserEntity user)
+        public IActionResult Post([FromForm] User user)
         {
             if (ModelState.IsValid)
             {

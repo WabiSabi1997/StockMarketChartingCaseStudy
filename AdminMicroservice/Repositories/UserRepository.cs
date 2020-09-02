@@ -1,4 +1,5 @@
-﻿using AuthMicroservice.Contexts;
+﻿//using AuthMicroservice.Contexts;
+using DataCreationMicroservice.Context;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using StockMarketCharting.Models;
@@ -13,12 +14,12 @@ using System.Threading.Tasks;
 
 namespace AuthMicroservice.Repositories
 {
-    public class UserRepository : IRepository<UserEntity>
+    public class UserRepository : IRepository<User>
     {
-        private AuthContext context;
+        private StockMarketContext context;
         private IConfiguration configuration;
 
-        public UserRepository(AuthContext context, IConfiguration configuration)
+        public UserRepository(StockMarketContext context, IConfiguration configuration)
         {
             this.context = context;
             this.configuration = configuration;
@@ -47,7 +48,7 @@ namespace AuthMicroservice.Repositories
             }
         }
 
-        private string GenerateJwtToken(UserEntity user)
+        private string GenerateJwtToken(User user)
         {
             var claims = new List<Claim>
             {
@@ -81,7 +82,7 @@ namespace AuthMicroservice.Repositories
             throw new NotImplementedException();
         }
 
-        public bool Signup(UserEntity entity)
+        public bool Signup(User entity)
         {
             try
             {
