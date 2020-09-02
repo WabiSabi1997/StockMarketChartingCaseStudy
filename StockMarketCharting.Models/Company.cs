@@ -10,22 +10,26 @@ namespace StockMarketCharting.Models
 
         public class Company
         {
+
+        public Company()
+        {
+            StockExchangeCompanies = new HashSet<StockExchangeCompany>();
+        }
             [Key]
             public int CompanyId { get; set; }
             public string CompanyName { get; set; }
             public double Turnover { get; set; }
             public string CEO { get; set; }
-            //To figure out how to use collection of strings using efcore later.
             public virtual string BoardOfDirectors { get; set; }
-
             public string Brief { get; set; }
             //public Dictionary<int, int> CompanyStockCode { get; set; }
 
         //np
             public virtual Sector Sector { get; set; }
-            public virtual IPODetail IPODetail { get; set; }
+           // public virtual IPODetail IPODetail { get; set; } //Company table doesnt have a foreign key to this, should it?
             public virtual ICollection<StockExchangeCompany> StockExchangeCompanies { get; set; }
-            public virtual ICollection<StockPrice> StockPrices { get; set; }
+
+           // public virtual ICollection<StockPrice> StockPrices { get; set; }
 
     }
 }

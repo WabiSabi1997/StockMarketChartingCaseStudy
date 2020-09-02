@@ -17,7 +17,10 @@ namespace StockMarketCharting.Models
         public string Date { get; set; }
         [Required]
         public string Time { get; set; }
-
+        //np
+       // [Required] do we need this?
+       // public virtual StockExchangeCompany StockExchangeCompany{get; set;}
+        
         [ForeignKey("Company")]
         public int CompanyId { get; set; }
         public virtual Company Company { get; set; }
@@ -25,6 +28,6 @@ namespace StockMarketCharting.Models
         [ForeignKey("StockExchange")]
         public int StockExchangeId { get; set; }
         public virtual StockExchange StockExchange { get; set; } // one particular stock price on one particular stock exchange
-
+        
     }
 }

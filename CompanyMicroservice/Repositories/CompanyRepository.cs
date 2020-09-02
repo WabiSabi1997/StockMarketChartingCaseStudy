@@ -1,4 +1,5 @@
 ﻿using DataCreationMicroservice.Context;
+using DataCreationMicroservice.StockMarket.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 using StockMarketCharting.Models;
@@ -18,21 +19,59 @@ namespace CompanyMicroservice.Repositories
         {
             this.context = context;
         }
-        public bool Add(Company entity) //adding a company
+        
+         public bool Add(CompanyDto entity) //adding a company
         {
-            context.Companies.Add(entity);
+            try
+            {
+                var company = new Company
+                {
+                    CompanyName = entity.CompanyName,
+                    Turnover = entity.Turnover,
+                    CEO = entity.CEO,
+                    BoardOfDirectors = entity.BoardOfDirectors,
+                    Brief = entity.Brief,
+                    Sector = context.Sectors.Find(entity.SectorId),
+                   //we are also getting stock exchange ID here
+                };
+                context.Companies.Add(company);
+
+                //company.CompanyId get this
+                // do the below via adding object of StockExchangeCompanies
+                // StockExchangeCompanies = context.StockExchangeCompanies.Add(company.CompanyId, company.StockExchangeId)
+               
+                //for (int i = 0; i < entity.StockExchangeIds.Count(); i++)
+                //{ context.StockExchangeCompanies.Add(company.CompanyId, entity.StockExchangeIds[i]); }
+
+
+
+
+                context.SaveChanges();
+                return true;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        
+
+        /* OLD add company
+         * context.Companies.Add(entity);
             var x = context.SaveChanges();
             if (x > 0)
             {
                 return true;
             }
-            return false;
-        }
+            return false; */
 
-        public IEnumerable<Company> Get()
+        public IEnumerable<CompanyDto> Get()
         {
             var companies = context.Companies;
-            return companies;
+            return (IEnumerable<CompanyDto>)companies;
         }
 
       
@@ -70,7 +109,8 @@ namespace CompanyMicroservice.Repositories
             return res2;
         }
 
-        public bool Update(Company entity)
+        
+        public bool Update(CompanyDto entity)
         {
             context.Entry(entity).State = EntityState.Modified;
             var x = context.SaveChanges();
@@ -80,11 +120,18 @@ namespace CompanyMicroservice.Repositories
             }
             return false;
         }
-
+        
         public object Get(object key)
         {
             var res = context.Companies.Find(key);
             return res;
         }
+
+        public bool Add(object entity)
+        {
+            throw new NotImplementedException();
+        }
+
+      
     }
 }

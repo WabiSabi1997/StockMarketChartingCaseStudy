@@ -13,7 +13,7 @@ namespace StockExchangeMicroservice.Repositories
         bool Delete(T entity);// { }
         IEnumerable<T> Get();
         T Get(object key);
-        Object GetCompanies(StockExchange res);
+        object GetCompanies(T res);
         bool Add(int id, int id2);
         object GetExchange(int id);
     }

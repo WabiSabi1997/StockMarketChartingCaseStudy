@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CompanyMicroservice.Repositories;
+using DataCreationMicroservice.StockMarket.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using StockMarketCharting.Models;
 
@@ -14,15 +15,15 @@ namespace CompanyMicroservice.Controllers
     [ApiController]
     public class IPODetailsController : ControllerBase
     {
-        private IRepository<IPODetail> repository;
+        private IRepository<IPODetailsDto> repository;
 
-        public IPODetailsController(IRepository<IPODetail> repository)
+        public IPODetailsController(IRepository<IPODetailsDto> repository)
         {
             this.repository = repository;
         }
         // GET: api/<IPODetailsController>
         [HttpGet]
-        public IEnumerable<IPODetail> Get() 
+        public IEnumerable<IPODetailsDto> Get() 
         {
             var res = repository.Get();
             return res;
@@ -38,14 +39,14 @@ namespace CompanyMicroservice.Controllers
 
         // POST api/<IPODetailsController>
         [HttpPost]
-        public void Post([FromForm] IPODetail IPODetail) //to add IPO Details of a company
+        public void Post([FromForm] IPODetailsDto IPODetail) //to add IPO Details of a company
         {
             var x = repository.Add(IPODetail);
         }
 
         // PUT api/<IPODetailsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromForm] IPODetail IPODetail) //to update
+        public void Put(int id, [FromForm] IPODetailsDto IPODetail) //to update
         {
            // check if the IPO exists and only then update -> do this via IPORepository
             repository.Update(IPODetail); 

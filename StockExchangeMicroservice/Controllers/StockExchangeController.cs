@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataCreationMicroservice.StockMarket.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using StockExchangeMicroservice.Repositories;
 using StockMarketCharting.Models;
@@ -14,22 +15,22 @@ namespace StockExchangeMicroservice.Controllers
     [ApiController]
     public class StockExchangeController : ControllerBase
     {
-        private IRepository<StockExchange> repository;
+        private IRepository<StockExchangeDto> repository;
 
-        public StockExchangeController(IRepository<StockExchange> repository)
+        public StockExchangeController(IRepository<StockExchangeDto> repository)
         {
             this.repository = repository;
         }
         // GET: api/<StockExchangeController>
         [HttpGet]
-        public IEnumerable<StockExchange> Get()
+        public IEnumerable<StockExchangeDto> Get() //to get a list of stockexchanges
         {
             return repository.Get();
         }
 
         // GET api/<StockExchangeController>/5
         [HttpGet("{id}")]
-        public Object Get(int id)
+        public Object Get(int id) // get companies list
         {
             var res = repository.Get(id);
             var complist = repository.GetCompanies(res);
@@ -48,7 +49,7 @@ namespace StockExchangeMicroservice.Controllers
 
         // POST api/<StockExchangeController>
         [HttpPost]
-        public IActionResult Post([FromForm] StockExchange se)
+        public IActionResult Post([FromForm] StockExchangeDto se)
         {
             if (ModelState.IsValid)
             {

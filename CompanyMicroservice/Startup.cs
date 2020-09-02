@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CompanyMicroservice.Repositories;
 using DataCreationMicroservice.Context;
+using DataCreationMicroservice.StockMarket.DTOs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,7 +36,8 @@ namespace CompanyMicroservice
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
 
             services.AddControllers();
-            services.AddScoped<IRepository<Company>, CompanyRepository>();
+            services.AddScoped<ICompanyRepository,CompanyRepository>();
+            services.AddScoped<IRepository<IPODetailsDto>,IPORepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -21,14 +21,16 @@ namespace SectorMicroservice.Repositories
         }
         public bool Add(Sector entity)
         {
+            //throw new NotImplementedException();
+            Sector sector = entity;
             //sector.Companies = null;
-            //Company company = (Company)entity.Companies;
+            Company company = (Company)entity.Companies;
             //IPODetail ipo = company.IPODetail;
             //ICollection<StockPrice> stockPrices = company.StockPrices;
-            //ICollection<StockExchangeCompany> sec = company.StockExchangeCompanies;
+            ICollection<StockExchangeCompany> sec = company.StockExchangeCompanies;
 
-            //context.AddRange(sector, company,ipo,stockPrices,sec);
-            context.Sectors.Add(entity);
+           // context.AddRange(sector, company,ipo,stockPrices,sec);
+            context.Add(sector);
             //context.SaveChanges();
             //context.Add(company);
             var isChanged = context.SaveChanges();
