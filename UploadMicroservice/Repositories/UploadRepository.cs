@@ -67,6 +67,9 @@ namespace UploadMicroservice.Repositories
                         excelOledbConnection.Close();
                         foreach (DataRow r in dt.Rows)
                         {
+
+                            //You can try single() method instead of where.
+                            //StockExchangeId = context.StockExchanges.Where(s=> s.StockExchangeName == r[1].ToString().Trim())
                             list.Add(
                                 new StockPrice()
                                 {
