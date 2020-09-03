@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AuthMicroservice.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StockMarketCharting.Models;
 
@@ -22,6 +23,7 @@ namespace AuthMicroservice.Controllers
         }
         // GET: api/<AuthController>
         [HttpGet]
+        [Authorize(Roles = "Admin,User")]
         public IActionResult Get(string username, string password)
         {
 
@@ -65,6 +67,7 @@ namespace AuthMicroservice.Controllers
         // POST api/<AuthController>
         //register new user/signup
         [HttpPost]
+        [Authorize(Roles = "Admin,User")]
         public IActionResult Post([FromForm] User user)
         {
             if (ModelState.IsValid)

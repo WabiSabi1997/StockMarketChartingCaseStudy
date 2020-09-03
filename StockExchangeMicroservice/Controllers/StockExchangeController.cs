@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataCreationMicroservice.StockMarket.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StockExchangeMicroservice.Repositories;
 using StockMarketCharting.Models;
@@ -13,6 +14,7 @@ namespace StockExchangeMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class StockExchangeController : ControllerBase
     {
         private IRepository<StockExchangeDto> repository;

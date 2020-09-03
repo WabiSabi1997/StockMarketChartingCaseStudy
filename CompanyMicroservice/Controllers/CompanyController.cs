@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CompanyMicroservice.Repositories;
 using DataCreationMicroservice.StockMarket.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StockMarketCharting.Models;
 
@@ -13,6 +14,7 @@ namespace CompanyMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class CompanyController : ControllerBase
     {
         private ICompanyRepository repository;
@@ -23,6 +25,7 @@ namespace CompanyMicroservice.Controllers
         }
         // GET: api/<CompanyController>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IEnumerable<CompanyDto> Get()
         {
             var res = repository.Get();
@@ -30,7 +33,8 @@ namespace CompanyMicroservice.Controllers
         }
 
         // GET api/<CompanyController>/5
-        [HttpGet("getbyname")]
+        [HttpGet("getcompaniesbyname")]
+        [Authorize(Roles = "Admin,User")]
         public IActionResult Get(string query)
         {
             var res = repository.GetbyName(query);
@@ -41,7 +45,8 @@ namespace CompanyMicroservice.Controllers
             return Ok(res);
         }
 
-        [HttpGet("companydetails/{id}")]
+        [HttpGet("getcompanydetails/{id}")]
+        [Authorize(Roles = "Admin,User")]
         public IActionResult Get(object id)
         {
             var res = repository.Get(id);
@@ -52,7 +57,8 @@ namespace CompanyMicroservice.Controllers
             return Ok(res);
         }
 
-        [HttpGet("getprice/{id}/{from}/{to}")]
+        [HttpGet("getstockprice/{id}/{from}/{to}")]
+        [Authorize(Roles = "Admin,User")]
         public Object GetStockPrice(int id, DateTime from, DateTime to)
         {
             var res = repository.GetStockPrice(id, from, to);
@@ -61,6 +67,7 @@ namespace CompanyMicroservice.Controllers
         
         // POST api/<CompanyController>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public void Post([FromForm] CompanyDto companyDto)
         {
             var x = repository.Add(companyDto);
@@ -68,6 +75,7 @@ namespace CompanyMicroservice.Controllers
 
         // PUT api/<CompanyController>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public void Put(int id, [FromForm] CompanyDto companyDto)
         {
             //Find if the company exists in the database
@@ -79,6 +87,7 @@ namespace CompanyMicroservice.Controllers
 
         // DELETE api/<CompanyController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public void Delete(int id)
         {
             var res = repository.Get(id);

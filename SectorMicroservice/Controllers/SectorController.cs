@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using SectorMicroservice.Repositories;
@@ -23,12 +24,14 @@ namespace SectorMicroservice.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IEnumerable<Sector> Get() // Get all the sectors, just an accesory function. 
         {
             return repository.Get();
         }
 
-        [HttpGet("getcompanies/{id}")] 
+        [HttpGet("getcompanies/{id}")]
+        [Authorize(Roles = "Admin,User")]
         public IActionResult Get(int id) // Get all the companies in a particular Sector
         {
             var res = repository.Get(id);
@@ -42,6 +45,7 @@ namespace SectorMicroservice.Controllers
 
         //Get price list for a particular sector for a date-range
         [HttpGet("getprice/{id}/{from}/{to}")]
+        [Authorize(Roles = "Admin,User")]
         public Object GetSectorPrice(int id, DateTime from, DateTime to)
         {
             var res = repository.GetSectorPrice(id, from, to);
@@ -50,6 +54,7 @@ namespace SectorMicroservice.Controllers
 
         // Adding Sectors
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult Post([FromForm] Sector sector)
         {
             var x = repository.Add(sector);
