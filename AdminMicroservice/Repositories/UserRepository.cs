@@ -24,20 +24,23 @@ namespace AuthMicroservice.Repositories
             this.context = context;
             this.configuration = configuration;
         }
-        public Tuple<bool,string> Login(string username, string password)
+        public Tuple<bool,int,string> Login(string username, string password)
         {
             try
             {
-                Tuple<bool, string> result;
+                Tuple<bool,int,string> result;
+
                 var user = context.Users.FirstOrDefault(u => u.Username == username && u.Password == password && u.Confirmed);
+                int utype = user.UserType;
                 if (user == null)
                 {
-                    result = new Tuple<bool, string>(false, "");
+                    
+                    result = new Tuple<bool,int,string>(false,utype, "");
                 }
-                else
+               
                 {
                     var token = GenerateJwtToken(user);
-                    result = new Tuple<bool, string>(true, token);
+                    result = new Tuple<bool,int,string>(true,utype, token);
                 }
                 return result;
             }

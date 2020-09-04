@@ -8,7 +8,7 @@ namespace AuthMicroservice.Repositories
    public interface IRepository<T>
     {
         bool Signup(T entity);
-        Tuple<bool,string> Login(string username, string password);
+        Tuple<bool,int,string> Login(string username, string password);
         bool Logout();
     }
 }

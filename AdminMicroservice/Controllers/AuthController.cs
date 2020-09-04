@@ -10,9 +10,15 @@ using StockMarketCharting.Models;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AuthMicroservice.Controllers
-{
+{   
+    public class AuthDetails
+    {
+        public int utype;
+        public string token;
+    }
     [Route("api/[controller]")]
     [ApiController]
+    
     public class AuthController : ControllerBase
     {
         private IRepository<User> repository;
@@ -23,7 +29,7 @@ namespace AuthMicroservice.Controllers
         }
         // GET: api/<AuthController>
         [HttpGet]
-        [Authorize(Roles = "Admin,User")]
+      //  [Authorize(Roles = "Admin,User")]
         public IActionResult Get(string username, string password)
         {
 
@@ -35,7 +41,8 @@ namespace AuthMicroservice.Controllers
                     //success -> token
                     if (result.Item1)
                     {
-                        return Ok(result.Item2);
+                        AuthDetails authdetails = new AuthDetails { utype = result.Item2, token = result.Item3 };
+                        return Ok(authdetails);
                     }
                     else
                     {
@@ -67,19 +74,19 @@ namespace AuthMicroservice.Controllers
         // POST api/<AuthController>
         //register new user/signup
         [HttpPost]
-        [Authorize(Roles = "Admin,User")]
-        public IActionResult Post([FromForm] User user)
+       // [Authorize(Roles = "Admin,User")]
+        public IActionResult Post(User user)
         {
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
+            //{
+            var isSuccess = repository.Signup(user);
+            if (isSuccess)
             {
-                var isSuccess = repository.Signup(user);
-                if (isSuccess)
-                {
-                    return Ok("User registered successfully");
-                }
-                return StatusCode(500, "Internal Server Error");
+                return Ok("User registered successfully");
             }
-            return BadRequest(ModelState);
+            return StatusCode(500, "Internal Server Error");
+            //}
+            //return BadRequest(ModelState);
         }
 
     }

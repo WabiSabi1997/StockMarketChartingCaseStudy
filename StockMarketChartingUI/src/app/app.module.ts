@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +20,12 @@ import { UserLandingPageComponent } from './Components/User/user-landing-page/us
 import { CompareCompaniesComponent } from './Components/User/compare-companies/compare-companies.component';
 import { CompareSectorsComponent } from './Components/User/compare-sectors/compare-sectors.component';
 import { DisplayIPOComponent } from './Components/User/display-ipo/display-ipo.component';
-import { AccountLandingPageComponent } from './Components/Account/account-landing-page/account-landing-page.component';
 
+import { AuthInterceptor } from './auth-interceptor';
+import {AuthService} from './Services/auth.service';
+import {SignupService} from './Services/signup.service'
+import { FormsModule} from '@angular/forms';
+import { LogInComponent } from './Components/Account/log-in/log-in.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,13 +42,23 @@ import { AccountLandingPageComponent } from './Components/Account/account-landin
     CompareCompaniesComponent,
     CompareSectorsComponent,
     DisplayIPOComponent,
-    AccountLandingPageComponent
+    LogInComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule 
   ],
-  providers: [],
+  providers: [ SignupService
+   /*  { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+     } */
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
