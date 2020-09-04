@@ -43,7 +43,6 @@ namespace AuthMicroservice.Repositories
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

@@ -1,9 +1,6 @@
-﻿//using SectorMicroservice.Contexts;
-using DataCreationMicroservice.Context;
+﻿using DataCreationMicroservice.Context;
 using Newtonsoft.Json.Linq;
-//using StockExchangeMicroservice.Contexts;
 using StockMarketCharting.Models;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,29 +18,14 @@ namespace SectorMicroservice.Repositories
         }
         public bool Add(Sector entity)
         {
-            //throw new NotImplementedException();
-            Sector sector = entity;
-            //sector.Companies = null;
-            Company company = (Company)entity.Companies;
-            //IPODetail ipo = company.IPODetail;
-            //ICollection<StockPrice> stockPrices = company.StockPrices;
-            ICollection<StockExchangeCompany> sec = company.StockExchangeCompanies;
-
-           // context.AddRange(sector, company,ipo,stockPrices,sec);
-            context.Add(sector);
-            //context.SaveChanges();
-            //context.Add(company);
+            context.Add(entity);
             var isChanged = context.SaveChanges();
+
             if (isChanged > 0)
             {
                 return true;
             }
             return false;
-        }
-
-        public bool Delete(Sector entity)
-        {
-            throw new NotImplementedException();
         }
 
         public IEnumerable<Sector> Get()
@@ -58,14 +40,8 @@ namespace SectorMicroservice.Repositories
             return res;
         }
 
-        public bool Update(Sector entity)
-        {
-            throw new NotImplementedException();
-        }
-
         Object IRepository<Sector>.GetCompanies(Sector res)
         {
-           // var temp = context.StockExchangeCompanies.Where(s => s.StockExchangeId == res.StockExchangeID).Select(s => s.CompanyId).ToList();
             var CompanyList = context.Companies.Where(s => s.Sector.SectorID == res.SectorID).Select(s => s.CompanyName).ToList();
             return CompanyList;
         }

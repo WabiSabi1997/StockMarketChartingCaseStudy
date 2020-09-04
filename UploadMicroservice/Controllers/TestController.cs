@@ -13,12 +13,14 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace UploadMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class TestController : ControllerBase
     {
         private IRepository repository;
@@ -26,43 +28,6 @@ namespace UploadMicroservice.Controllers
         public TestController(IRepository repository)
         {
             this.repository = repository;
-        }
-
-        // GET: api/<TestController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<TestController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<TestController>
-        [HttpPost]
-        //[Consumes("application/x-www-form-urlencoded")]
-        public void Post([FromForm] string value)
-        {
-            if (ModelState.IsValid)
-            {
-                //repository.
-            }
-        }
-
-        // PUT api/<TestController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromForm] string value)
-        {
-        }
-
-        // DELETE api/<TestController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
 
         [HttpPost("/api/test/upload")]

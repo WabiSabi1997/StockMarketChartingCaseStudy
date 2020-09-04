@@ -2,7 +2,7 @@
 
 namespace DataCreationMicroservice.Migrations
 {
-    public partial class userentity : Migration
+    public partial class CreateContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,24 +37,6 @@ namespace DataCreationMicroservice.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(maxLength: 30, nullable: false),
-                    Password = table.Column<string>(maxLength: 50, nullable: false),
-                    UserType = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    Mobile = table.Column<long>(nullable: false),
-                    Confirmed = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Companies",
                 columns: table => new
                 {
@@ -75,7 +57,7 @@ namespace DataCreationMicroservice.Migrations
                         column: x => x.SectorID,
                         principalTable: "Sectors",
                         principalColumn: "SectorID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -189,9 +171,6 @@ namespace DataCreationMicroservice.Migrations
 
             migrationBuilder.DropTable(
                 name: "StockPrices");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "StockExchangeCompanies");
