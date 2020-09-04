@@ -119,10 +119,6 @@
           }
         }
       }
-    }
-  },
-  "defaultProject": "StockMarketChartingUI",
-  "cli": {
-    "analytics": false
-  }
+    }},
+  "defaultProject": "StockMarketChartingUI"
 }
