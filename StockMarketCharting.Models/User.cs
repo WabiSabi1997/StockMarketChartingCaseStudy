@@ -16,8 +16,7 @@ namespace StockMarketCharting.Models
         public string Password { get; set; }
 
         [Required]
-        public UserType UserType { get; set; } //enum gets easy to use as a drop down list
-        //Change to enum with User and Admin
+        public int UserType { get; set; } //1 for admin and 2 for user
         [EmailAddress]
         [Required]
         public string Email { get; set; }

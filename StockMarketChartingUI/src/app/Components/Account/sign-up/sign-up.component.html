@@ -1,15 +1,19 @@
 
 <div class="wrapper fadeInDown">
-    <div id="formContent">
+    <div class="form-group">
       <!-- Signup Form -->
       <form>
-        <input type="text" id="Username" class="fadeIn second" placeholder="Username" > 
-        <input type="password" id="Password" class="fadeIn third" placeholder="Password">
-        <input type="email" id="Email" class="fadeIn fourth" placeholder="Email">
-        <input type="number" id="Mobile" class="fadeIn fifth" placeholder="Mobile">
-        <input type="text" id="UserType" class="fadeIn sixth"placeholder="User Type"> 
-        <input type="submit" class="fadeIn seventh" value="Log In">
+        Username: <input type="text" [(ngModel)]="uName" id="Username" name="signup" class="fadeIn second"  > 
+        Password:<input type="password" [(ngModel)]="password" id="Password" name="signup" class="fadeIn third" >
+        Email:<input type="email" [(ngModel)]="email" id="Email" name="signup" class="fadeIn fourth" >
+        Mobile: <input type="number" [(ngModel)]="mobile" id="Mobile" name="signup" class="fadeIn fifth" >
+        UserType:<input type="number" [(ngModel)]="userType" id="UserType" name="signup" class="fadeIn sixth"placeholder="User Type">  
+        <input type="submit" class="fadeIn seventh" (click)=SignUp() value="Sign Up">
       </form>
   
     </div>
   </div>
+
+  
+  
+  
