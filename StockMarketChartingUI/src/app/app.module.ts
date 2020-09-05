@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import {SignUpComponent} from './Components/Account/sign-up/sign-up.component';
 import { SignInComponent } from './Components/Account/sign-in/sign-in.component';
 
-
 import { UploadExcelComponent } from './Components/Admin/upload-excel/upload-excel.component';
 import { ManageCompaniesComponent } from './Components/Admin/manage-companies/manage-companies.component';
 import { UploadSummaryComponent } from './Components/Admin/upload-summary/upload-summary.component';
