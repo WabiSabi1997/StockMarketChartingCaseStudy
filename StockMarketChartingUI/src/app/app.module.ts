@@ -24,7 +24,8 @@ import { AuthInterceptor } from './auth-interceptor';
 import {AuthService} from './Services/auth.service';
 import {SignupService} from './Services/signup.service'
 import { FormsModule} from '@angular/forms';
-import { LogInComponent } from './Components/Account/log-in/log-in.component'
+import { LogInComponent } from './Components/Account/log-in/log-in.component';
+import { LandingPageComponent } from './Components/Account/landing-page/landing-page.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { LogInComponent } from './Components/Account/log-in/log-in.component'
     CompareCompaniesComponent,
     CompareSectorsComponent,
     DisplayIPOComponent,
-    LogInComponent
+    LogInComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
