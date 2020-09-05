@@ -26,6 +26,7 @@ import {SignupService} from './Services/signup.service'
 import { FormsModule} from '@angular/forms';
 import { LogInComponent } from './Components/Account/log-in/log-in.component';
 import { LandingPageComponent } from './Components/Account/landing-page/landing-page.component'
+import { CompanyService } from './Services/company.service';
 @NgModule({
   declarations: [
     AppComponent,
