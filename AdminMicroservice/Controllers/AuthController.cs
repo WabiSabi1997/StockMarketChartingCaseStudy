@@ -28,7 +28,7 @@ namespace AuthMicroservice.Controllers
             this.repository = repository;
         }
         // GET: api/<AuthController>
-        [HttpGet]
+        [HttpGet("{username}/{password}")]
       //  [Authorize(Roles = "Admin,User")]
         public IActionResult Get(string username, string password)
         {
@@ -77,16 +77,16 @@ namespace AuthMicroservice.Controllers
        // [Authorize(Roles = "Admin,User")]
         public IActionResult Post(User user)
         {
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
             var isSuccess = repository.Signup(user);
             if (isSuccess)
             {
-                return Ok("User registered successfully");
+                return Ok(user);
             }
             return StatusCode(500, "Internal Server Error");
-            //}
-            //return BadRequest(ModelState);
+            }
+            return BadRequest(ModelState);
         }
 
     }

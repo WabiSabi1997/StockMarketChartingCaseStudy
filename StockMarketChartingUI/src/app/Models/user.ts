@@ -2,11 +2,12 @@ export class User {
 
     
 //public uID:number;
-public uName:string;
-public email:string;
-public mobile:number;
-public password:string;
-public userType:number;
+public Username:string;
+public Password:string;
+public UserType:number;
+public Email:string;
+public Mobile:number;
+
 //public confirmed:boolean;
     
 }
