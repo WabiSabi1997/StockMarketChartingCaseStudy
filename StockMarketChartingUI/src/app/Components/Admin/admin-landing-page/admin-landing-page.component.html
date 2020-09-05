@@ -1,1 +1,13 @@
-<p>admin-landing-page works!</p>
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <div class="container">
+        <a class="navbar-brand">Stock Exchange Router</a>
+        <ul class="nav navbar-nav" routerLinkActive="active">
+            <li class="nav-item"><a class="nav-link" routerLink="uploadExcel">Import Data</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="manageCompany">Manage Company</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="manageExchange">Manage Exchange</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="updateIPO">Update IPO</a></li>
+        </ul>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

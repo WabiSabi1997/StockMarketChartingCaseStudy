@@ -24,10 +24,8 @@ import { AuthInterceptor } from './auth-interceptor';
 import {AuthService} from './Services/auth.service';
 import {SignupService} from './Services/signup.service'
 import { FormsModule} from '@angular/forms';
-import { LogInComponent } from './Components/Account/log-in/log-in.component'
-//import { AccountLandingPageComponent } from './Components/Account/account-landing-page/account-landing-page.component';
-import { LandingComponent } from './Components/Account/landing/landing.component';
-import { CompanyService } from './Services/company.service';
+import { LogInComponent } from './Components/Account/log-in/log-in.component';
+import { LandingPageComponent } from './Components/Account/landing-page/landing-page.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +43,7 @@ import { CompanyService } from './Services/company.service';
     CompareSectorsComponent,
     DisplayIPOComponent,
     LogInComponent,
-    LandingComponent
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
