@@ -1,18 +1,45 @@
-
+<!-- 
 <div class="wrapper fadeInDown">
-    <div class="form-group">
-      <!-- Signup Form -->
-      <form>
-        Username: <input type="text" [(ngModel)]="uName" id="Username" name="signup" class="fadeIn second"  > 
-        Password:<input type="password" [(ngModel)]="password" id="Password" name="signup" class="fadeIn third" >
-        Email:<input type="email" [(ngModel)]="email" id="Email" name="signup" class="fadeIn fourth" >
-        Mobile: <input type="number" [(ngModel)]="mobile" id="Mobile" name="signup" class="fadeIn fifth" >
-        UserType:<input type="number" [(ngModel)]="userType" id="UserType" name="signup" class="fadeIn sixth"placeholder="User Type">  
+    <div>
+      Signup Form -->
+<!--       <table>
+        Username: <input type="text" [(ngModel)]="item.Username" id="Username" name="signup" class="fadeIn second"  > 
+        Password:<input type="password" [(ngModel)]="item.Password" id="Password" name="signup" class="fadeIn third" >
+        Email:<input type="email" [(ngModel)]="item.Email" id="Email" name="signup" class="fadeIn fourth" >
+        Mobile: <input type="number" [(ngModel)]="item.Mobile" id="Mobile" name="signup" class="fadeIn fifth" >
+        UserType:<input type="number" [(ngModel)]="item.UserType" id="UserType" name="signup" class="fadeIn sixth"placeholder="User Type">  
         <input type="submit" class="fadeIn seventh" (click)=SignUp() value="Sign Up">
-      </form>
+      <table>
   
     </div>
-  </div>
+  </div> --> 
+
+  
+  <table class="table table-bordered table-hover">
+  
+    <tbody>
+      <tr>
+        <td>Username: <input type="text" [(ngModel)]="item.Username"> </td>
+      </tr>
+      <tr>
+        <td>Password:<input type="password" [(ngModel)]="item.Password"></td>
+      </tr>
+      <tr>
+        <td>Email:<input type="email" [(ngModel)]="item.Email"></td>
+      </tr>
+      <tr>
+        <td>Mobile: <input type="number" [(ngModel)]="item.Mobile"></td>
+      </tr>
+      <tr>
+        <td>UserType:<input type="number" [(ngModel)]="item.UserType"></td>
+      </tr>
+      <tr>
+        <td><input type="submit" class="btn btn-info" (click)=SignUp() value="Sign Up"></td>
+      </tr>
+
+    </tbody>
+  </table>
+  
 
   
   

@@ -88,7 +88,7 @@ namespace AuthMicroservice.Repositories
         {
             try
             {
-                entity.Confirmed = true;
+                entity.Confirmed = true; //giving this by default instead of via activation links
                 context.Users.Add(entity);
                 int updates = context.SaveChanges();
                 if (updates > 0)

@@ -10,10 +10,12 @@ import { DisplayIPOComponent } from './Components/User/display-ipo/display-ipo.c
 import { LogInComponent } from './Components/Account/log-in/log-in.component';
 
 const routes: Routes = [
- {path:'account',redirectTo:'login',pathMatch:'full'},
- {path:'login',component:LogInComponent},
+//{path:'', redirectTo:'account', pathMatch:'full'},
+ {path:'',redirectTo:'signin',pathMatch:'full'},
+ {path:'signin',component:SignInComponent},
+ 
  {path:'signup',component:SignUpComponent},
- //{path:'', redirectTo:'account', pathMatch:'full'},
+ 
 
 {path:'account', component:AccountLandingPageComponent, children: [
   {path:'login', component:SignInComponent},

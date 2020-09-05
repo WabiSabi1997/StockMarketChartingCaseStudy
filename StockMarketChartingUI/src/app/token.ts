@@ -1,4 +1,4 @@
 export class Token {
-    utype:string;
+    utype:number;
     token:string;
 }
