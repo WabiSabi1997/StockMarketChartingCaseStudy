@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class LogInComponent implements OnInit {
 uname:string;
 pass:string;
-  constructor() { }
+  constructor(private service:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -16,6 +17,9 @@ pass:string;
   public LogIn()
   {
     console.log(this.uname+" "+this.pass);
+    this.service.Validate(this.uname,this.pass).subscribe(res=>{
+      console.log(res);
+    },(err)=>{console.log(err);})
   }
 
 }
