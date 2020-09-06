@@ -67,7 +67,7 @@ namespace CompanyMicroservice.Controllers
         
         // POST api/<CompanyController>
         [HttpPost]
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         public void Post(CompanyDto companyDto)
         {
             var x = repository.Add(companyDto);
