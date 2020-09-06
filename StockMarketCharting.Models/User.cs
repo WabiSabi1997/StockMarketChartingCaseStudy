@@ -14,7 +14,6 @@ namespace StockMarketCharting.Models
         [Required]
         [StringLength(50,MinimumLength =6)]
         public string Password { get; set; }
-
         [Required]
         public int UserType { get; set; } //1 for admin and 2 for user
         [EmailAddress]
@@ -22,7 +21,6 @@ namespace StockMarketCharting.Models
         public string Email { get; set; }
         [Required]
         public long Mobile { get; set; } //long makes the validation easier
-        
         public bool Confirmed { get; set; }
     }
 }

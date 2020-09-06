@@ -7,6 +7,10 @@ namespace StockMarketCharting.Models
 {
     public class Sector
     {
+        public Sector()
+        {
+            Companies = new HashSet<Company>();
+        }
         [Key]
         public int SectorID { get; set; }
         [Required]

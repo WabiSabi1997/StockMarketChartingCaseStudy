@@ -22,7 +22,6 @@ namespace StockMarketCharting.Models
             public string CEO { get; set; }
             public virtual string BoardOfDirectors { get; set; }
             public string Brief { get; set; }
-            //public Dictionary<int, int> CompanyStockCode { get; set; }
 
         //np
             public virtual Sector Sector { get; set; }

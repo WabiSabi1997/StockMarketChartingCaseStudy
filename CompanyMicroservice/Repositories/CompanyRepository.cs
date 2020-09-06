@@ -30,11 +30,20 @@ namespace CompanyMicroservice.Repositories
                     Turnover = entity.Turnover,
                     CEO = entity.CEO,
                     BoardOfDirectors = entity.BoardOfDirectors,
-                    Brief = entity.Brief,
-                    Sector = context.Sectors.Find(entity.SectorId),
+                    Brief = entity.Brief
                    //we are also getting stock exchange ID here
                 };
+                company.Sector = context.Sectors.Find(entity.SectorId);
+                var sector = context.Sectors.Find(entity.SectorId);
+
                 context.Companies.Add(company);
+
+                //ICollection<Company> a = new HashSet<Company>();
+                //a.Add(company);
+                sector.Companies.Add(company);
+                context.Sectors.Update(sector);
+
+                //sector.Companies.Add(company);
 
                 //company.CompanyId get this
                 // do the below via adding object of StockExchangeCompanies
@@ -76,8 +85,25 @@ namespace CompanyMicroservice.Repositories
         public IEnumerable<CompanyDto> Get()
         {
             var companies = context.Companies;
+            var ls = new HashSet<CompanyDto>();
+            foreach (var comp in companies)
+            {
+                CompanyDto b = new CompanyDto();
+                b.CompanyId = comp.CompanyId;
+                b.BoardOfDirectors = comp.BoardOfDirectors;
+                b.CompanyName = comp.CompanyName;
+                b.Turnover = comp.Turnover;
+                b.CEO = comp.CEO;
+                b.Brief = comp.Brief;
+                //var x= context.Companies.Find(comp.CompanyId).Sector.SectorID;
+                
+                var a = comp.Sector.SectorID;
+                //b.SectorId = comp.Sector.SectorID;
+                //b.StockExchangeIds = comp.StockExchangeCompanies.Select(s=>s.StockExchangeId).ToList();
+                ls.Add(b);
+            }
 
-            return (IEnumerable<CompanyDto>)companies;
+            return ls;
         }
 
       
