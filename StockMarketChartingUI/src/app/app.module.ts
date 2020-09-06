@@ -59,12 +59,12 @@ import { AddcompanyComponent } from './Components/Admin/manage-companies/addcomp
     AppRoutingModule,
     FormsModule 
   ],
-  providers: [ SignupService, AuthService, CompanyService,
-     { 
+  providers: [ //SignupService, AuthService, CompanyService,
+     /*{ 
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-     } 
+     } */
     ],
   bootstrap: [AppComponent]
 })
