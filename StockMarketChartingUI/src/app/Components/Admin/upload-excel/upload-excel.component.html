@@ -1,17 +1,19 @@
+<br>
+<br>
+<br>
+<br>
+
+<form class="navbar-form pull-right">
+    <input type="text" style="width: 200px;">
+    <button type="submit" class="btn btn-default">LogoutCheck</button>
+</form>
+<form>
+    <div class="form-group">
+        <label for="file">Choose File</label>
+        <input type="file"
+               id="file"
+               (change)="handleFileInput($event.target.files)">
+    </div>
+</form>
 
 
-
-
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr>
-            <td>Select file to be uploaded</td>
-        </tr>
-    </tbody>
-</table>
