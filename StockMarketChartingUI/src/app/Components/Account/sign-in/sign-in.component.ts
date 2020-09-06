@@ -19,11 +19,11 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public SignIn()
+  /*public SignIn()
   { console.log(this.uname,this.pass)
     this.service.Validate(this.uname,this.pass).subscribe(res=>
      { console.log(res) }
- /*      {
+      {
       if(res.utype==1)
       {
         localStorage.setItem('token',res.token)
@@ -40,9 +40,9 @@ export class SignInComponent implements OnInit {
       console.log(res)
       this.router.navigateByUrl('user');
       } 
-    } */
+    } 
     ); 
     
-  }
+  }*/
 
 }
