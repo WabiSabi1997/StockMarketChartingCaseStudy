@@ -6,10 +6,14 @@ import { Company } from '../Models/company';
   providedIn: 'root'
 })
 export class CompanyService {
-  url:"http://localhost:44326/companyservice";
+  url:"https://localhost:44326/companyservice";
   constructor(private http:HttpClient) { }
 
   public AddComp(item:Company){
-    return this.http.post(this.url,item);
+    console.log("Inside CompanyService AddComp method");
+    console.log(item);
+    var res = this.http.post(this.url,item);
+    console.log(res);
+    return res;
   }
 }

@@ -16,11 +16,10 @@ export class AddCompanyComponent implements OnInit {
   ngOnInit(): void {
   }
   public Add(){
-    console.log(this.item);
+    this.item.StockExchangeIds = [1];
+    console.log(this.item,"Inside Component Add function");
     this.service.AddComp(this.item).subscribe(res=>{
       console.log(res)
     },(err)=>{console.log(err)});
-
   }
-
 }

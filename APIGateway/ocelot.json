@@ -25,7 +25,7 @@
         "UpstreamHttpMethod": [ "Get", "Post" ]
       },
         {
-            "DownstreamPathTemplate": "/api/comp/{everything}",
+            "DownstreamPathTemplate": "/api/company/",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -33,7 +33,7 @@
                     "Port": 44327
                 }
             ],
-            "UpstreamPathTemplate": "/companyservice/{everything}",
+            "UpstreamPathTemplate": "/companyservice/",
             "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
         },
         {
