@@ -11,15 +11,35 @@ export class UploadExcelComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-}
-/* uploadFileToActivity() {
-  this.service.postFile(this.fileToUpload).subscribe(data => {
-    // do something, if upload success
-    }, error => {
-      console.log(error);
+  //the property below is to add multiple files together, will have to use for
+ /*  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);} */
+
+    onSelectedFile(e){this.fileToUpload = e.target.files[0];console.log(this.fileToUpload);}
+
+UploadStockPriceExcel()
+{
+  console.log(this.fileToUpload);
+  if(this.fileToUpload==null){alert( "File not selected, select again");}
+  else{
+    var formData = new FormData();
+    formData.append("file1",this.fileToUpload);
+    
+    formData.forEach((value,key) => {
+      console.log(key+" "+value)
     });
-}*/
+
+    this.service.postFile(formData).subscribe(res=>{
+      console.log(res);
+      alert("File uploaded");
+      window.location.reload();
+    })
+  }
+}
+
+
+
+
 
 }
+

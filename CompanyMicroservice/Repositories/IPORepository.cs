@@ -73,7 +73,7 @@ namespace CompanyMicroservice.Repositories
                 IPODetailInstance.Remarks = IPO.Remarks;
                 IPODetailInstance.CompanyId = IPO.CompanyId;
                 IPODetailInstance.StockExchangeId = IPO.StockExchangeId;
-                
+                IPODetailsDtoList.Add(IPODetailInstance);
             }
 
          

@@ -3,17 +3,29 @@
 <br>
 <br>
 
-<form class="navbar-form pull-right">
+<!-- <form class="navbar-form pull-right">
     <input type="text" style="width: 200px;">
     <button type="submit" class="btn btn-default">LogoutCheck</button>
-</form>
-<form>
+</form> -->
+<!-- <form>
     <div class="form-group">
         <label for="file">Choose File</label>
         <input type="file"
                id="file"
-               (change)="handleFileInput($event.target.files)">
+               (change)="onSelectedFile($event)">
     </div>
-</form>
+</form> -->
+
+<div id="form1">            
+    <form>
+        <div class="form-group FormField">
+            <label for="">Upload Stock Price Excel Data:</label>
+            <input type="file"  name="Input File" (change)="onSelectedFile($event)"
+            class="form-control" style="font-size: medium;" id="" placeholder="Upload Excel sheet">                
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="UploadStockPriceExcel()"
+        style="font-size: medium; float: left;">Upload</button>
+    </form>
+</div>
 
 

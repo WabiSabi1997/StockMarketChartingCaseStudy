@@ -20,7 +20,7 @@ namespace UploadMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+   // [Authorize(Roles = "Admin")]
     public class TestController : ControllerBase
     {
         private IRepository repository;
@@ -31,7 +31,7 @@ namespace UploadMicroservice.Controllers
         }
 
         [HttpPost("/api/test/upload")]
-        public IActionResult Upload([FromForm] IFormFile file1)
+        public IActionResult Upload(IFormFile file1)
         {
             if (file1 == null)
             {
@@ -50,10 +50,9 @@ namespace UploadMicroservice.Controllers
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
-                        
                     }
                     repository.UploadExcel(fullPath);
-                    return Ok("Upload successful");
+                    return Ok();
                 }
                 else
                 {
