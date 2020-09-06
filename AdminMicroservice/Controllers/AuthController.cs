@@ -13,8 +13,8 @@ namespace AuthMicroservice.Controllers
 {   
     public class AuthDetails
     {
-        public int utype;
-        public string token;
+        public int utype { get; set; }
+        public string token { get; set; }
     }
     [Route("api/[controller]")]
     [ApiController]

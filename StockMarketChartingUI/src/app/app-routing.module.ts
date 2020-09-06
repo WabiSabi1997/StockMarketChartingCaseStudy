@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignInComponent } from './Components/Account/sign-in/sign-in.component';
+//import { SignInComponent } from './Components/Account/sign-in/sign-in.component';
 import { SignUpComponent } from './Components/Account/sign-up/sign-up.component';
 import { AdminLandingPageComponent } from './Components/Admin/admin-landing-page/admin-landing-page.component';
 import { AddCompanyComponent } from './Components/Admin/add-company/add-company.component';
@@ -14,6 +14,7 @@ import { UpdateIPODetailsComponent } from './Components/Admin/update-ipodetails/
 import { LandingPageComponent } from './Components/Account/landing-page/landing-page.component';
 import { CompareCompaniesComponent } from './Components/User/compare-companies/compare-companies.component';
 import { CompareSectorsComponent } from './Components/User/compare-sectors/compare-sectors.component';
+import { SignInComponent } from './Components/Account/sign-in/sign-in.component';
 
 const routes: Routes = [
 {path:'', redirectTo:'account', pathMatch:'full'},
@@ -24,7 +25,7 @@ const routes: Routes = [
  
  */
 {path:'account', component:LandingPageComponent, children: [
-  {path:'signin', component:SignInComponent},
+  {path:'login', component:LogInComponent},
   {path:'signup', component:SignUpComponent}
 ]}, 
 /*
