@@ -31,7 +31,7 @@ namespace SectorMicroservice.Controllers
         }
 
         [HttpGet("getcompanies/{id}")]
-        [Authorize(Roles = "Admin,User")]
+        //[Authorize(Roles = "Admin,User")]
         public IActionResult Get(int id) // Get all the companies in a particular Sector
         {
             var res = repository.Get(id);

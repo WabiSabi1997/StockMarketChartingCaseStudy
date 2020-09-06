@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CompanyService {
-  url:"https://localhost:44337/api/company";
+  url:"https://localhost:44327/api/company";
   constructor(private http:HttpClient) { }
 
   public AddComp(item:Company):void
