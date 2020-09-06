@@ -73,7 +73,7 @@
             "UpstreamHttpMethod": [ "Get" ]
         },
         {
-            "DownstreamPathTemplate": "/api/ipodetails/{everything}",
+            "DownstreamPathTemplate": "/api/ipodetails",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -81,7 +81,7 @@
                     "Port": 44327
                 }
             ],
-            "UpstreamPathTemplate": "/ipodetails/{everything}",
+            "UpstreamPathTemplate": "/ipodetails",
             "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
         },
         {
