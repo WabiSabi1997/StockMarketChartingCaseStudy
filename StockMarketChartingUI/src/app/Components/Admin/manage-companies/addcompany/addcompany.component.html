@@ -1,0 +1,30 @@
+<div><br><br><br><br><br><br></div>
+<table class="table table-bordered table-hover">
+    <tbody>
+      <tr>
+        <td>CompanyName: <input type="text" [(ngModel)]="item.CompanyName"> </td>
+      </tr>
+      <tr>
+        <td>Turnover:<input type="number" [(ngModel)]="item.Turnover"></td>
+      </tr>
+      <tr>
+        <td>CEO:<input type="text" [(ngModel)]="item.CEO"></td>
+      </tr>
+      <tr>
+        <td>BoardOfDirectors: <input type="text" [(ngModel)]="item.BoardOfDirectors"></td>
+      </tr>
+      <tr>
+        <td>Brief:<input type="text" [(ngModel)]="item.Brief"></td>
+      </tr>
+      <tr>
+        <td>Sector:<input type="number" [(ngModel)]="item.SectorId"></td>
+      </tr>
+<!--       <tr>
+        <td>StockExchanges:<input type="number" [(ngModel)]="item.StockExchangeIds"></td>
+      </tr> -->
+      <tr>
+        <td><input type="submit" class="btn btn-info" (click)=Add() value="Sign Up"></td>
+      </tr>
+    </tbody>
+</table>
+

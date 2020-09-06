@@ -15,6 +15,9 @@ import { LandingPageComponent } from './Components/Account/landing-page/landing-
 import { CompareCompaniesComponent } from './Components/User/compare-companies/compare-companies.component';
 import { CompareSectorsComponent } from './Components/User/compare-sectors/compare-sectors.component';
 import { SignInComponent } from './Components/Account/sign-in/sign-in.component';
+import { UpdatecompanyComponent } from './Components/Admin/manage-companies/updatecompany/updatecompany.component';
+import { AddcompanyComponent } from './Components/Admin/manage-companies/addcompany/addcompany.component';
+import { DeletecompanyComponent } from './Components/Admin/manage-companies/deletecompany/deletecompany.component';
 
 const routes: Routes = [
 {path:'', redirectTo:'account', pathMatch:'full'},
@@ -36,7 +39,11 @@ const routes: Routes = [
   {path:'admin',component:AdminLandingPageComponent, children: [
     {path:'updateIPO', component:UpdateIPODetailsComponent},
     {path:'uploadExcel',component:UploadExcelComponent},
-    {path:'manageCompany',component:ManageCompaniesComponent},
+    {path:'manageCompany',component:ManageCompaniesComponent, children:[
+      {path:'AddComp',component:AddcompanyComponent},
+      {path:'UpdateComp',component:UpdatecompanyComponent},
+      {path:'DeleteComp',component:DeletecompanyComponent}
+    ]},
     {path:'manageExchange',component:ManageStockExchangesComponent},
     {path:'addCompany',component:AddCompanyComponent}
   ]},

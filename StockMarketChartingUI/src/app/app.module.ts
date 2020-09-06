@@ -27,6 +27,10 @@ import { FormsModule} from '@angular/forms';
 import { LogInComponent } from './Components/Account/log-in/log-in.component';
 import { LandingPageComponent } from './Components/Account/landing-page/landing-page.component'
 import { CompanyService } from './Services/company.service';
+//import { ViewcompanyComponent } from './Components/Admin/manage-companies/viewcompany/viewcompany.component';
+import { UpdatecompanyComponent } from './Components/Admin/manage-companies/updatecompany/updatecompany.component';
+import { DeletecompanyComponent } from './Components/Admin/manage-companies/deletecompany/deletecompany.component';
+import { AddcompanyComponent } from './Components/Admin/manage-companies/addcompany/addcompany.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +48,10 @@ import { CompanyService } from './Services/company.service';
     CompareSectorsComponent,
     DisplayIPOComponent,
     LogInComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    UpdatecompanyComponent,
+    DeletecompanyComponent,
+    AddcompanyComponent
   ],
   imports: [
     BrowserModule,

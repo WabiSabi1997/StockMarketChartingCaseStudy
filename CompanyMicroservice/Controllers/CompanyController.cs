@@ -25,7 +25,7 @@ namespace CompanyMicroservice.Controllers
         }
         // GET: api/<CompanyController>
         [HttpGet]
-        [Authorize(Roles = "1,2")]
+        //[Authorize(Roles = "1,2")]
         public IEnumerable<CompanyDto> Get()
         {
             var res = repository.Get();
