@@ -7,5 +7,5 @@ export class Company {
     BoardOfDirectors:string;
     Brief:string;
     SectorId:string;
-    StockExchangeIds:Int32Array;
+    StockExchangeIds:number[];
 }

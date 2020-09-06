@@ -38,7 +38,7 @@ const routes: Routes = [
     {path:'uploadExcel',component:UploadExcelComponent},
     {path:'manageCompany',component:ManageCompaniesComponent},
     {path:'manageExchange',component:ManageStockExchangesComponent},
-    
+    {path:'addCompany',component:AddCompanyComponent}
   ]},
   {path:'user',component:UserLandingPageComponent, children: [
     {path:'displayIPO', component:DisplayIPOComponent},

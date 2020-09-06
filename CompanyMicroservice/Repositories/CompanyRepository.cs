@@ -76,6 +76,7 @@ namespace CompanyMicroservice.Repositories
         public IEnumerable<CompanyDto> Get()
         {
             var companies = context.Companies;
+
             return (IEnumerable<CompanyDto>)companies;
         }
 
