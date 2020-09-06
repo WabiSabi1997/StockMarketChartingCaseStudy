@@ -24,7 +24,7 @@ namespace CompanyMicroservice.Controllers
         }
         // GET: api/<IPODetailsController>
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         public IEnumerable<IPODetailsDto> Get() 
         {
             var res = repository.Get();

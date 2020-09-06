@@ -12,4 +12,12 @@ export class ManageStockExchangesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public viewStockExchange():void{
+      //get the list of stockExchanges and display
+  }
+
+  public addNewStockExchange():void{
+    //pass a stockexchange model to the service
+  }
+
 }

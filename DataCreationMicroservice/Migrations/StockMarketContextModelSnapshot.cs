@@ -58,6 +58,9 @@ namespace DataCreationMicroservice.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("OpenDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -72,10 +75,7 @@ namespace DataCreationMicroservice.Migrations
                     b.Property<string>("Remarks")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StockExchangeCompanyCompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StockExchangeCompanyStockExchangeId")
+                    b.Property<int>("StockExchangeId")
                         .HasColumnType("int");
 
                     b.Property<int>("TotalNumOfShares")
@@ -83,7 +83,9 @@ namespace DataCreationMicroservice.Migrations
 
                     b.HasKey("IPODetailID");
 
-                    b.HasIndex("StockExchangeCompanyStockExchangeId", "StockExchangeCompanyCompanyId");
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("StockExchangeId");
 
                     b.ToTable("IPODetails");
                 });
@@ -225,9 +227,15 @@ namespace DataCreationMicroservice.Migrations
 
             modelBuilder.Entity("StockMarketCharting.Models.IPODetail", b =>
                 {
-                    b.HasOne("StockMarketCharting.Models.StockExchangeCompany", "StockExchangeCompany")
+                    b.HasOne("StockMarketCharting.Models.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("StockExchangeCompanyStockExchangeId", "StockExchangeCompanyCompanyId")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StockMarketCharting.Models.StockExchange", "StockExchange")
+                        .WithMany()
+                        .HasForeignKey("StockExchangeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

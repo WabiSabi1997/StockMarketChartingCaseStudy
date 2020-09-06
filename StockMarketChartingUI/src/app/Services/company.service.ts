@@ -9,7 +9,8 @@ export class CompanyService {
   url:"http://localhost:44326/companyservice";
   constructor(private http:HttpClient) { }
 
-  public AddComp(item:Company){
+  public AddComp(item:Company)
+  {
     return this.http.post(this.url,item);
   }
 }

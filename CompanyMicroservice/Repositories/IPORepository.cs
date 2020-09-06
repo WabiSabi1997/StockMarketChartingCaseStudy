@@ -30,9 +30,13 @@ namespace CompanyMicroservice.Repositories
                     OpenDate = entity.OpenDate,
                     OpenTime = entity.OpenTime,
                     Remarks = entity.Remarks,
-                    StockExchangeCompany = context.StockExchangeCompanies.Find(entity.CompanyId, entity.StockExchangeId)
-
+                    //  StockExchangeCompany = context.StockExchangeCompanies.Find(entity.CompanyId, entity.StockExchangeId)
+                    StockExchangeId = entity.StockExchangeId,
+                    CompanyId=entity.CompanyId
+                       
                 };
+                IPODetail.Company = context.Companies.Find(entity.CompanyId);
+                IPODetail.StockExchange = context.StockExchanges.Find(entity.StockExchangeId);
                 context.IPODetails.Add(IPODetail);
                 context.SaveChanges();
                 return true;
@@ -55,13 +59,31 @@ namespace CompanyMicroservice.Repositories
         }
 
         public IEnumerable<IPODetailsDto> Get()
-        {
-            throw new NotImplementedException();
+        {   //we need to get all ipo details
+            var res = context.IPODetails;
+            var IPODetailsDtoList = new HashSet<IPODetailsDto>();
+            foreach (var IPO in res)
+            {
+                var IPODetailInstance = new IPODetailsDto();
+                IPODetailInstance.IPODetailID = IPO.IPODetailID;
+                IPODetailInstance.PricePerShare = IPO.PricePerShare;
+                IPODetailInstance.TotalNumOfShares = IPO.TotalNumOfShares;
+                IPODetailInstance.OpenDate = IPO.OpenDate;
+                IPODetailInstance.OpenTime = IPO.OpenTime;
+                IPODetailInstance.Remarks = IPO.Remarks;
+                IPODetailInstance.CompanyId = IPO.CompanyId;
+                IPODetailInstance.StockExchangeId = IPO.StockExchangeId;
+                
+            }
+
+         
+            return IPODetailsDtoList;
+           // throw new NotImplementedException();
         }
 
         public Object Get(object key) //to get IPO based on company ID
         {
-            var res = context.IPODetails.Where(s => s.StockExchangeCompany.CompanyId ==(int) key).ToList();
+            var res = context.IPODetails.Where(s => s.CompanyId ==(int) key).ToList();
             return res;
         }
 
