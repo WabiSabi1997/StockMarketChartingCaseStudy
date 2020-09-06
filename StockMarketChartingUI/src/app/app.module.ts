@@ -52,12 +52,12 @@ import { CompanyService } from './Services/company.service';
     AppRoutingModule,
     FormsModule 
   ],
-  providers: [ SignupService,AuthService,CompanyService
-   /*  { 
+  providers: [ SignupService, AuthService, CompanyService,
+     { 
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-     } */
+     } 
     ],
   bootstrap: [AppComponent]
 })
