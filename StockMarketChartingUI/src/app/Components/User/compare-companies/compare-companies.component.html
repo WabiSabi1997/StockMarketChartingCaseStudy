@@ -1,1 +1,28 @@
-<p>compare-companies works!</p>
+<br>
+<br>
+<br>
+<form action="" method="POST" role="form" class="justify-content-center">
+    <legend class="display-4 py-2 text-truncate">Comparison Chart</legend>
+
+    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto form p-4">
+        <label for="Company">Select Company</label>
+        <!--we need to have a datalist of companies here, fetched by company service, need to fix this-->
+        <input type="text" class="form-control" id="Company"> 
+        <label for="StockExchange">Select Stock Exchange</label>
+         <!--we need to have a datalist of stock exchanges here, fetched by stock exchange service, need to fix this-->
+        <input type="text" class="form-control" id="StockExchange"> 
+        <p class="inline">
+            <label for="FromDate">From date:</label>    
+            <input type="date" class="form-control" id="FromDate"> 
+            <label for="ToDate">To date:</label>    
+            <input type="date" class="form-control" id="ToDate"> 
+            <label for="FromDate">Periodicity</label>    
+            <input type="number" class="form-control" id="Periodicity"> 
+        </p> 
+        <br>
+        <button type="submit" class="btn btn-primary center">Submit</button>
+    </div>
+    
+
+    
+</form>

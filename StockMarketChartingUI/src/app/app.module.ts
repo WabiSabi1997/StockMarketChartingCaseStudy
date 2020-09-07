@@ -59,7 +59,7 @@ import { AddcompanyComponent } from './Components/Admin/manage-companies/addcomp
     AppRoutingModule,
     FormsModule 
   ],
-  providers: [ SignupService, AuthService, CompanyService,IPOService
+  providers: [ SignupService, AuthService, CompanyService,//IPOService
      /*{ 
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
