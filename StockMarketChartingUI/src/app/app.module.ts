@@ -20,13 +20,14 @@ import { CompareCompaniesComponent } from './Components/User/compare-companies/c
 import { CompareSectorsComponent } from './Components/User/compare-sectors/compare-sectors.component';
 import { DisplayIPOComponent } from './Components/User/display-ipo/display-ipo.component';
 
-import { AuthInterceptor } from './auth-interceptor';
+// import { AuthInterceptor } from './auth-interceptor';
 import {AuthService} from './Services/auth.service';
 import {SignupService} from './Services/signup.service'
 import { FormsModule} from '@angular/forms';
 import { LogInComponent } from './Components/Account/log-in/log-in.component';
 import { LandingPageComponent } from './Components/Account/landing-page/landing-page.component'
 import { CompanyService } from './Services/company.service';
+import { IPOService } from './Services/ipo.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,12 +53,12 @@ import { CompanyService } from './Services/company.service';
     AppRoutingModule,
     FormsModule 
   ],
-  providers: [ //SignupService, AuthService, CompanyService,
+  providers: [ SignupService, AuthService, CompanyService,IPOService
      /*{ 
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-     } */
+     } */ 
     ],
   bootstrap: [AppComponent]
 })
