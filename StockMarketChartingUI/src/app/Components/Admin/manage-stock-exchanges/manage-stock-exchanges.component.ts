@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StockexchangeService } from 'src/app/Services/stockexchange.service';
 
 @Component({
   selector: 'app-manage-stock-exchanges',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageStockExchangesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:StockexchangeService) { }
 
   ngOnInit(): void {
   }
 
   public viewStockExchange():void{
       //get the list of stockExchanges and display
+
   }
 
   public addNewStockExchange():void{

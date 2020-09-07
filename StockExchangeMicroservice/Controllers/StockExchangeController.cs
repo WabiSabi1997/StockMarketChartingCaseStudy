@@ -14,7 +14,7 @@ namespace StockExchangeMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class StockExchangeController : ControllerBase
     {
         private IRepository<StockExchangeDto> repository;

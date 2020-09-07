@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class IPOService {
-  url:"https://localhost:44326/ipodetails";
+  url:string="https://localhost:44326/ipodetails";
   constructor(private http:HttpClient){}
   
     public viewIPO():Observable<IPODetail[]>

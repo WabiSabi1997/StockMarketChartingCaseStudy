@@ -48,7 +48,7 @@ namespace StockExchangeMicroservice.Repositories
         public bool Add(int id, int id2)
         {
             var se = context.StockExchanges.Find(id);
-            //Check if the company exists or not too. Assuming that it does, the code shall be as follows
+            //Check if the seany exists or not too. Assuming that it does, the code shall be as follows
             var entity = context.Companies.Find(id2);
             //var ipo = context.IPODetails.Single(s => s.StockExchangeCompany.StockExchangeId == id && s.StockExchangeCompany.CompanyId == id2);
 
@@ -70,7 +70,20 @@ namespace StockExchangeMicroservice.Repositories
         public IEnumerable<StockExchangeDto> Get()
         {
             var stockexchanges = context.StockExchanges;
-            return (IEnumerable<StockExchangeDto>)stockexchanges;
+            var ls = new HashSet<StockExchangeDto>();
+            foreach (var se in stockexchanges)
+            {
+                StockExchangeDto b = new StockExchangeDto();
+                b.StockExchangeID = se.StockExchangeID;
+                b.StockExchangeName = se.StockExchangeName;
+                b.Brief = se.Brief;
+                b.ContactAddress = se.ContactAddress;
+                b.Remarks = se.Remarks;
+                //b.Brief = se.Brief;
+                ls.Add(b);
+            }
+
+            return ls;
         }
 
         public StockExchangeDto Get(object key)
