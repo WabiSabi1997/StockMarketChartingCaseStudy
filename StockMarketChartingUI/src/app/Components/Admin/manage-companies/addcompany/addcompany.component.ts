@@ -19,9 +19,9 @@ export class AddcompanyComponent implements OnInit {
   public Add(){
     this.item.stockExchangeIds = [1];
     console.log(this.item,"Inside Component Add function");
-    this.service.AddComp(this.item);//.subscribe(res=>{
-    //  console.log(res)
-    //},(err)=>{console.log(err)});
+    this.service.AddComp(this.item).subscribe(res=>{
+      console.log(res)
+    },(err)=>{console.log(err)});
   }
 }
 

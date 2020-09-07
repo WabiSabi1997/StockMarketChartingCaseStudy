@@ -1,9 +1,9 @@
 export class StockPrice {
-    StockPriceId:number;
-    CurrentPrice:number;
-    Date:string;
-    Time:string;
-    CompanyId:number;
-    StockExchangeId:number;
+    stockPriceId:number;
+    currentPrice:number;
+    date:string;
+    time:string;
+    companyId:number;
+    stockExchangeId:number;
 
 }

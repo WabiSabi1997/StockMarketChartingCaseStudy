@@ -1,29 +1,29 @@
 {
     "Routes": [
-      {
-        "DownstreamPathTemplate": "/api/auth",
-        "DownstreamScheme": "https",
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "localhost",
-            "Port": 44337
-          }
-        ],
-        "UpstreamPathTemplate": "/authservice",
-        "UpstreamHttpMethod": [ "Get", "Post" ]
-      },
-      {
-        "DownstreamPathTemplate": "/api/auth/{username}/{password}",
-        "DownstreamScheme": "https",
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "localhost",
-            "Port": 44337
-          }
-        ],
-        "UpstreamPathTemplate": "/authservice/{username}/{password}",
-        "UpstreamHttpMethod": [ "Get", "Post" ]
-      },
+        {
+            "DownstreamPathTemplate": "/api/auth",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44337
+                }
+            ],
+            "UpstreamPathTemplate": "/authservice",
+            "UpstreamHttpMethod": [ "Get", "Post" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/auth/{username}/{password}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44337
+                }
+            ],
+            "UpstreamPathTemplate": "/authservice/{username}/{password}",
+            "UpstreamHttpMethod": [ "Get", "Post" ]
+        },
         {
             "DownstreamPathTemplate": "/api/company/",
             "DownstreamScheme": "https",
@@ -34,10 +34,22 @@
                 }
             ],
             "UpstreamPathTemplate": "/companyservice/",
-            "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+            "UpstreamHttpMethod": [ "Get", "Post", "Delete" ]
         },
         {
-            "DownstreamPathTemplate": "/api/comp/getcompaniesbyname",
+            "DownstreamPathTemplate": "/api/company/update/{id}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44327
+                }
+            ],
+            "UpstreamPathTemplate": "/companyservice/update/{id}",
+            "UpstreamHttpMethod": [ "Put" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/company/getcompaniesbyname",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -49,7 +61,7 @@
             "UpstreamHttpMethod": [ "Get" ]
         },
         {
-            "DownstreamPathTemplate": "/api/comp/getcompanydetails",
+            "DownstreamPathTemplate": "/api/company/getcompanydetails",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {

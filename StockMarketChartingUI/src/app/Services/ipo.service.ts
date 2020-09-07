@@ -21,9 +21,9 @@ export class IPOService {
 
     public viewIPObyId():void{}
 
-    public updateIPO():void
+    public updateIPO(id:number,item:IPODetail):void
     {
-
+      
     }
 
   

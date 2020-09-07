@@ -18,11 +18,13 @@ export class StockexchangeService {
     return this.http.get<any>(this.url);
   }
 
-  public addSe(stock:StockExchange){
+  public addSe(stock:StockExchange):any
+  {
+    console.log(stock,"Inside SE Service method");
     return this.http.post(this.url,stock);
   }
 
-  public viewAllComp(Sid):Observable<any>{
+  public viewAllComp(Sid:number):Observable<any>{
     return this.http.get<any>(this.url+'/'+"getcompanies/"+Sid);
   }
   

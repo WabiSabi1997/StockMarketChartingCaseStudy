@@ -74,9 +74,9 @@ namespace CompanyMicroservice.Controllers
         }
 
         // PUT api/<CompanyController>/5
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         //[Authorize(Roles = "Admin")]
-        public void Put(int id, [FromForm] CompanyDto companyDto)
+        public void Put(int id, CompanyDto companyDto)
         {
             //Find if the company exists in the database
             //var res = repository.Get(id);

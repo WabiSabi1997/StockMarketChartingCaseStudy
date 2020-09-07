@@ -45,7 +45,7 @@ const routes: Routes = [
       {path:'DeleteComp',component:DeletecompanyComponent}
     ]},
     {path:'manageExchange',component:ManageStockExchangesComponent},
-    {path:'addCompany',component:AddCompanyComponent}
+    // {path:'addCompany',component:AddCompanyComponent}
   ]},
   {path:'user',component:UserLandingPageComponent, children: [
     {path:'displayIPO', component:DisplayIPOComponent},

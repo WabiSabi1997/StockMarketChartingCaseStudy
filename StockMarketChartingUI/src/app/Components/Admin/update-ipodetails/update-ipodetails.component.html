@@ -1,1 +1,40 @@
-<p>update-ipodetails works!</p>
+<br><br><br><br>
+
+Enter ID of the IPO to be updated:
+<input type="number" [(ngModel)]="ipoId">
+<br> <br>
+Enter new info for this IPO  <br>
+<table class="table table-bordered table-hover">
+    <tbody>
+      <tr>
+        <td>IPODetailID: <input type="text" [(ngModel)]="item.ipoDetailID"> </td>
+      </tr>
+      <tr>
+        <td>Price Per Share:<input type="number" [(ngModel)]="item.pricePerShare"></td>
+      </tr>
+      <tr>
+        <td>Number Of Shares:<input type="text" [(ngModel)]="item.totalNumOfShares"></td>
+      </tr>
+      <tr>
+        <td>Opening Date: <input type="text" [(ngModel)]="item.openDate"></td>
+      </tr>
+      <tr>
+        <td>Opening Time:<input type="text" [(ngModel)]="item.openTime"></td>
+      </tr>
+      <tr>
+        <td>Remarks:<input type="number" [(ngModel)]="item.remarks"></td>
+      </tr>
+      <tr>
+        <td>CompanyID:<input type="number" [(ngModel)]="item.companyId"></td>
+      </tr>
+      <tr>
+        <td>StockExchangeID:<input type="number" [(ngModel)]="item.stockExchangeId"></td>
+      </tr>
+<!--       <tr>
+        <td>StockExchanges:<input type="number" [(ngModel)]="item.StockExchangeIds"></td>
+      </tr> -->
+      <tr>
+        <td><input type="submit" class="btn btn-info" (click)=Update() value="Sign Up"></td>
+      </tr>
+    </tbody>
+</table>
