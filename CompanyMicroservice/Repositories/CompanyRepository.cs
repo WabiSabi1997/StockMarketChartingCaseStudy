@@ -97,7 +97,7 @@ namespace CompanyMicroservice.Repositories
                 b.Brief = comp.Brief;
                 //var x= context.Companies.Find(comp.CompanyId).Sector.SectorID;
                 
-                var a = comp.Sector.SectorID;
+                //var a = comp.Sector.SectorID;
                 //b.SectorId = comp.Sector.SectorID;
                 //b.StockExchangeIds = comp.StockExchangeCompanies.Select(s=>s.StockExchangeId).ToList();
                 ls.Add(b);

@@ -8,5 +8,77 @@
 <br><br>
 <div class="wrapper" id="container">
     <button type="button home-button" (click)=viewStockExchange() id="button1" >View All Stock Exchanges</button>
-    <button type="button contact-button" (click)=addNewStockExchange() id="button2">Add new Stock Exchange</button>
+    <button type="button contact-button" (click)=addSeData() id="button2">Add new Stock Exchange</button>
+    <button type="button contact-button" (click)=viewAllCompanies() id="button2">View all Companies in this Exchange</button>    
+</div>
+
+
+<div class="table-responsive" *ngIf="displaySe == true">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Brief</th>
+                <th>Remarks</th>
+                <th>ContactAddress</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of selist">
+                <td>{{item.stockExchangeID}}</td>
+                <td>{{item.stockExchangeName}}</td>
+                <td>{{item.brief}}</td>
+                <td>{{item.remarks}}</td>
+                <td>{{item.contactAddress}}</td>
+              </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-responsive" *ngIf="displayComp == true">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Brief</th>
+                <th>Remarks</th>
+                <th>ContactAddress</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of selist">
+                <td>{{item.stockExchangeID}}</td>
+                <td>{{item.stockExchangeName}}</td>
+                <td>{{item.brief}}</td>
+                <td>{{item.remarks}}</td>
+                <td>{{item.contactAddress}}</td>
+              </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-responsive" *ngIf="addSe == true">
+    Enter Data for Stock Exchange to be added.
+    <br>
+    <table class="table table-bordered table-hover">
+        <tbody>
+          <tr>
+            <td>StockExchangeName: <input type="text" [(ngModel)]="stock.stockExchangeName"> </td>
+          </tr>
+          <tr>
+            <td>Brief:<input type="number" [(ngModel)]="stock.brief"></td>
+          </tr>
+          <tr>
+            <td>Remarks:<input type="text" [(ngModel)]="stock.remarks"></td>
+          </tr>
+          <tr>
+            <td>ContactAddress: <input type="text" [(ngModel)]="stock.contactAddress"></td>
+          </tr>
+          <tr>
+            <td><input type="submit" class="btn btn-info" (click)=addNewStockExchange() value="Add StockExchange"></td>
+          </tr>
+        </tbody>
+    </table>
 </div>

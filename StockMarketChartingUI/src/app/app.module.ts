@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { HttpClientModule } from '@angular/common/http';
+//import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {SignUpComponent} from './Components/Account/sign-up/sign-up.component';
@@ -31,6 +31,7 @@ import { CompanyService } from './Services/company.service';
 import { UpdatecompanyComponent } from './Components/Admin/manage-companies/updatecompany/updatecompany.component';
 import { DeletecompanyComponent } from './Components/Admin/manage-companies/deletecompany/deletecompany.component';
 import { AddcompanyComponent } from './Components/Admin/manage-companies/addcompany/addcompany.component';
+import { IPOService } from './Services/ipo.service';
 @NgModule({
   declarations: [
     AppComponent,
