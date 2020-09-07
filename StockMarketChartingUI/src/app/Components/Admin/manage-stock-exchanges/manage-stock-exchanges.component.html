@@ -9,7 +9,14 @@
 <div class="wrapper" id="container">
     <button type="button home-button" (click)=viewStockExchange() id="button1" >View All Stock Exchanges</button>
     <button type="button contact-button" (click)=addSeData() id="button2">Add new Stock Exchange</button>
-    <button type="button contact-button" (click)=viewAllCompanies() id="button2">View all Companies in this Exchange</button>    
+    <button type="button contact-button" (click)=viewComps() id="button2">View all Companies in this Exchange</button>    
+</div>
+<br><br><br>
+
+<div class="table-responsive" *ngIf="getSid == true">
+    Enter StockExchangeID to see the companies listed in this Exchange <br>
+    StockExchangeID: <input type="number" [(ngModel)]="Sid" id="">
+    <input type="submit" (click)=viewAllCompanies() value="Submit">
 </div>
 
 

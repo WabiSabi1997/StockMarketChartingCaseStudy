@@ -16,7 +16,11 @@ export class ManageCompaniesComponent implements OnInit {
   }
 
   public ViewComp(){
-    return this.service.ViewComp();
+    return this.service.ViewComp().subscribe(res=>{
+      console.log(res);
+    },(err)=>{
+      console.log(err);
+    });
   }
 /* 
   public AddComp(){
