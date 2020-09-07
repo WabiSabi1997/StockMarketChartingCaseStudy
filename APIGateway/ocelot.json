@@ -34,7 +34,7 @@
                 }
             ],
             "UpstreamPathTemplate": "/companyservice/",
-            "UpstreamHttpMethod": [ "Get", "Post", "Delete" ]
+            "UpstreamHttpMethod": [ "Get", "Post" ]
         },
         {
             "DownstreamPathTemplate": "/api/company/update/{id}",
@@ -47,6 +47,18 @@
             ],
             "UpstreamPathTemplate": "/companyservice/update/{id}",
             "UpstreamHttpMethod": [ "Put" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/company/delete/{id}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44327
+                }
+            ],
+            "UpstreamPathTemplate": "/companyservice/delete/{id}",
+            "UpstreamHttpMethod": [ "Delete" ]
         },
         {
             "DownstreamPathTemplate": "/api/company/getcompaniesbyname",

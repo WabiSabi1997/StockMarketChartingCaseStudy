@@ -32,7 +32,7 @@ export class CompanyService {
     return this.http.put<any>(this.url+'/update/'+compId,item);
   }
 
-  public DeleteComp(id:number){
-    this.http.delete(this.url+'/'+id);
+  public DeleteComp(id:number):Observable<any>{
+    return this.http.delete<any>(this.url+'/delete/'+id);
   }
 }

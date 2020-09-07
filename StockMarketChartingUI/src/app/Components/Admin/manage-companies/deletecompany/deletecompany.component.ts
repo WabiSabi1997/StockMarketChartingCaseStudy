@@ -14,7 +14,11 @@ export class DeletecompanyComponent implements OnInit {
   }
 
   public Delete(){
-    this.service.DeleteComp(this.compId);
+    this.service.DeleteComp(this.compId).subscribe(res=>{
+      console.log(res);
+    },(err)=>{
+      console.log(err);
+    });
   }
 
 
