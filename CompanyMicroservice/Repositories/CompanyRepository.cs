@@ -136,7 +136,10 @@ namespace CompanyMicroservice.Repositories
             {
                 DateTime res1Date = Convert.ToDateTime(string.Concat(res1.Date, " ", res1.Time));
                 if (res1Date >= from && res1Date <= to)
-                    res2.Add(res1.CurrentPrice);
+                {
+                    Tuple<double, DateTime> t = new Tuple<double, DateTime>(res1.CurrentPrice, res1Date);
+                    res2.Add(t);
+                }
             }
             return res2;
         }

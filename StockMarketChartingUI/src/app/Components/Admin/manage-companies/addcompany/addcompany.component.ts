@@ -17,7 +17,7 @@ export class AddcompanyComponent implements OnInit {
   ngOnInit(): void {
   }
   public Add(){
-    this.item.StockExchangeIds = [1];
+    this.item.stockExchangeIds = [1];
     console.log(this.item,"Inside Component Add function");
     this.service.AddComp(this.item);//.subscribe(res=>{
     //  console.log(res)

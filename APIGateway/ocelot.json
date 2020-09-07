@@ -61,7 +61,7 @@
             "UpstreamHttpMethod": [ "Get" ]
         },
         {
-            "DownstreamPathTemplate": "/api/comp/getstockprice/{id}/{from}/{to}",
+            "DownstreamPathTemplate": "/api/company/getstockprice/{id}/{from}/{to}",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {

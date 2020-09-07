@@ -1,28 +1,41 @@
 <br>
 <br>
 <br>
-<form action="" method="POST" role="form" class="justify-content-center">
-    <legend class="display-4 py-2 text-truncate">Comparison Chart</legend>
+<legend class="display-4 py-2 text-truncate">Comparison Chart</legend>
+  
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><label for="Company">Select Company:  </label>
+                <input type="text" list="companies" id="Company" [(ngModel)]="id" name="compare">
+                <datalist id="companies">
+                <option *ngFor="let item of comp_list" [value]="item.companyId"  >{{item.companyName}}</option>
+                </datalist>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="StockExchange">Select Stock Exchange: </label>
+                <input type="text" list="stockexchanges" id="StockExchange" name="compare">
+                 <datalist id="stockexchanges" >
+                 <option *ngFor="let item of se_list" [value]="item.stockExchangeID" >{{item.stockExchangeName}}</option>
+                 </datalist>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="FromDate">From date:</label>    
+                <input type="date" class="form-control" [(ngModel)]="from" id="FromDate" name="compare">
+                <label for="ToDate">To date:</label>    
+                <input type="date" class="form-control" [(ngModel)]="to" id="ToDate" name="compare">
+                <label for="FromDate">Periodicity</label>    
+                <input type="number" class="form-control" id="Periodicity" name="compare">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" (click)=StockPrices() class="btn btn-primary center">Compare</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto form p-4">
-        <label for="Company">Select Company</label>
-        <!--we need to have a datalist of companies here, fetched by company service, need to fix this-->
-        <input type="text" class="form-control" id="Company"> 
-        <label for="StockExchange">Select Stock Exchange</label>
-         <!--we need to have a datalist of stock exchanges here, fetched by stock exchange service, need to fix this-->
-        <input type="text" class="form-control" id="StockExchange"> 
-        <p class="inline">
-            <label for="FromDate">From date:</label>    
-            <input type="date" class="form-control" id="FromDate"> 
-            <label for="ToDate">To date:</label>    
-            <input type="date" class="form-control" id="ToDate"> 
-            <label for="FromDate">Periodicity</label>    
-            <input type="number" class="form-control" id="Periodicity"> 
-        </p> 
-        <br>
-        <button type="submit" class="btn btn-primary center">Submit</button>
-    </div>
-    
-
-    
-</form>

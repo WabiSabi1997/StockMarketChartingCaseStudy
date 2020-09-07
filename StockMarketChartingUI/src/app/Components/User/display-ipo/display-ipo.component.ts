@@ -22,8 +22,8 @@ display:boolean=false;
   constructor(private service: IPOService, private router:Router) {
     console.log("In display IPOs")
     this.service.viewIPO().subscribe(res => {
-      this.ipo_list=res;
-      this.display=true;
+      this.ipo_list=res
+      this.display=true
      // console.log(res);
     },(err)=>{console.log(err)});
    }
