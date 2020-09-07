@@ -1,11 +1,11 @@
 export class IPODetail {
     //IPODTO
-    IPODetailID:number;
-    PricePerShare:number;
-    TotalNumOfShares:number;
-    OpenDate:string;
-    OpenTime:string;
-    Remarks:string;
-    CompanyId:number;
-    StockExchangeId:number;
+    ipoDetailID:number;
+    pricePerShare:number;
+    totalNumOfShares:number;
+    openDate:string;
+    openTime:string;
+    remarks:string;
+    companyId:number;
+    stockExchangeId:number;
 }

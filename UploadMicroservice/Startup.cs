@@ -16,13 +16,14 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using StockExchangeMicroservice.Repositories;
-
+using StockMarketCharting.Models;
 using UploadMicroservice.Repositories;
 
 namespace UploadMicroservice
 {
     public class Startup
     {
+        ConString c = new ConString();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,7 +35,7 @@ namespace UploadMicroservice
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<StockMarketContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
+                options.UseSqlServer($"{c.connectionString}" + Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
             services.AddScoped<IRepository, UploadRepository>();
 

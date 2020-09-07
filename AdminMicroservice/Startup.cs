@@ -23,6 +23,7 @@ namespace AdminMicroservice
 {
     public class Startup
     {
+        ConString c = new ConString();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,7 +35,7 @@ namespace AdminMicroservice
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<StockMarketContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
+            options.UseSqlServer($"{c.connectionString}" + Configuration.GetConnectionString("SqlConnectionString")));
 
             services.AddControllers();
             services.AddScoped<IRepository<User>, UserRepository>();

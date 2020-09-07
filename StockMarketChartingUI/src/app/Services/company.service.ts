@@ -10,14 +10,13 @@ export class CompanyService {
   url:string = "https://localhost:44326/companyservice";
   constructor(private http:HttpClient) { }
 
-  public AddComp(item:Company):void
+  public AddComp(item:Company):Observable<any>
   {
     console.log("Inside CompanyService AddComp method");
     console.log(item);
     //console.log(this.http.get(this.url));
     var res = this.http.post(this.url,item);
-    console.log(res);
-    return ;
+    return res;
   }
 
   public ViewComp():Observable<Company[]>
@@ -26,11 +25,14 @@ export class CompanyService {
     return this.http.get<Company[]>(this.url);
   }
 
-  public UpdateComp(){
-
+  public UpdateComp(compId:number,item:Company):Observable<any>{
+    item.companyId = compId;
+    item.stockExchangeIds = [1];
+    console.log(item);
+    return this.http.put<any>(this.url+'/update/'+compId,item);
   }
 
-  public DeleteComp(){
-
+  public DeleteComp(id:number){
+    this.http.delete(this.url+'/'+id);
   }
 }

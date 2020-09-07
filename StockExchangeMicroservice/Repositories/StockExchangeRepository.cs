@@ -82,23 +82,23 @@ namespace StockExchangeMicroservice.Repositories
                 //b.Brief = se.Brief;
                 ls.Add(b);
             }
-
             return ls;
         }
 
         public StockExchangeDto Get(object key)
         {
             var res = context.StockExchanges.Find(key);
-            //res.StockExchangeCompanies = context.StockExchangeCompanies.Where(s=> s.StockExchangeId == res.StockExchangeID).ToList();
+            res.StockExchangeCompanies = context.StockExchangeCompanies.Where(s => s.StockExchangeId == res.StockExchangeID).ToList();
             var res2 = new StockExchangeDto
             {
                 StockExchangeID = res.StockExchangeID,
-                StockExchangeName=res.StockExchangeName,
+                StockExchangeName = res.StockExchangeName,
                 ContactAddress = res.ContactAddress,
                 Brief = res.Brief,
                 Remarks = res.Remarks
             };
             return res2;
+            //return res;
         }
 
         //public StockExchange Get1(object key)

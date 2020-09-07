@@ -1,17 +1,14 @@
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br>
 
-
-
-<br><br>
 <div class="wrapper" id="container">
     <button type="button home-button" (click)=viewStockExchange() id="button1" >View All Stock Exchanges</button>
     <button type="button contact-button" (click)=addSeData() id="button2">Add new Stock Exchange</button>
     <button type="button contact-button" (click)=viewComps() id="button2">View all Companies in this Exchange</button>    
 </div>
+
 <br><br><br>
+
+<!-- To view all Companies in a Stock Exchange -->
 
 <div class="table-responsive" *ngIf="getSid == true">
     Enter StockExchangeID to see the companies listed in this Exchange <br>
@@ -19,6 +16,7 @@
     <input type="submit" (click)=viewAllCompanies() value="Submit">
 </div>
 
+<!-- To display all the Stock Exchanges -->
 
 <div class="table-responsive" *ngIf="displaySe == true">
     <table class="table table-hover">
@@ -43,6 +41,8 @@
     </table>
 </div>
 
+<!-- Displaying all the companies for the selected stock exchange -->
+
 <div class="table-responsive" *ngIf="displayComp == true">
     <table class="table table-hover">
         <thead>
@@ -66,6 +66,8 @@
     </table>
 </div>
 
+<!-- To add a new Stock Exchange -->
+
 <div class="table-responsive" *ngIf="addSe == true">
     Enter Data for Stock Exchange to be added.
     <br>
@@ -75,7 +77,7 @@
             <td>StockExchangeName: <input type="text" [(ngModel)]="stock.stockExchangeName"> </td>
           </tr>
           <tr>
-            <td>Brief:<input type="number" [(ngModel)]="stock.brief"></td>
+            <td>Brief:<input type="text" [(ngModel)]="stock.brief"></td>
           </tr>
           <tr>
             <td>Remarks:<input type="text" [(ngModel)]="stock.remarks"></td>

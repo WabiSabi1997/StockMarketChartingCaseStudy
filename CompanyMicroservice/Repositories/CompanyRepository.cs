@@ -57,7 +57,7 @@ namespace CompanyMicroservice.Repositories
                         Company = company,
                         StockExchange = context.StockExchanges.Find(sid)
                     };
-
+                    
                     context.StockExchangeCompanies.Add(sec); 
                 }
 
@@ -144,7 +144,49 @@ namespace CompanyMicroservice.Repositories
         
         public bool Update(CompanyDto entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
+            var comp = new Company()
+            {
+                CompanyId = entity.CompanyId,
+                CompanyName = entity.CompanyName,
+                BoardOfDirectors = entity.BoardOfDirectors,
+                CEO = entity.CEO,
+                Brief = entity.Brief,
+                Turnover = entity.Turnover
+            };
+            var sector = context.Sectors.Find(entity.SectorId);
+            comp.Sector = sector;
+            context.Entry(comp).State = EntityState.Modified;
+
+            sector.Companies.Add(comp);
+            context.Sectors.Update(sector);
+
+            //ICollection<StockExchangeCompany> secList = new HashSet<StockExchangeCompany>();
+
+            //var abc = context.StockExchangeCompanies.Where(s => s.CompanyId == comp.CompanyId);
+            //foreach (var a in abc)
+            //{
+            //    context.StockExchangeCompanies.Remove(a);
+            //}
+
+            //for (int i = 0; i < entity.StockExchangeIds.Count(); i++)
+            //{
+            //    var sid = entity.StockExchangeIds[i];
+            //    var sec = new StockExchangeCompany
+            //    {
+            //        Company = comp,
+            //        StockExchange = context.StockExchanges.Find(sid)
+            //    };
+
+            //    var ab = context.StockExchangeCompanies.Find(comp.CompanyId,sid);
+            //    //if (ab == null)
+            //    //{
+            //    //    secList.Add(sec);
+            //    //}
+            //    context.StockExchangeCompanies.Add(sec);
+            //}
+            //comp.StockExchangeCompanies = secList;
+            //context.Entry(comp).State = EntityState.Modified;
+
             var x = context.SaveChanges();
             if (x > 0)
             {

@@ -46,7 +46,7 @@ namespace StockExchangeMicroservice.Controllers
 
         // POST api/<StockExchangeController>
         [HttpPost]
-        public IActionResult Post([FromForm] StockExchangeDto se)
+        public IActionResult Post(StockExchangeDto se)
         {
             if (ModelState.IsValid)
             {

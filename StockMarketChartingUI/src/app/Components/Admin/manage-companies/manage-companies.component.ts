@@ -9,8 +9,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./manage-companies.component.css']
 })
 export class ManageCompaniesComponent implements OnInit {
-
-  constructor(private service:CompanyService, private router:Router) { }
+  dispComp:boolean;
+  constructor(private service:CompanyService, private router:Router) { 
+    this.dispComp = false;
+  }
 
   ngOnInit(): void {
   }

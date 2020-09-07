@@ -39,7 +39,7 @@ export class ManageStockExchangesComponent implements OnInit {
     //get the list of stockExchanges and display
     this.service.viewSe().subscribe(res=>{
       this.selist = res;
-      if(this.selist!=null&&this.selist.length>0){
+      if(this.selist!=null && this.selist.length>0){
         this.displaySe = true;
       }
       console.log(this.selist);
@@ -59,7 +59,12 @@ export class ManageStockExchangesComponent implements OnInit {
   public addNewStockExchange():void{
     //pass a stockexchange model to the service
     this.setVars();
-    this.service.addSe(this.stock);
+    console.log("Inside SE Component",this.stock,"This has to be added");
+    this.service.addSe(this.stock).subscribe(res=>{
+      console.log(res);
+    },(err)=>{
+      console.log(err);
+    });
   }
 
   public viewAllCompanies():void{

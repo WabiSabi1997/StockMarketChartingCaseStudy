@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyService } from 'src/app/Services/company.service';
 
 @Component({
   selector: 'app-deletecompany',
@@ -7,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeletecompanyComponent implements OnInit {
   compId:number;
-  constructor() { }
+  constructor(private service:CompanyService) { }
 
   ngOnInit(): void {
   }
 
   public Delete(){
-    
+    this.service.DeleteComp(this.compId);
   }
 
 
