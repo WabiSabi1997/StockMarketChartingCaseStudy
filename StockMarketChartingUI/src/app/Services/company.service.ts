@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CompanyService {
-  url:"https://localhost:44327/api/company";
+  url:"https://localhost:44326/companyservice";
   constructor(private http:HttpClient) { }
 
   public AddComp(item:Company):void
@@ -18,5 +18,19 @@ export class CompanyService {
     var res = this.http.post(this.url,item);
     console.log(res);
     return ;
+  }
+
+  public ViewComp():Observable<Company[]>
+  {
+    console.log("Inside CompanyService ViewComp method, This is Rishabh");
+    return this.http.get<Company[]>(this.url);
+  }
+
+  public UpdateComp(){
+
+  }
+
+  public DeleteComp(){
+
   }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyService } from 'src/app/Services/company.service';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-manage-companies',
@@ -7,10 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageCompaniesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:CompanyService, private router:Router) { }
 
   ngOnInit(): void {
   }
-  
 
+  public ViewComp(){
+    return this.service.ViewComp();
+  }
+/* 
+  public AddComp(){
+    this.router.navigateByUrl('addcompany');
+  }
+
+  public UpdateComp(){
+    this.router.navigateByUrl('updatecompany');
+  }
+
+  public DeleteComp(){
+    this.router.navigateByUrl('deletecompany');
+  }
+  
+ */
 }
