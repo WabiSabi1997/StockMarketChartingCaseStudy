@@ -31,6 +31,7 @@ import { CompanyService } from './Services/company.service';
 import { UpdatecompanyComponent } from './Components/Admin/manage-companies/updatecompany/updatecompany.component';
 import { DeletecompanyComponent } from './Components/Admin/manage-companies/deletecompany/deletecompany.component';
 import { AddcompanyComponent } from './Components/Admin/manage-companies/addcompany/addcompany.component';
+import { IPOService } from './Services/ipo.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,7 @@ import { AddcompanyComponent } from './Components/Admin/manage-companies/addcomp
     AppRoutingModule,
     FormsModule 
   ],
-  providers: [ SignupService, AuthService, CompanyService,IPOService
+  providers: [ SignupService, AuthService, CompanyService, IPOService
      /*{ 
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
