@@ -8,13 +8,13 @@ import { StockExchange } from 'src/app/Models/stock-exchange';
 })
 export class StockexchangeService {
   url:string = "https://localhost:44326/stockexchangeservice";
-  seId:number;
 
   constructor(private http:HttpClient) {
     // this.se = new StockExchange();
   }
 
   public viewSe():Observable<any>{
+    console.log("Inside stockexchange service view se");
     return this.http.get<any>(this.url);
   }
 
@@ -22,8 +22,8 @@ export class StockexchangeService {
     return this.http.post(this.url,stock);
   }
 
-  public viewAllComp():Observable<any>{
-    return this.http.get<any>(this.url+'/'+"getcompanies/"+this.seId);
+  public viewAllComp(Sid):Observable<any>{
+    return this.http.get<any>(this.url+'/'+"getcompanies/"+Sid);
   }
   
 }

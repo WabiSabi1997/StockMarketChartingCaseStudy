@@ -12,21 +12,30 @@ export class ManageStockExchangesComponent implements OnInit {
   stock:StockExchange;
   selist:StockExchange[];
   complist:Company[];
+  Sid:number;
+
   displaySe:boolean;
   displayComp:boolean;
   addSe:boolean;
+  getSid:boolean;
 
   constructor(private service:StockexchangeService) { 
-    this.displaySe = false;
-    this.displayComp = false;
-    this.addSe = false;
+    this.setVars();
     this.stock = new StockExchange;
   }
 
   ngOnInit(): void {
   }
 
+  public setVars():void{
+    this.displayComp = false;
+    this.displaySe = false;
+    this.addSe = false;
+    this.getSid = false;
+  }
+
   public viewStockExchange():void{
+    this.setVars();
     //get the list of stockExchanges and display
     this.service.viewSe().subscribe(res=>{
       this.selist = res;
@@ -38,16 +47,24 @@ export class ManageStockExchangesComponent implements OnInit {
   }
 
   public addSeData(){
+    this.setVars();
     this.addSe = true;
+  }
+
+  public viewComps(){
+    this.setVars();
+    this.getSid = true;
   }
 
   public addNewStockExchange():void{
     //pass a stockexchange model to the service
+    this.setVars();
     this.service.addSe(this.stock);
   }
 
   public viewAllCompanies():void{
-    this.service.viewAllComp().subscribe(res=>{
+    this.setVars();
+    this.service.viewAllComp(this.Sid).subscribe(res=>{
       this.complist = res;
       if(this.complist!=null&&this.complist.length>0){
         this.displayComp= true;
