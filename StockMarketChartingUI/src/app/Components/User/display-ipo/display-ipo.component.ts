@@ -7,8 +7,9 @@ import { IPODetail } from 'src/app/Models/ipodetail';
   styleUrls: ['./display-ipo.component.css']
 })
 export class DisplayIPOComponent implements OnInit {
-item:IPODetail[]
+list:IPODetail[]
   constructor(private service: IPOService) {
+    
    // this.item=new IPODetail[]; not sure how to initialise
    }
 
@@ -19,6 +20,8 @@ item:IPODetail[]
   { console.log("In display IPOs")
     this.service.viewIPO().subscribe(res => {
       console.log(res)
+      this.list=res;
+      console.log(res);
     },(err)=>{console.log(err)});
   }
 

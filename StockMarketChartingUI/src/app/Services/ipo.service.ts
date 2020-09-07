@@ -15,6 +15,7 @@ export class IPOService {
     {
       console.log("Inside  method view IPO");
       var res=this.http.get<IPODetail[]>(this.url)
+     // console.log(res)
       return res;
     }
 
