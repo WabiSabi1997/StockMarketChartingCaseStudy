@@ -21,9 +21,11 @@ export class IPOService {
 
     public viewIPObyId():void{}
 
-    public updateIPO(id:number,item:IPODetail):void
+    public updateIPO(id:number,item:IPODetail):Observable<any>
     {
-      
+      item.ipoDetailID = id;
+      console.log(item);
+      return this.http.put<any>(this.url+'/update/'+id,item);
     }
 
   

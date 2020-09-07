@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IPODetail } from 'src/app/Models/ipodetail';
 import { IPOService } from 'src/app/Services/ipo.service';
 
+
 @Component({
   selector: 'app-update-ipodetails',
   templateUrl: './update-ipodetails.component.html',
@@ -18,7 +19,11 @@ export class UpdateIPODetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public Update():void{
-    this.service.updateIPO(this.ipoId,this.item);
+  public Update(){
+    this.service.updateIPO(this.ipoId,this.item).subscribe(res=>{
+      console.log(res);
+    },(err)=>{
+      console.log(err);
+    });
   }
 }

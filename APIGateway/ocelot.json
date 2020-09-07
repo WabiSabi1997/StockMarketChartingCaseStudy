@@ -106,7 +106,19 @@
                 }
             ],
             "UpstreamPathTemplate": "/ipodetails",
-            "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+            "UpstreamHttpMethod": [ "Get", "Post" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/ipodetails/update/{id}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44327
+                }
+            ],
+            "UpstreamPathTemplate": "/ipodetails/update/{id}",
+            "UpstreamHttpMethod": [ "Put" ]
         },
         {
             "DownstreamPathTemplate": "/api/sector",

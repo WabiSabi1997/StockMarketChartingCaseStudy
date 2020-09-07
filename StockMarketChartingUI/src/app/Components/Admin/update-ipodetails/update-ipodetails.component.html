@@ -7,22 +7,22 @@ Enter new info for this IPO  <br>
 <table class="table table-bordered table-hover">
     <tbody>
       <tr>
-        <td>IPODetailID: <input type="text" [(ngModel)]="item.ipoDetailID"> </td>
+        <td>IPODetailID: <input type="number" [(ngModel)]="item.ipoDetailID"> </td>
       </tr>
       <tr>
         <td>Price Per Share:<input type="number" [(ngModel)]="item.pricePerShare"></td>
       </tr>
       <tr>
-        <td>Number Of Shares:<input type="text" [(ngModel)]="item.totalNumOfShares"></td>
+        <td>Number Of Shares:<input type="number" [(ngModel)]="item.totalNumOfShares"></td>
       </tr>
       <tr>
-        <td>Opening Date: <input type="text" [(ngModel)]="item.openDate"></td>
+        <td>Opening Date: <input type="string" [(ngModel)]="item.openDate"></td>
       </tr>
       <tr>
-        <td>Opening Time:<input type="text" [(ngModel)]="item.openTime"></td>
+        <td>Opening Time:<input type="string" [(ngModel)]="item.openTime"></td>
       </tr>
       <tr>
-        <td>Remarks:<input type="number" [(ngModel)]="item.remarks"></td>
+        <td>Remarks:<input type="text" [(ngModel)]="item.remarks"></td>
       </tr>
       <tr>
         <td>CompanyID:<input type="number" [(ngModel)]="item.companyId"></td>
