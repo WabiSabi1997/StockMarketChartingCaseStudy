@@ -1,1 +1,41 @@
-<p>compare-companies works!</p>
+<br>
+<br>
+<br>
+<legend class="display-4 py-2 text-truncate">Comparison Chart</legend>
+  
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><label for="Company">Select Company:  </label>
+                <input type="text" list="companies" id="Company" [(ngModel)]="id" name="compare">
+                <datalist id="companies">
+                <option *ngFor="let item of comp_list" [value]="item.companyId"  >{{item.companyName}}</option>
+                </datalist>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="StockExchange">Select Stock Exchange: </label>
+                <input type="text" list="stockexchanges" id="StockExchange" name="compare">
+                 <datalist id="stockexchanges" >
+                 <option *ngFor="let item of se_list" [value]="item.stockExchangeID" >{{item.stockExchangeName}}</option>
+                 </datalist>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="FromDate">From date:</label>    
+                <input type="date" class="form-control" [(ngModel)]="from" id="FromDate" name="compare">
+                <label for="ToDate">To date:</label>    
+                <input type="date" class="form-control" [(ngModel)]="to" id="ToDate" name="compare">
+                <label for="FromDate">Periodicity</label>    
+                <input type="number" class="form-control" id="Periodicity" name="compare">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" (click)=StockPrices() class="btn btn-primary center">Compare</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

@@ -1,5 +1,4 @@
 export class IPODetail {
-    //IPODTO
     ipoDetailID:number;
     pricePerShare:number;
     totalNumOfShares:number;

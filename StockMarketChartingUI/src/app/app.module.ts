@@ -60,7 +60,7 @@ import { IPOService } from './Services/ipo.service';
     AppRoutingModule,
     FormsModule 
   ],
-  providers: [ SignupService, AuthService, CompanyService, IPOService
+  providers: [ SignupService, AuthService, CompanyService,//IPOService
      /*{ 
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

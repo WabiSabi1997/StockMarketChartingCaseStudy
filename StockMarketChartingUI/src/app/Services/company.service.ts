@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient } from '@angular/common/http';
 import { Company } from '../Models/company';
 import { Observable } from 'rxjs';
-
+import { StockPrice } from '../Models/stock-price';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +22,7 @@ export class CompanyService {
   public ViewComp():Observable<Company[]>
   {
     console.log("Inside CompanyService ViewComp method, This is Rishabh");
-    return this.http.get<Company[]>(this.url);
+    return this.http.get<Company[]>(this.url)
   }
 
   public UpdateComp(compId:number,item:Company):Observable<any>{
@@ -34,5 +34,12 @@ export class CompanyService {
 
   public DeleteComp(id:number):Observable<any>{
     return this.http.delete<any>(this.url+'/delete/'+id);
+  }
+
+  public getStockPrices(id:number,from:Date,to:Date):Observable<any>
+  {
+    console.log("Inside CompanyService getStockPrices method");
+    var res=this.http.get<any>(this.url+"/getstockprice/"+id+"/"+from+"/"+to);
+    return res;
   }
 }
