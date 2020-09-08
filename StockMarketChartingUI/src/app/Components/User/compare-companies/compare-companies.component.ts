@@ -18,6 +18,7 @@ export class CompareCompaniesComponent implements OnInit {
   id:number;
   from:Date;
   to:Date;
+  display:boolean = false;
   constructor(private cservice: CompanyService , private seservice: StockexchangeService,private http: HttpClient) 
   {
     this.cservice.ViewComp().subscribe(res=> 

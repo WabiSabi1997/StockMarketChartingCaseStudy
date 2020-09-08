@@ -24,7 +24,7 @@ namespace CompanyMicroservice.Controllers
         }
         // GET: api/<IPODetailsController>
         [HttpGet]
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "1,2")]
         public IEnumerable<IPODetailsDto> Get() 
         {
             var res = repository.Get();
@@ -33,7 +33,7 @@ namespace CompanyMicroservice.Controllers
 
         // GET api/<IPODetailsController>/5
         [HttpGet("{id}")]
-        //[Authorize(Roles ="Admin,User")]
+        [Authorize(Roles ="1,2")]
         public Object Get(int id) //to get IPO details of a company
         {
             var res = repository.Get(id); 
@@ -42,7 +42,7 @@ namespace CompanyMicroservice.Controllers
 
         // POST api/<IPODetailsController>
         [HttpPost]
-        //[Authorize(Roles ="Admin")]
+        [Authorize(Roles ="1")]
         public void Post(IPODetailsDto IPODetail) //to add IPO Details of a company
         {
             var x = repository.Add(IPODetail);
@@ -50,7 +50,7 @@ namespace CompanyMicroservice.Controllers
 
         // PUT api/<IPODetailsController>/5
         [HttpPut("update/{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "1")]
         public void Put(int id, IPODetailsDto IPODetail) //to update
         {
            // check if the IPO exists and only then update -> do this via IPORepository

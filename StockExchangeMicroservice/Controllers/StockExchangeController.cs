@@ -14,7 +14,6 @@ namespace StockExchangeMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "Admin")]
     public class StockExchangeController : ControllerBase
     {
         private IRepository<StockExchangeDto> repository;
@@ -26,6 +25,7 @@ namespace StockExchangeMicroservice.Controllers
 
         // GET: api/<StockExchangeController>
         [HttpGet]
+        [Authorize(Roles ="1,2")]
         public IEnumerable<StockExchangeDto> Get() // to get a list of StockExchanges
         {
             return repository.Get();
@@ -33,6 +33,7 @@ namespace StockExchangeMicroservice.Controllers
 
         // GET api/<StockExchangeController>/5
         [HttpGet("getcompanies/{id}")]
+        [Authorize(Roles = "1")]
         public IActionResult Get(int id) // get companies list, given a StockExchange ID.
         {
             var res = repository.Get(id);
@@ -46,6 +47,7 @@ namespace StockExchangeMicroservice.Controllers
 
         // POST api/<StockExchangeController>
         [HttpPost]
+        [Authorize(Roles = "1")]
         public IActionResult Post(StockExchangeDto se)
         {
             if (ModelState.IsValid)

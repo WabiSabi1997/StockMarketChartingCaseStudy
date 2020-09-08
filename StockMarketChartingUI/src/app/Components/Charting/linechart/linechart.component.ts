@@ -11,10 +11,10 @@ import { Color, Label } from 'ng2-charts';
 export class LineChartComponent {
 
   lineChartData: ChartDataSets[] = [
-    { data: JSON.parse(localStorage.getItem('y_axis')), label: 'Company 1' },
+    { data:JSON.parse(localStorage.getItem('y_list')), label: 'Company 1' },
   ];
 
-  lineChartLabels: Label[] = JSON.parse(localStorage.getItem('x_axis'));
+  lineChartLabels:Label[]=JSON.parse(localStorage.getItem('x_list'));
 
   lineChartOptions = {
     responsive: true,

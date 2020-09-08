@@ -20,7 +20,7 @@ namespace UploadMicroservice.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "1")]
     public class TestController : ControllerBase
     {
         private IRepository repository;

@@ -25,7 +25,7 @@ namespace CompanyMicroservice.Controllers
         }
         // GET: api/<CompanyController>
         [HttpGet]
-        //[Authorize(Roles = "1,2")]
+        [Authorize(Roles = "1,2")]
         public IEnumerable<CompanyDto> Get()
         {
             var res = repository.Get();
@@ -34,7 +34,7 @@ namespace CompanyMicroservice.Controllers
 
         // GET api/<CompanyController>/5
         [HttpGet("getcompaniesbyname")]
-        //[Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "1,2")]
         public IActionResult Get(string query)
         {
             var res = repository.GetbyName(query);
@@ -46,7 +46,7 @@ namespace CompanyMicroservice.Controllers
         }
 
         [HttpGet("getcompanydetails/{id}")]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "1,2")]
         public IActionResult Get(object id)
         {
             var res = repository.Get(id);
@@ -58,7 +58,7 @@ namespace CompanyMicroservice.Controllers
         }
 
         [HttpGet("getstockprice/{id}/{from}/{to}")]
-        //[Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "1,2")]
         public Object GetStockPrice(int id, DateTime from, DateTime to)
         {
             var res = repository.GetStockPrice(id, from, to);
@@ -67,7 +67,7 @@ namespace CompanyMicroservice.Controllers
         
         // POST api/<CompanyController>
         [HttpPost]
-        //[Authorize(Roles = "1")]
+        [Authorize(Roles = "1")]
         public void Post(CompanyDto companyDto)
         {
             var x = repository.Add(companyDto);
@@ -75,7 +75,7 @@ namespace CompanyMicroservice.Controllers
 
         // PUT api/<CompanyController>/5
         [HttpPut("update/{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "1")]
         public void Put(int id, CompanyDto companyDto)
         {
             //Find if the company exists in the database
@@ -87,7 +87,7 @@ namespace CompanyMicroservice.Controllers
 
         // DELETE api/<CompanyController>/5
         [HttpDelete("delete/{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "1")]
         public void Delete(int id)
         {
             var res = repository.Get(id);

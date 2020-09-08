@@ -24,14 +24,14 @@ namespace SectorMicroservice.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "1")]
         public IEnumerable<Sector> Get() // Get all the sectors, just an accesory function. 
         {
             return repository.Get();
         }
 
         [HttpGet("getcompanies/{id}")]
-        //[Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "1,2")]
         public IActionResult Get(int id) // Get all the companies in a particular Sector
         {
             var res = repository.Get(id);
@@ -45,7 +45,7 @@ namespace SectorMicroservice.Controllers
 
         //Get price list for a particular sector for a date-range
         [HttpGet("getprice/{id}/{from}/{to}")]
-        //[Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "1,2")]
         public Object GetSectorPrice(int id, DateTime from, DateTime to)
         {
             var res = repository.GetSectorPrice(id, from, to);
@@ -54,7 +54,7 @@ namespace SectorMicroservice.Controllers
 
         // Adding Sectors
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "1")]
         public IActionResult Post([FromForm] Sector sector)
         {
             var x = repository.Add(sector);
