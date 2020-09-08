@@ -43,15 +43,15 @@ namespace CompanyMicroservice.Controllers
         // POST api/<IPODetailsController>
         [HttpPost]
         //[Authorize(Roles ="Admin")]
-        public void Post([FromForm] IPODetailsDto IPODetail) //to add IPO Details of a company
+        public void Post(IPODetailsDto IPODetail) //to add IPO Details of a company
         {
             var x = repository.Add(IPODetail);
         }
 
         // PUT api/<IPODetailsController>/5
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         //[Authorize(Roles = "Admin")]
-        public void Put(int id, [FromForm] IPODetailsDto IPODetail) //to update
+        public void Put(int id, IPODetailsDto IPODetail) //to update
         {
            // check if the IPO exists and only then update -> do this via IPORepository
             repository.Update(IPODetail); 

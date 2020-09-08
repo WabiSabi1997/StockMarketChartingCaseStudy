@@ -86,7 +86,7 @@ namespace CompanyMicroservice.Controllers
         }
 
         // DELETE api/<CompanyController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         //[Authorize(Roles = "Admin")]
         public void Delete(int id)
         {

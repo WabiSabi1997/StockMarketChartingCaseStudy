@@ -89,7 +89,21 @@ namespace CompanyMicroservice.Repositories
 
         public bool Update(IPODetailsDto entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
+            IPODetail iPODetail = new IPODetail()
+            {
+                IPODetailID = entity.IPODetailID,
+                CompanyId = entity.CompanyId,
+                StockExchangeId = entity.StockExchangeId,
+                OpenDate = entity.OpenDate,
+                OpenTime = entity.OpenTime,
+                TotalNumOfShares = entity.TotalNumOfShares,
+                PricePerShare = entity.PricePerShare,
+                Remarks = entity.Remarks,
+            };
+            iPODetail.Company = context.Companies.Find(entity.CompanyId);
+            iPODetail.StockExchange = context.StockExchanges.Find(entity.StockExchangeId);
+
+            context.Entry(iPODetail).State = EntityState.Modified;
             var x = context.SaveChanges();
             if (x > 0)
             {
