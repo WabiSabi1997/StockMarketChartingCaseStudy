@@ -12,11 +12,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using StockMarketCharting.Models;
 
 namespace DataCreationMicroservice
 {
     public class Startup
     {
+        ConString c = new ConString();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,7 +30,7 @@ namespace DataCreationMicroservice
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<StockMarketContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
+            options.UseSqlServer($"{c.connectionString}" + Configuration.GetConnectionString("SqlConnectionString")));
 
             services.AddControllers();
         }

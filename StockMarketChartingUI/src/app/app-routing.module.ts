@@ -18,6 +18,7 @@ import { SignInComponent } from './Components/Account/sign-in/sign-in.component'
 import { UpdatecompanyComponent } from './Components/Admin/manage-companies/updatecompany/updatecompany.component';
 import { AddcompanyComponent } from './Components/Admin/manage-companies/addcompany/addcompany.component';
 import { DeletecompanyComponent } from './Components/Admin/manage-companies/deletecompany/deletecompany.component';
+import { LineChartComponent } from './Components/Charting/linechart/linechart.component';
 
 const routes: Routes = [
 {path:'', redirectTo:'account', pathMatch:'full'},
@@ -48,6 +49,7 @@ const routes: Routes = [
     // {path:'addCompany',component:AddCompanyComponent}
   ]},
   {path:'user',component:UserLandingPageComponent, children: [
+    {path:'linechart',component:LineChartComponent},
     {path:'displayIPO', component:DisplayIPOComponent},
     {path:'compareCompanies',component:CompareCompaniesComponent},
     {path:'compareSectors',component:CompareSectorsComponent}

@@ -32,6 +32,11 @@ import { UpdatecompanyComponent } from './Components/Admin/manage-companies/upda
 import { DeletecompanyComponent } from './Components/Admin/manage-companies/deletecompany/deletecompany.component';
 import { AddcompanyComponent } from './Components/Admin/manage-companies/addcompany/addcompany.component';
 import { IPOService } from './Services/ipo.service';
+import { PiechartComponent } from './Components/Charting/piechart/piechart.component';
+import { LineChartComponent } from './Components/Charting/linechart/linechart.component';
+import { BarchartComponent } from './Components/Charting/barchart/barchart.component';
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,13 +57,17 @@ import { IPOService } from './Services/ipo.service';
     LandingPageComponent,
     UpdatecompanyComponent,
     DeletecompanyComponent,
-    AddcompanyComponent
+    AddcompanyComponent,
+    BarchartComponent,
+    PiechartComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule 
+    FormsModule,
+    ChartsModule 
   ],
   providers: [ SignupService, AuthService, CompanyService,//IPOService
      /*{ 
