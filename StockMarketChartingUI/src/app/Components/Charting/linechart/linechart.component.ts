@@ -11,7 +11,7 @@ import { Color, Label } from 'ng2-charts';
 export class LineChartComponent {
 public xlist:string[]=[];
 public ylist:number[]=[];
-    constructor()
+  /*  constructor()
 {
       this.xlist=JSON.parse(localStorage.getItem('x_axis'));
       console.log(this.xlist);
@@ -32,6 +32,7 @@ public ylist:number[]=[];
       console.log("Y axis labels",this.lineChartData);
       console.log("X axis data",this.lineChartLabels);
     }
+    */
 
    
 
