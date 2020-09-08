@@ -7,8 +7,11 @@ import {UploadExcelService} from 'src/app/Services/upload-excel.service'
 })
 export class UploadExcelComponent implements OnInit {
   fileToUpload: File = null;
+  display:boolean=false;
+  uploadSummary:[number,number,number];
+  companiesNO:number;
   constructor(private service:UploadExcelService) { }
-
+  
   ngOnInit(): void {
   }
   //the property below is to add multiple files together, will have to use for
@@ -31,6 +34,8 @@ UploadStockPriceExcel()
 
     this.service.postFile(formData).subscribe(res=>{
       console.log(res);
+     // this.uploadSummary=res;
+     // this.companiesNO=res[0]
       alert("File uploaded");
       window.location.reload();
     })
