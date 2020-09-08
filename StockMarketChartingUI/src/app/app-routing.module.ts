@@ -19,7 +19,8 @@ import { UpdatecompanyComponent } from './Components/Admin/manage-companies/upda
 import { AddcompanyComponent } from './Components/Admin/manage-companies/addcompany/addcompany.component';
 import { DeletecompanyComponent } from './Components/Admin/manage-companies/deletecompany/deletecompany.component';
 import { LineChartComponent } from './Components/Charting/linechart/linechart.component';
-
+import { BarchartComponent } from './Components/Charting/barchart/barchart.component';
+import { PiechartComponent } from './Components/Charting/piechart/piechart.component';
 const routes: Routes = [
 {path:'', redirectTo:'account', pathMatch:'full'},
 /*  ,
@@ -49,9 +50,12 @@ const routes: Routes = [
     // {path:'addCompany',component:AddCompanyComponent}
   ]},
   {path:'user',component:UserLandingPageComponent, children: [
-    {path:'linechart',component:LineChartComponent},
     {path:'displayIPO', component:DisplayIPOComponent},
-    {path:'compareCompanies',component:CompareCompaniesComponent},
+    {path:'compareCompanies',component:CompareCompaniesComponent, children: [
+      {path:'linechart',component:LineChartComponent},
+      {path:'barchart',component:BarchartComponent},
+      {path:'piechart',component:PiechartComponent}
+    ]},
     {path:'compareSectors',component:CompareSectorsComponent}
   ]}
   //{path:'',redirectTo:'signin',pathMatch:'full'}  
