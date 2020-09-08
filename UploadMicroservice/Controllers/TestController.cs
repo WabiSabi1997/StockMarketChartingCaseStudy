@@ -51,7 +51,7 @@ namespace UploadMicroservice.Controllers
                     {
                         file.CopyTo(stream);
                     }
-                    repository.UploadExcel(fullPath);
+                   repository.UploadExcel(fullPath);
                     return Ok();
                 }
                 else
