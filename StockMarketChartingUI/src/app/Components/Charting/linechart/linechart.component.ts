@@ -9,26 +9,52 @@ import { Color, Label } from 'ng2-charts';
 })
 
 export class LineChartComponent {
+public xlist:string[]=[];
+public ylist:number[]=[];
+  /*  constructor()
+{
+      this.xlist=JSON.parse(localStorage.getItem('x_axis'));
+      console.log(this.xlist);
+      this.ylist=JSON.parse(localStorage.getItem('y_axis'));
+      console.log(this.ylist);
 
-  lineChartData: ChartDataSets[] = [
-    { data:JSON.parse(localStorage.getItem('y_list')), label: 'Company 1' },
-  ];
-
-  lineChartLabels:Label[]=JSON.parse(localStorage.getItem('x_list'));
-
-  lineChartOptions = {
-    responsive: true,
-  };
-
-  lineChartColors: Color[] = [
+}
+    buttonclick()
     {
-      borderColor: 'black',
-      backgroundColor: 'rgba(255,255,0,0.28)',
-    },
-  ];
+     // console.log("LOCAL STORAGE",localStorage);
+      //console.log("X",localStorage.getItem('x_axis'))
+      //console.log("X",localStorage.getItem('y_axis'))
+      this.xlist=JSON.parse(localStorage.getItem('x_axis'));
+      this.ylist=JSON.parse(localStorage.getItem('y_axis'));
+      console.log(this.xlist);
+      console.log(this.ylist);
+    
+      console.log("Y axis labels",this.lineChartData);
+      console.log("X axis data",this.lineChartLabels);
+    }
+    */
 
-  lineChartLegend = true;
-  lineChartPlugins = [];
-  lineChartType = 'line';
+   
+
+    lineChartData: ChartDataSets[] = [
+      { data:JSON.parse(localStorage.getItem('y_axis')), label: 'Company 1' } // JSON.parse(localStorage.getItem('y_axis')), label: 'Company 1' },
+    ];
+  
+    lineChartLabels: Label[] =JSON.parse(localStorage.getItem('x_axis')); //JSON.parse(localStorage.getItem('x_axis'));
+  
+    lineChartOptions = {
+      responsive: true,
+    };
+  
+    lineChartColors: Color[] = [
+      {
+        borderColor: 'black',
+        backgroundColor: 'rgba(255,255,0,0.28)',
+      },
+    ];
+  
+    lineChartLegend = true;
+    lineChartPlugins = [];
+    lineChartType = 'line';
   
 }

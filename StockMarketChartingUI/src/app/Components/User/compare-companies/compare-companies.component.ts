@@ -18,7 +18,7 @@ export class CompareCompaniesComponent implements OnInit {
   id:number;
   from:Date;
   to:Date;
-  display:boolean = false;
+  display:boolean=false;
   constructor(private cservice: CompanyService , private seservice: StockexchangeService,private http: HttpClient) 
   {
     this.cservice.ViewComp().subscribe(res=> 
@@ -50,14 +50,14 @@ export class CompareCompaniesComponent implements OnInit {
         console.log(this.x_list);
         console.log(this.y_list);
         
-        localStorage.setItem('x_list',JSON.stringify(this.x_list));
-        localStorage.setItem('y_list',JSON.stringify(this.y_list));
+        localStorage.setItem('x_axis',JSON.stringify(this.x_list));
+        localStorage.setItem('y_axis',JSON.stringify(this.y_list));
 
       },(err)=> {console.log(err)}
       
       );
  
-
+      this.display=true;
   }
  
 
