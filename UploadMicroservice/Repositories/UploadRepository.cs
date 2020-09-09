@@ -23,6 +23,7 @@ namespace UploadMicroservice.Repositories
         }
         public Tuple<int,string,string> UploadExcel(string filePath)
         {
+
             var list = new List<StockPrice>();
             FileInfo info = new FileInfo(filePath);
             string fileExtension = info.Extension;
@@ -96,9 +97,12 @@ namespace UploadMicroservice.Repositories
                                 //Date = r[3].ToString().Trim(),
                                 Time = r[4].ToString().Trim()
                              };
-                            context.Add(sp);
-                            var x= context.SaveChanges();
-                            Console.WriteLine(x);
+                            sp.Company = context.Companies.Find(sp.CompanyId);
+                            sp.StockExchange = context.StockExchanges.Find(sp.StockExchangeId);
+                            list.Add(sp);
+                      //      context.Add(sp);
+                        //    var x= context.SaveChanges();
+                          //  Console.WriteLine(x);
                         }
                         cName = context.Companies.Find(list.First().CompanyId).CompanyName;
                         sName = context.StockExchanges.Find(list.First().StockExchangeId).StockExchangeName;
@@ -108,6 +112,7 @@ namespace UploadMicroservice.Repositories
                         var x = context.SaveChanges();
                         Console.WriteLine(x);
                         return summary;
+                        //summary tuple returns no. of entries, company name and stock exchange name.
                     }
                 }
 

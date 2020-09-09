@@ -11,28 +11,14 @@ import { Color, Label } from 'ng2-charts';
 export class LineChartComponent {
 public xlist:string[]=[];
 public ylist:number[]=[];
-  /*  constructor()
-{
-      this.xlist=JSON.parse(localStorage.getItem('x_axis'));
-      console.log(this.xlist);
-      this.ylist=JSON.parse(localStorage.getItem('y_axis'));
-      console.log(this.ylist);
 
+ constructor()
+ {
+  if(JSON.parse(localStorage.getItem('compCount'))==2)
+  { console.log("MADE 2 COMPANIES IF");
+  this.lineChartData.push({ data: JSON.parse(localStorage.getItem('y_axis2')), label: 'Company 2' });
+ }
 }
-    buttonclick()
-    {
-     // console.log("LOCAL STORAGE",localStorage);
-      //console.log("X",localStorage.getItem('x_axis'))
-      //console.log("X",localStorage.getItem('y_axis'))
-      this.xlist=JSON.parse(localStorage.getItem('x_axis'));
-      this.ylist=JSON.parse(localStorage.getItem('y_axis'));
-      console.log(this.xlist);
-      console.log(this.ylist);
-    
-      console.log("Y axis labels",this.lineChartData);
-      console.log("X axis data",this.lineChartLabels);
-    }
-    */
 
    
 

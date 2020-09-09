@@ -36,7 +36,8 @@ UploadStockPriceExcel()
       console.log(res);
      // this.uploadSummary=res;
      // this.companiesNO=res[0]
-      alert("File uploaded");
+      alert("File uploaded. \n No of entries added: "+res.item1+"\n Company Name: "+res.item2+" in Stock Exchange: "+res.item3);
+
       window.location.reload();
     })
   }
