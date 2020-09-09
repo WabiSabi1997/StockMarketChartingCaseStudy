@@ -7,6 +7,6 @@ namespace UploadMicroservice.Repositories
 {
     public interface IRepository
     {
-        void UploadExcel(string filePath);
+        Tuple<int,string,string> UploadExcel(string filePath);
     }
 }

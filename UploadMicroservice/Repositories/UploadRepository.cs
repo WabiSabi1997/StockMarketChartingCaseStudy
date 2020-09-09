@@ -1,7 +1,6 @@
 ﻿using DataCreationMicroservice.Context;
 using Microsoft.EntityFrameworkCore;
 using StockMarketCharting.Models;
-
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,7 +21,7 @@ namespace UploadMicroservice.Repositories
         {
             this.context = dbContext;
         }
-        public void UploadExcel(string filePath)
+        public Tuple<int,string,string> UploadExcel(string filePath)
         {
             var list = new List<StockPrice>();
             FileInfo info = new FileInfo(filePath);
@@ -43,6 +42,8 @@ namespace UploadMicroservice.Repositories
             // Read data from first sheet of excel into datatable
             DataTable dt = new DataTable();
             excelConString = string.Format(excelConString, filePath);
+
+            Tuple<int, string, string> summary;
 
             using (OleDbConnection excelOledbConnection = new OleDbConnection(excelConString))
             {
@@ -65,9 +66,14 @@ namespace UploadMicroservice.Repositories
                         //Fill datatable from adapter
                         excelDataAdapter.Fill(dt);
                         excelOledbConnection.Close();
+
+                        int count = dt.Rows.Count;
+                        string cName;
+                        string sName;
+
                         foreach (DataRow r in dt.Rows)
                         {
-                           // int i = Int32.Parse(r[1].ToString().Trim());
+                            // int i = Int32.Parse(r[1].ToString().Trim());
                             //You can try single() method instead of where.
                             //StockExchangeId = context.StockExchanges.Where(s=> s.StockExchangeName == r[1].ToString().Trim())
                             //list.Add(
@@ -79,22 +85,33 @@ namespace UploadMicroservice.Repositories
                             //        Date = r[3].ToString().Trim(),
                             //        Time = r[4].ToString().Trim()
                             //    }) ;
-                            var sp=new StockPrice()
-                             {
-                                 CompanyId = int.Parse(r[0].ToString().Trim()),
-                                 StockExchangeId = int.Parse(r[1].ToString().Trim()),
-                                 CurrentPrice = Convert.ToDouble(r[2].ToString().Trim()),
-                                 Date = r[3].ToString().Trim(),
-                                 Time = r[4].ToString().Trim()
-                             };
-                            context.Add(sp);
-                            var x= context.SaveChanges();
-                            Console.WriteLine(x);
-                        }
+                            var sp = new StockPrice()
+                            {
+                                CompanyId = int.Parse(r[0].ToString().Trim()),
+                                StockExchangeId = int.Parse(r[1].ToString().Trim()),
+                                CurrentPrice = Convert.ToDouble(r[2].ToString().Trim()),
+                                Date = r[3].ToString().Trim(),
+                                Time = r[4].ToString().Trim()
+                            };
+                            sp.Company = context.Companies.Find(sp.CompanyId);
+                            sp.StockExchange = context.StockExchanges.Find(sp.StockExchangeId);
+                            list.Add(sp);
 
-                       // context.StockPrices.AddRange(list);  //insert list of rows to table
-                       // var x=context.SaveChanges();
-                      // Console.WriteLine(x);
+                            //cName = context.Companies.Find(sp.CompanyId).CompanyName;
+                            //sName = context.StockExchanges.Find(sp.StockExchangeId).StockExchangeName;
+
+                            //context.Add(sp);
+                            //var x= context.SaveChanges();
+                            //Console.WriteLine(x);
+                        }
+                        cName = context.Companies.Find(list.First().CompanyId).CompanyName;
+                        sName = context.StockExchanges.Find(list.First().StockExchangeId).StockExchangeName;
+                        summary = new Tuple<int, string, string>(count, cName, sName);
+
+                        context.StockPrices.AddRange(list);  //insert list of rows to table
+                        var x = context.SaveChanges();
+                        Console.WriteLine(x);
+                        return summary;
                     }
                 }
 
