@@ -22,7 +22,7 @@ import { LineChartComponent } from './Components/Charting/linechart/linechart.co
 import { BarchartComponent } from './Components/Charting/barchart/barchart.component';
 import { PiechartComponent } from './Components/Charting/piechart/piechart.component';
 const routes: Routes = [
-{path:'', redirectTo:'account', pathMatch:'full'},
+{path:'', redirectTo:'account/login', pathMatch:'full'},
 /*  ,
  {path:'signin',component:SignInComponent},
  
