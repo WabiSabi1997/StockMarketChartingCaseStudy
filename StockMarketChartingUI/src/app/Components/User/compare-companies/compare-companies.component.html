@@ -3,7 +3,7 @@
 <br>
 <legend class="display-4 py-2 text-truncate">Comparison Chart</legend>
   
-<table class="table table-bordered table-hover">
+<table class="table table-hover">
     <tbody>
         <tr>
             <td><label for="Company">Select Company:  </label>
@@ -33,11 +33,40 @@
         </tr>
         <tr>
             <td>
-                <button type="submit" (click)=StockPrices() class="btn btn-primary center">Compare</button>
+                <button type="submit" (click)=StockPrices() class="btn btn-primary">Show Chart</button><hr>
+            </td>
+            <td>
+                <button type="submit" (click)=addAnother() class="btn btn-primary">Add Another Company</button>
             </td>
         </tr>
     </tbody>
 </table>
+
+
+
+  <table class="table table-bordered table-hover" *ngIf="display2">
+    <tbody>
+        <tr>
+            <td><label for="Company">Select Company:  </label>
+                <input type="text" list="companies" id="Company" [(ngModel)]="id2" name="compare">
+                <datalist id="companies">
+                <option *ngFor="let item of comp_list" [value]="item.companyId"  >{{item.companyName}}</option>
+                </datalist>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="StockExchange">Select Stock Exchange: </label>
+                <input type="text" list="stockexchanges" id="StockExchange" name="compare">
+                 <datalist id="stockexchanges" >
+                 <option *ngFor="let item of se_list" [value]="item.stockExchangeID" >{{item.stockExchangeName}}</option>
+                 </datalist>
+            </td>
+        </tr>
+    </tbody>
+    <button type="submit" (click)=StockPrices2() class="btn btn-primary">Compare Charts</button><hr>
+</table>
+
+
 <br>
 <div class="container" *ngIf="display">
     <ul class="nav nav-tabs">
@@ -55,4 +84,3 @@
         <router-outlet></router-outlet>
     </div>
   </div>
-

@@ -8,8 +8,8 @@ namespace StockMarketCharting.Models
     {
         public ConString()
         {
-            connectionString = "Server=RISHABH-JAIN;";
-            //connectionString = "Server=C2WFDOTNET48\\MSSQLSERVER01;";
+            //connectionString = "Server=RISHABH-JAIN;";
+            connectionString = "Server=C2WFDOTNET48\\MSSQLSERVER01;";
         }
         public string connectionString { get; }
     }

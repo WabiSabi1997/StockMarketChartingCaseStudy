@@ -134,6 +134,7 @@ namespace CompanyMicroservice.Repositories
             List<Object> res2 = new List<Object>();
             foreach (var res1 in res)
             {
+              //  res1.Date = res1.Date.Substring(0, 11);
                 DateTime res1Date = Convert.ToDateTime(string.Concat(res1.Date, " ", res1.Time));
                 if (res1Date >= from && res1Date <= to)
                 {

@@ -67,7 +67,7 @@ namespace UploadMicroservice.Repositories
                         excelOledbConnection.Close();
                         foreach (DataRow r in dt.Rows)
                         {
-                           // int i = Int32.Parse(r[1].ToString().Trim());
+                            // int i = Int32.Parse(r[1].ToString().Trim());
                             //You can try single() method instead of where.
                             //StockExchangeId = context.StockExchanges.Where(s=> s.StockExchangeName == r[1].ToString().Trim())
                             //list.Add(
@@ -79,13 +79,16 @@ namespace UploadMicroservice.Repositories
                             //        Date = r[3].ToString().Trim(),
                             //        Time = r[4].ToString().Trim()
                             //    }) ;
+                            DateTime t = (DateTime)r[3];
                             var sp=new StockPrice()
                              {
                                  CompanyId = int.Parse(r[0].ToString().Trim()),
                                  StockExchangeId = int.Parse(r[1].ToString().Trim()),
                                  CurrentPrice = Convert.ToDouble(r[2].ToString().Trim()),
-                                 Date = r[3].ToString().Trim(),
-                                 Time = r[4].ToString().Trim()
+                                 Date = t.ToString("d").Trim(),
+
+                                //Date = r[3].ToString().Trim(),
+                                Time = r[4].ToString().Trim()
                              };
                             context.Add(sp);
                             var x= context.SaveChanges();
