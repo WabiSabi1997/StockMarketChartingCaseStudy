@@ -9,7 +9,12 @@ import { Label } from 'ng2-charts';
 })
 export class BarchartComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    if(JSON.parse(localStorage.getItem('compCount'))==2)
+    { console.log("MADE 2 COMPANIES IF");
+    this.barChartData.push({ data: JSON.parse(localStorage.getItem('y_axis2')), label: 'Company 2' });
+  }
+}
 
   ngOnInit(): void {
   }
@@ -23,8 +28,8 @@ export class BarchartComponent implements OnInit {
   barChartPlugins = [];
 
   barChartData: ChartDataSets[] = [
-    { data: JSON.parse(localStorage.getItem('y_axis')), label: 'Company 1' },
-    { data: JSON.parse(localStorage.getItem('y_axis2')), label: 'Company 2' }
+    { data: JSON.parse(localStorage.getItem('y_axis')), label: 'Company 1' }
+   // { data: JSON.parse(localStorage.getItem('y_axis2')), label: 'Company 2' }
   ];
 
 }

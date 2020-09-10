@@ -31,6 +31,7 @@ export class CompareCompaniesComponent implements OnInit {
      localStorage.removeItem('y_axis');
      localStorage.removeItem('x_axis2');
      localStorage.removeItem('y_axis2');
+     localStorage.removeItem('compCount');
     this.cservice.ViewComp().subscribe(res=> 
      {this.comp_list=res
       console.log(res)
@@ -75,6 +76,7 @@ export class CompareCompaniesComponent implements OnInit {
   { 
     this.addingAnother=true;
     this.StockPrices();
+    this.display=false;
     this.display2=true;
     /* window.location.reload();
     alert("Add details of the other company"); */
@@ -84,7 +86,7 @@ export class CompareCompaniesComponent implements OnInit {
   {
     console.log("Inside stock price call with",this.id2,this.to,this.from);
     //from to date and periodicity for second company would remain the same
-    this.cservice.getStockPrices(this.id,this.from,this.to).subscribe(res=>
+    this.cservice.getStockPrices(this.id2,this.from,this.to).subscribe(res=>
       { console.log(res)
         let i = 0;
         for(let item of res){
@@ -98,6 +100,7 @@ export class CompareCompaniesComponent implements OnInit {
         localStorage.setItem('x_axis2',JSON.stringify(this.x_list2));
         
         localStorage.setItem('y_axis2',JSON.stringify(this.y_list2));
+        localStorage.setItem('compCount',JSON.stringify(2));
 
       },(err)=> {console.log(err)}
       
