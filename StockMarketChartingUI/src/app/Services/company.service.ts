@@ -7,7 +7,7 @@ import { StockPrice } from '../Models/stock-price';
   providedIn: 'root'
 })
 export class CompanyService {
-  url:string = "https://localhost:44326/companyservice";
+  url:string = "http://localhost:8000/companyservice";
   constructor(private http:HttpClient) { }
 
   public AddComp(item:Company):Observable<any>

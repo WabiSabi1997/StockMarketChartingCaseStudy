@@ -7,7 +7,7 @@ import { User } from '../Models/user';
 })
 export class SignupService {
 
-  path:string="https://localhost:44326/authservice"
+  path:string="http://localhost:8000/authservice"
   constructor(private http:HttpClient){}
 
   public AddUser(item:User)
