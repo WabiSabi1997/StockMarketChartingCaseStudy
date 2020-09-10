@@ -7,7 +7,7 @@ import { StockExchange } from 'src/app/Models/stock-exchange';
   providedIn: 'root'
 })
 export class StockexchangeService {
-  url:string = "https://localhost:44326/stockexchangeservice";
+  url:string = "http://localhost:8000/stockexchangeservice";
 
   constructor(private http:HttpClient) {
     // this.se = new StockExchange();

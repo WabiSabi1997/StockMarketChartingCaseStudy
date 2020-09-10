@@ -8,7 +8,7 @@ export class UploadExcelService {
 
   constructor(private service:HttpClient) { }
 
-  url:string='https://localhost:44326/uploadservice';
+  url:string='http://localhost:8000/uploadservice';
     postFile(fileInput: FormData):Observable<any>
     {
       return this.service.post<any>(this.url+"/upload",fileInput);

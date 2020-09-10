@@ -14,11 +14,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/auth/{username}/{password}",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44337
+                    "Port": 8001
                 }
             ],
             "UpstreamPathTemplate": "/authservice/{username}/{password}",
@@ -26,11 +26,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/company/",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44327
+                    "Port": 8002
                 }
             ],
             "UpstreamPathTemplate": "/companyservice/",
@@ -38,11 +38,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/company/update/{id}",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44327
+                    "Port": 8002
                 }
             ],
             "UpstreamPathTemplate": "/companyservice/update/{id}",
@@ -50,11 +50,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/company/delete/{id}",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44327
+                    "Port": 8002
                 }
             ],
             "UpstreamPathTemplate": "/companyservice/delete/{id}",
@@ -62,11 +62,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/company/getcompaniesbyname",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44327
+                    "Port": 8002
                 }
             ],
             "UpstreamPathTemplate": "/companyservice/getcompaniesbyname",
@@ -74,11 +74,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/company/getcompanydetails",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44327
+                    "Port": 8002
                 }
             ],
             "UpstreamPathTemplate": "/companyservice/getcompanydetails",
@@ -86,11 +86,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/company/getstockprice/{id}/{from}/{to}",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44327
+                    "Port": 8002
                 }
             ],
             "UpstreamPathTemplate": "/companyservice/getstockprice/{id}/{from}/{to}",
@@ -98,11 +98,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/ipodetails",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44327
+                    "Port": 8002
                 }
             ],
             "UpstreamPathTemplate": "/ipodetails",
@@ -110,11 +110,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/ipodetails/update/{id}",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44327
+                    "Port": 8002
                 }
             ],
             "UpstreamPathTemplate": "/ipodetails/update/{id}",
@@ -122,11 +122,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/sector",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44382
+                    "Port": 8003
                 }
             ],
             "UpstreamPathTemplate": "/sectorservice",
@@ -134,11 +134,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/sector/getcompanies",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44382
+                    "Port": 8003
                 }
             ],
             "UpstreamPathTemplate": "/sectorservice/getcompanies",
@@ -146,11 +146,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/sector/getprice/{id}/{from}/{to}",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44382
+                    "Port": 8003
                 }
             ],
             "UpstreamPathTemplate": "/sectorservice/getprice/{id}/{from}/{to}",
@@ -158,11 +158,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/stockexchange",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44346
+                    "Port": 8004
                 }
             ],
             "UpstreamPathTemplate": "/stockexchangeservice",
@@ -170,11 +170,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/stockexchange/getcompanies/{id}",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44346
+                    "Port": 8004
                 }
             ],
             "UpstreamPathTemplate": "/stockexchangeservice/getcompanies/{id}",
@@ -182,11 +182,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/test/upload",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 44315
+                    "Port": 8005
                 }
             ],
             "UpstreamPathTemplate": "/uploadservice/upload",
@@ -194,6 +194,6 @@
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "https://localhost:44326"
+        "BaseUrl": "http://localhost:8000"
     }
 }

@@ -8,7 +8,7 @@ import { isNgTemplate } from '@angular/compiler';
   providedIn: 'root'
 })
 export class AuthService {
-url:string='https://localhost:44326/authservice/';
+url:string='http://localhost:8000/authservice/';
 
 item:Token;
 
