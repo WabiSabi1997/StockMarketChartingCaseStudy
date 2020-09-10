@@ -2,12 +2,29 @@
 
 <div class="wrapper" id="container">
     <button type="button home-button" (click)="ViewComp()" id="button1" > View all companies</button>
-    <button type="button contact-button" id="button2"><a routerLink="AddComp">Add a new Company</a></button>
-    <button type="button contact-button" id="button3"><a routerLink="UpdateComp">Update a Company</a></button>
-    <button type="button contact-button" id="button4"><a routerLink="DeleteComp">Delete a Company</a></button>
+    <button type="button contact-button" (click)="dispOff()" id="button2"><a routerLink="AddComp">Add a new Company</a></button>
+    <button type="button contact-button" (click)="dispOff()" id="button3"><a routerLink="UpdateComp">Update a Company</a></button>
+    <button type="button contact-button" (click)="dispOff()" id="button4"><a routerLink="DeleteComp">Delete a Company</a></button>
 </div>
 
 <br><br><br><br>
-
+<table class="table table-bordered table-hover" *ngIf="dispComp">
+  <thead>
+    <tr>
+      <th>ID</th><th>Price per share</th><th>Total no. of shares</th><th>Open Date</th>
+      <th>Open Time</th><th>Remarks</th><th>CompanyId</th><th>StockExchangeId</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of list">
+      <td>{{item.companyId}}</td>
+      <td>{{item.companyName}}</td>
+      <td>{{item.ceo}}</td>
+      <td>{{item.boardOfDirectors}}</td>
+      <td>{{item.turnover}}</td>
+      <td>{{item.brief}}</td>
+    </tr>
+  </tbody>
+</table>
 <router-outlet></router-outlet>
 
