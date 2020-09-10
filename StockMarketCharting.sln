@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockMarketCharting", "StockMarketCharting\StockMarketCharting.csproj", "{0D364CC1-E07A-460F-8787-71CD12CA84A3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockMarketCharting.Models", "StockMarketCharting.Models\StockMarketCharting.Models.csproj", "{3BF0715D-210A-4048-A61D-2979FDD418CB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchangeMicroservice", "StockExchangeMicroservice\StockExchangeMicroservice.csproj", "{5B930F4E-6302-4596-9298-6F09B8608EFA}"
@@ -21,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "APIGateway\AP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataCreationMicroservice", "DataCreationMicroservice\DataCreationMicroservice.csproj", "{6582FC1E-E9CF-47A8-AE52-665A2D5B55CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Tests.Unit", "Microservices.Tests.Unit\Microservices.Tests.Unit.csproj", "{FC1F9C43-7D19-4B9E-8BE1-3595CBA6A438}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Tests.Unit", "Microservices.Tests.Unit\Microservices.Tests.Unit.csproj", "{FC1F9C43-7D19-4B9E-8BE1-3595CBA6A438}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0D364CC1-E07A-460F-8787-71CD12CA84A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D364CC1-E07A-460F-8787-71CD12CA84A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D364CC1-E07A-460F-8787-71CD12CA84A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D364CC1-E07A-460F-8787-71CD12CA84A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3BF0715D-210A-4048-A61D-2979FDD418CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3BF0715D-210A-4048-A61D-2979FDD418CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BF0715D-210A-4048-A61D-2979FDD418CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
