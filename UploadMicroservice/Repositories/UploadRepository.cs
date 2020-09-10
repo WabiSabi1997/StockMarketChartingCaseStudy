@@ -96,9 +96,12 @@ namespace UploadMicroservice.Repositories
                                 //Date = r[3].ToString().Trim(),
                                 Time = r[4].ToString().Trim()
                              };
-                            context.Add(sp);
-                            var x= context.SaveChanges();
-                            Console.WriteLine(x);
+                            sp.Company = context.Companies.Find(sp.CompanyId);
+                            sp.StockExchange = context.StockExchanges.Find(sp.StockExchangeId);
+                            list.Add(sp);
+                            //context.Add(sp);
+                            //var x= context.SaveChanges();
+                            //Console.WriteLine(x);
                         }
                         cName = context.Companies.Find(list.First().CompanyId).CompanyName;
                         sName = context.StockExchanges.Find(list.First().StockExchangeId).StockExchangeName;
