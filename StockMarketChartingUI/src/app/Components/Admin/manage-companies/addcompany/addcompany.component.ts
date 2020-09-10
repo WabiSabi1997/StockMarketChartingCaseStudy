@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from 'src/app/Models/company';
 import { CompanyService } from 'src/app/Services/company.service';
+import { StockExchange } from 'src/app/Models/stock-exchange';
+import { StockexchangeService } from 'src/app/Services/stockexchange.service';
 
 @Component({
   selector: 'app-addcompany',
@@ -10,8 +12,14 @@ import { CompanyService } from 'src/app/Services/company.service';
 
 export class AddcompanyComponent implements OnInit {
   item:Company;
-  constructor(private service: CompanyService) { 
+  se_list:StockExchange[];
+  constructor(private service: CompanyService, private seservice: StockexchangeService) { 
     this.item = new Company();
+    
+    this.seservice.viewSe().subscribe(res2=>
+      {this.se_list=res2
+        console.log(res2)
+      });
   }
 
   ngOnInit(): void {

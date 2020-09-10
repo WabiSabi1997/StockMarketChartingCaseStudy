@@ -22,7 +22,15 @@
         <td>StockExchanges:<input type="number" [(ngModel)]="item.StockExchangeIds"></td>
       </tr> -->
       <tr>
-        <td><input type="submit" class="btn btn-info" (click)=Add() value="Sign Up"></td>
+        <td><label for="StockExchange">Stock Exchange: </label>
+        <input type="number" list="stockexchanges" id="StockExchange" name="compare">
+         <datalist id="stockexchanges" >
+         <option *ngFor="let item of se_list" [value]="item.stockExchangeID" >{{item.stockExchangeName}}</option>
+         </datalist>
+       </td>
+      </tr>
+      <tr>
+        <td><input type="submit" class="btn btn-info" (click)=Add() value="Add Company"></td>
       </tr>
     </tbody>
 </table>
