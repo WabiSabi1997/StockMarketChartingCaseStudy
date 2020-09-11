@@ -30,7 +30,8 @@ namespace DataCreationMicroservice
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<StockMarketContext>(options =>
-            options.UseSqlServer($"{c.connectionString}" + Configuration.GetConnectionString("SqlConnectionString")));
+            //options.UseSqlServer($"{c.connectionString}" + Configuration.GetConnectionString("SqlConnectionString")));
+            options.UseSqlServer($"{c.connectionString}" ));
 
             services.AddControllers();
         }
