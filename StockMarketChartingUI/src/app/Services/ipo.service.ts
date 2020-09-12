@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class IPOService {
-  url:string="http://localhost:8000/ipodetails";
+  url:string="https://apigatewaystockmarket.azurewebsites.net/ipodetails";
   constructor(private http:HttpClient){}
   
     public viewIPO():Observable<IPODetail[]>

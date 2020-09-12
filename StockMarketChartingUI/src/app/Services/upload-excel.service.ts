@@ -8,7 +8,7 @@ export class UploadExcelService {
 
   constructor(private service:HttpClient) { }
 
-  url:string='http://localhost:8000/uploadservice';
+  url:string='https://apigatewaystockmarket.azurewebsites.net/uploadservice';
     postFile(fileInput: FormData):Observable<any>
     {
       return this.service.post<any>(this.url+"/upload",fileInput);

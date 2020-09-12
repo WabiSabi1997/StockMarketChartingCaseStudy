@@ -7,7 +7,7 @@ import { User } from '../Models/user';
 })
 export class SignupService {
 
-  path:string="http://localhost:8000/authservice"
+  path:string="https://apigatewaystockmarket.azurewebsites.net/authservice"
   constructor(private http:HttpClient){}
 
   public AddUser(item:User)

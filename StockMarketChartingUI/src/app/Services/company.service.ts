@@ -7,7 +7,7 @@ import { StockPrice } from '../Models/stock-price';
   providedIn: 'root'
 })
 export class CompanyService {
-  url:string = "http://localhost:8000/companyservice";
+  url:string = "https://apigatewaystockmarket.azurewebsites.net/companyservice";
   constructor(private http:HttpClient) { }
 
   public AddComp(item:Company):Observable<any>
