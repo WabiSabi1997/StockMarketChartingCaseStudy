@@ -8,7 +8,7 @@ import { isNgTemplate } from '@angular/compiler';
   providedIn: 'root'
 })
 export class AuthService {
-url:string='http://localhost:8000/authservice/';
+url:string='https://apigatewaystockmarket.azurewebsites.net/authservice/';
 
 item:Token;
 

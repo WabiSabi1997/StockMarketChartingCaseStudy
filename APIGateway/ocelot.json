@@ -1,249 +1,49 @@
-/*
-{
-  "Routes": [
-    {
-      "DownstreamPathTemplate": "/api/auth",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44337
-        }
-      ],
-      "UpstreamPathTemplate": "/authservice",
-      "UpstreamHttpMethod": [ "Get", "Post" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/auth/{username}/{password}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44337
-        }
-      ],
-      "UpstreamPathTemplate": "/authservice/{username}/{password}",
-      "UpstreamHttpMethod": [ "Get", "Post" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/company/",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44327
-        }
-      ],
-      "UpstreamPathTemplate": "/companyservice/",
-      "UpstreamHttpMethod": [ "Get", "Post" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/company/update/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44327
-        }
-      ],
-      "UpstreamPathTemplate": "/companyservice/update/{id}",
-      "UpstreamHttpMethod": [ "Put" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/company/delete/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44327
-        }
-      ],
-      "UpstreamPathTemplate": "/companyservice/delete/{id}",
-      "UpstreamHttpMethod": [ "Delete" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/company/getcompaniesbyname",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44327
-        }
-      ],
-      "UpstreamPathTemplate": "/companyservice/getcompaniesbyname",
-      "UpstreamHttpMethod": [ "Get" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/company/getcompanydetails",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44327
-        }
-      ],
-      "UpstreamPathTemplate": "/companyservice/getcompanydetails",
-      "UpstreamHttpMethod": [ "Get" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/company/getstockprice/{id}/{from}/{to}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44327
-        }
-      ],
-      "UpstreamPathTemplate": "/companyservice/getstockprice/{id}/{from}/{to}",
-      "UpstreamHttpMethod": [ "Get" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/ipodetails",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44327
-        }
-      ],
-      "UpstreamPathTemplate": "/ipodetails",
-      "UpstreamHttpMethod": [ "Get", "Post" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/ipodetails/update/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44327
-        }
-      ],
-      "UpstreamPathTemplate": "/ipodetails/update/{id}",
-      "UpstreamHttpMethod": [ "Put" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/sector",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44382
-        }
-      ],
-      "UpstreamPathTemplate": "/sectorservice",
-      "UpstreamHttpMethod": [ "Get", "Post" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/sector/getcompanies",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44382
-        }
-      ],
-      "UpstreamPathTemplate": "/sectorservice/getcompanies",
-      "UpstreamHttpMethod": [ "Get" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/sector/getprice/{id}/{from}/{to}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44382
-        }
-      ],
-      "UpstreamPathTemplate": "/sectorservice/getprice/{id}/{from}/{to}",
-      "UpstreamHttpMethod": [ "Get" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/stockexchange",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44346
-        }
-      ],
-      "UpstreamPathTemplate": "/stockexchangeservice",
-      "UpstreamHttpMethod": [ "Get", "Post" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/stockexchange/getcompanies/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44346
-        }
-      ],
-      "UpstreamPathTemplate": "/stockexchangeservice/getcompanies/{id}",
-      "UpstreamHttpMethod": [ "Get" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/test/upload",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 44315
-        }
-      ],
-      "UpstreamPathTemplate": "/uploadservice/upload",
-      "UpstreamHttpMethod": [ "Post" ]
-    }
-  ],
-  "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:44326"
-  }
-}
-  */
+
 {
     "Routes": [
         {
             "DownstreamPathTemplate": "/api/auth",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8001
-                }
+              {
+                "Host": "authapistockmarket.azurewebsites.net"
+               // "Port": 8001
+              }
             ],
             "UpstreamPathTemplate": "/authservice",
             "UpstreamHttpMethod": [ "Get", "Post" ]
         },
         {
             "DownstreamPathTemplate": "/api/auth/{username}/{password}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8001
-                }
+              {
+                "Host": "authapistockmarket.azurewebsites.net"
+               // "Port": 8001
+              }
             ],
             "UpstreamPathTemplate": "/authservice/{username}/{password}",
             "UpstreamHttpMethod": [ "Get", "Post" ]
         },
         {
             "DownstreamPathTemplate": "/api/company/",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8002
-                }
+              {
+                "Host": "companyapistockmarket.azurewebsites.net"
+                //  "Port": 8002
+              }
             ],
             "UpstreamPathTemplate": "/companyservice/",
             "UpstreamHttpMethod": [ "Get", "Post" ]
         },
         {
             "DownstreamPathTemplate": "/api/company/update/{id}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8002
+                    "Host": "companyapistockmarket.azurewebsites.net"
+                   // "Port": 8002
                 }
             ],
             "UpstreamPathTemplate": "/companyservice/update/{id}",
@@ -251,144 +51,144 @@
         },
         {
             "DownstreamPathTemplate": "/api/company/delete/{id}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8002
-                }
+              {
+                "Host": "companyapistockmarket.azurewebsites.net"
+                // "Port": 8002
+              }
             ],
             "UpstreamPathTemplate": "/companyservice/delete/{id}",
             "UpstreamHttpMethod": [ "Delete" ]
         },
         {
             "DownstreamPathTemplate": "/api/company/getcompaniesbyname",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8002
-                }
+              {
+                "Host": "companyapistockmarket.azurewebsites.net"
+                // "Port": 8002
+              }
             ],
             "UpstreamPathTemplate": "/companyservice/getcompaniesbyname",
             "UpstreamHttpMethod": [ "Get" ]
         },
         {
             "DownstreamPathTemplate": "/api/company/getcompanydetails",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8002
-                }
+              {
+                "Host": "companyapistockmarket.azurewebsites.net"
+               // "Port": 8002
+              }
             ],
             "UpstreamPathTemplate": "/companyservice/getcompanydetails",
             "UpstreamHttpMethod": [ "Get" ]
         },
         {
             "DownstreamPathTemplate": "/api/company/getstockprice/{id}/{from}/{to}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8002
-                }
+              {
+                "Host": "companyapistockmarket.azurewebsites.net"
+                //  "Port": 8002
+              }
             ],
             "UpstreamPathTemplate": "/companyservice/getstockprice/{id}/{from}/{to}",
             "UpstreamHttpMethod": [ "Get" ]
         },
         {
             "DownstreamPathTemplate": "/api/ipodetails",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8002
-                }
+              {
+                "Host": "companyapistockmarket.azurewebsites.net"
+                //  "Port": 8002
+              }
             ],
             "UpstreamPathTemplate": "/ipodetails",
             "UpstreamHttpMethod": [ "Get", "Post" ]
         },
         {
             "DownstreamPathTemplate": "/api/ipodetails/update/{id}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8002
-                }
+              {
+                "Host": "companyapistockmarket.azurewebsites.net"
+                // "Port": 8002
+              }
             ],
             "UpstreamPathTemplate": "/ipodetails/update/{id}",
             "UpstreamHttpMethod": [ "Put" ]
         },
         {
             "DownstreamPathTemplate": "/api/sector",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8003
-                }
+              {
+                "Host": "sectorapistockmarket.azurewebsites.net"
+                // "Port": 8003
+              }
             ],
             "UpstreamPathTemplate": "/sectorservice",
             "UpstreamHttpMethod": [ "Get", "Post" ]
         },
         {
             "DownstreamPathTemplate": "/api/sector/getcompanies",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8003
-                }
+              {
+                "Host": "sectorapistockmarket.azurewebsites.net"
+               // "Port": 8003
+              }
             ],
             "UpstreamPathTemplate": "/sectorservice/getcompanies",
             "UpstreamHttpMethod": [ "Get" ]
         },
         {
             "DownstreamPathTemplate": "/api/sector/getprice/{id}/{from}/{to}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8003
-                }
+              {
+                "Host": "sectorapistockmarket.azurewebsites.net"
+                //"Port": 8003
+              }
             ],
             "UpstreamPathTemplate": "/sectorservice/getprice/{id}/{from}/{to}",
             "UpstreamHttpMethod": [ "Get" ]
         },
         {
             "DownstreamPathTemplate": "/api/stockexchange",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8004
-                }
+              {
+                "Host": "stockexchangeapistockmarket.azurewebsites.net"
+                // "Port": 8004
+              }
             ],
             "UpstreamPathTemplate": "/stockexchangeservice",
             "UpstreamHttpMethod": [ "Get", "Post" ]
         },
         {
             "DownstreamPathTemplate": "/api/stockexchange/getcompanies/{id}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8004
-                }
+              {
+                "Host": "stockexchangeapistockmarket.azurewebsites.net"
+                // "Port": 8004
+              }
             ],
             "UpstreamPathTemplate": "/stockexchangeservice/getcompanies/{id}",
             "UpstreamHttpMethod": [ "Get" ]
         },
         {
             "DownstreamPathTemplate": "/api/test/upload",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 8005
-                }
+              {
+                "Host":"uploadapistockmarket.azurewebsites.net"
+                //  "Port": 8005
+              }
             ],
             "UpstreamPathTemplate": "/uploadservice/upload",
             "UpstreamHttpMethod": [ "Post" ]
